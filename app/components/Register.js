@@ -1,29 +1,39 @@
-// Register.js
+//Register.js
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import firebase from 'C:/Users/cmari/Documents/scentuaryapp475/firebase/firebase.js'; // Ensure correct path
-import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { auth, db } from 'C:/Users/cmari/Documents/scentuaryapp475/firebase/firebase.js';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { collection, addDoc } from 'firebase/firestore';
 
 const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState(null);
 
+    //this is where the task of sending data to db takes place
     const handleRegister = async () => {
-        const auth = getAuth();
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
-            // Handle successful registration
-            console.log("User registered:", email);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            //Add user info to Firestore db
+            await addDoc(collection(db, 'users'), {
+                uid: user.uid,
+                email: email,
+                createdAt: new Date().toISOString()
+            });
+            //log success
+            console.log("User registered and added to Firestore:", email);
         } catch (error) {
-            console.error(error);
-            // Handle registration error
+            //log failure
+            console.error("Error during registration:", error);
+            setErrorMessage(error.message);
         }
     };
 
     return (
         <View style={styles.container}>
+            {errorMessage && <Text style={styles.errorText}>{errorMessage}</Text>}
             <TextInput
                 placeholder="Email"
                 value={email}
@@ -54,6 +64,11 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         marginBottom: 12,
         paddingHorizontal: 8,
+    },
+    errorText: {
+        color: 'red',
+        marginBottom: 10,
+        textAlign: 'center',
     },
 });
 

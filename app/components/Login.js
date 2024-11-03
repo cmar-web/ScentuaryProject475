@@ -1,7 +1,8 @@
-// app/components/Login.js
+//Login.js
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
-import { auth, signInWithEmailAndPassword } from 'C:/Users/cmari/Documents/scentuaryapp475/firebase/firebase.js'; // Ensure this is the correct path
+//path was giving me a ton of issues for firebase.js so i just threw the whole thing in for now
+import { auth, signInWithEmailAndPassword } from 'C:/Users/cmari/Documents/scentuaryapp475/firebase/firebase.js';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -10,10 +11,10 @@ const Login = () => {
     const handleLogin = async () => {
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            // Handle successful login, e.g., navigate to a different screen
+            //Handle successful login
         } catch (error) {
             console.error(error);
-            // Handle login error, e.g., show an alert
+            //Handle failed login
         }
     };
 
