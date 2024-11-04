@@ -43,10 +43,10 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginVertical: 20, // Add some space between the logo and the title
+        marginVertical: 20,
     },
     buttonContainer: {
-        marginTop: 20, // Add some space above the buttons
+        marginTop: 20,
     },
 });
 

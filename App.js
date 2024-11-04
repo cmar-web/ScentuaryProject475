@@ -2,9 +2,9 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import WelcomeScreen from './app/screens/WelcomeScreen'; // Adjust the path if necessary
-import Login from './app/components/Login'; // Adjust the path if necessary
-import Register from './app/components/Register'; // Adjust the path if necessary
+import WelcomeScreen from './app/screens/WelcomeScreen';
+import Login from './app/components/Login';
+import Register from './app/components/Register';
 
 const Stack = createNativeStackNavigator();
 
