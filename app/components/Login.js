@@ -2,7 +2,9 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
 //path was giving me a ton of issues for firebase.js so i just threw the whole thing in for now
-import { auth, signInWithEmailAndPassword } from 'C:/Users/cmari/Documents/scentuaryapp475/firebase/firebase.js';
+import { auth, signInWithEmailAndPassword } from 'C:/Users/cmari/OneDrive/Documents/CMPSC475/ScentuaryProject475/firebase_folder/firebase.js';
+
+
 
 const Login = () => {
     const [email, setEmail] = useState('');

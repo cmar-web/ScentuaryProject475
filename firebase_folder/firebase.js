@@ -1,10 +1,9 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, initializeAuth, getReactNativePersistence } from 'firebase/auth'; // Make sure getReactNativePersistence is imported
+import { getAuth, initializeAuth, getReactNativePersistence, signInWithEmailAndPassword } from 'firebase/auth';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getFirestore } from 'firebase/firestore';
 
-//Configs - couldm't see them on android project in fb, so i added on a web proj to the fb
-//which is where all this info is taken from
+// Firebase configuration object
 const firebaseConfig = {
   apiKey: "AIzaSyAPWZ9jkIul8dKYj4WkXdcTaXPIe3nTZIQ",
   authDomain: "scentuary-c009b.firebaseapp.com",
@@ -14,16 +13,17 @@ const firebaseConfig = {
   appId: "1:1083085209588:web:fb803927e121907f97c3a1"
 };
 
+//Initialize Firebase
 const app = initializeApp(firebaseConfig);
-console.log("Firebase initialized:");
+console.log("Firebase initialized:", app);
 
-//Initialize Auth w persistence
+//Initialize Auth with persistence
 const auth = initializeAuth(app, {
-    persistence: getReactNativePersistence(AsyncStorage)
+  persistence: getReactNativePersistence(AsyncStorage)
 });
 
 //Initialize Firestore
 const db = getFirestore(app);
 
-//Export auth and db
-export { auth, db };
+//Export auth, db, and signInWithEmailAndPassword
+export { auth, db, signInWithEmailAndPassword };
