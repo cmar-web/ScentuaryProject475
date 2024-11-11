@@ -1,4 +1,4 @@
-// LandingScreen.js
+//LandingScreen.js
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { auth } from 'C:/Users/cmari/OneDrive/Documents/CMPSC475/ScentuaryProject475/firebase_folder/firebase.js'
@@ -8,7 +8,8 @@ const LandingScreen = ({ navigation }) => {
     const handleLogout = () => {
         auth.signOut()
             .then(() => {
-                navigation.replace('Login'); // Navigate back to Login screen
+                //bring user back to login screen
+                navigation.replace('Login');
             })
             .catch((error) => console.error('Error signing out: ', error));
     };
@@ -17,9 +18,10 @@ const LandingScreen = ({ navigation }) => {
         <View style={styles.container}>
             <Text style={styles.welcomeText}>Welcome to Scentuary!</Text>
             <Text style={styles.description}>
-                You have successfully logged in. Enjoy exploring the app!
+                You have successfully logged in.
             </Text>
-            <Button title="Log Out" onPress={handleLogout} />
+             //not implemented yet
+            <Button title="Log out" onPress={handleLogout} />
         </View>
     );
 };
