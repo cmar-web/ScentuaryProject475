@@ -18,9 +18,8 @@ const LandingScreen = ({ navigation }) => {
         <View style={styles.container}>
             <Text style={styles.welcomeText}>Welcome to Scentuary!</Text>
             <Text style={styles.description}>
-                You have successfully logged in.
-            </Text>
-             //not implemented yet
+                Login successful</Text>
+
             <Button title="Log out" onPress={handleLogout} />
         </View>
     );
