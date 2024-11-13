@@ -1,7 +1,7 @@
 //Register.js
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
-import { auth, db } from 'C:/Users/cmari/Documents/scentuaryapp475/firebase/firebase.js';
+import { auth, db } from '../../firebase/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { collection, addDoc } from 'firebase/firestore';
 
