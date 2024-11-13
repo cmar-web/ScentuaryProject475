@@ -8,18 +8,21 @@ import { collection, addDoc } from 'firebase/firestore';
 const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
+
     const [errorMessage, setErrorMessage] = useState(null);
 
     //this is where the task of sending data to db takes place
     const handleRegister = async () => {
         try {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password, username);
             const user = userCredential.user;
 
             //Add user info to Firestore db
             await addDoc(collection(db, 'users'), {
                 uid: user.uid,
                 email: email,
+                username: username,
                 createdAt: new Date().toISOString()
             });
             //log success
@@ -47,6 +50,12 @@ const Register = () => {
                 secureTextEntry
                 style={styles.input}
             />
+            <TextInput
+                 placeholder="Username"
+                 value={username}
+                 onChangeText={setUsername}
+                 style={styles.input}
+             />
             <Button title="Register" onPress={handleRegister} />
         </View>
     );

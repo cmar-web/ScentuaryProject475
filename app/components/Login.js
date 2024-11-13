@@ -9,11 +9,13 @@ import { useNavigation } from '@react-navigation/native';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
+
     const navigation = useNavigation();
 
    const handleLogin = async () => {
            try {
-               await signInWithEmailAndPassword(auth, email, password);
+               await signInWithEmailAndPassword(auth, email, password, username);
                //Navigates to landingscreen if credentials are correct
                navigation.replace('LandingScreen');
            } catch (error) {
@@ -39,6 +41,13 @@ const Login = () => {
                    onChangeText={setPassword}
                    secureTextEntry
                    style={styles.input}
+               />
+               <TextInput
+                   placeholder="Username"
+                   value={username}
+                   onChangeText={setUsername}
+                   style={styles.input}
+                   autoCapitalize="none"
                />
                <Button title="Login" onPress={handleLogin} />
            </View>
