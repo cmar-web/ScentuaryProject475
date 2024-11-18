@@ -2,7 +2,7 @@ import React from 'react';
 import * as ReactNative from 'react-native';
 
 
-export const styles = StyleSheet.create({
+export const styles = ReactNative.StyleSheet.create({
     background: {
         flex: 1,
         backgroundColor: '#e3bccc',
@@ -33,6 +33,7 @@ export const styles = StyleSheet.create({
     },
     input: {
         height: 40,
+        width: 200,
         borderColor: 'gray',
         borderWidth: 1,
         marginBottom: 12,
