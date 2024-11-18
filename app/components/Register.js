@@ -10,6 +10,7 @@ import {styles} from '../assets/styles';
 const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
     const [errorMessage, setErrorMessage] = useState(null);
 
     //this is where the task of sending data to db takes place
@@ -22,6 +23,7 @@ const Register = () => {
             await addDoc(collection(db, 'users'), {
                 uid: user.uid,
                 email: email,
+                username: username,
                 createdAt: new Date().toISOString()
             });
             //log success
@@ -41,6 +43,12 @@ const Register = () => {
                     placeholder="Email"
                     value={email}
                     onChangeText={setEmail}
+                    style={styles.input}
+                />
+                <TextInput
+                    placeholder="Username"
+                    value={username}
+                    onChangeText={setUsername}
                     style={styles.input}
                 />
                 <TextInput
