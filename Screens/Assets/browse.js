@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Image, StyleSheet, View, Text} from "react-native";
 
-const IPhone1415ProMax = () => {
+const BrowseScreen = () => {
 
   	return (
     		<View style={styles.iphone1415ProMax2}>
@@ -14,13 +14,13 @@ const IPhone1415ProMax = () => {
         				<View style={styles.titleAndControls} />
         				<View style={styles.searchField}>
           					<View style={[styles.searchField1, styles.topAppBarFlexBox]}>
-            						<Text style={styles.searchGlyph}>􀊫</Text>
+            						<Text style={styles.searchGlyph}>?</Text>
             						<Text style={styles.placeholderLabel} numberOfLines={1}>Search</Text>
-            						<Text style={styles.dictation}>􀊱</Text>
+            						{/* <Text style={styles.dictation}>􀊱</Text> */}
           					</View>
         				</View>
       			</View>
-      			<View style={styles.statusBarIphone}>
+      			{/* <View style={styles.statusBarIphone}>
         				<View style={styles.frame}>
           					<View style={[styles.time, styles.timeFlexBox]}>
             						<Text style={styles.time1}>9:41</Text>
@@ -36,7 +36,7 @@ const IPhone1415ProMax = () => {
             						</View>
           					</View>
         				</View>
-      			</View>
+      			</View> */}
       			<View style={[styles.horizontalCard, styles.horizontalCardLayout]}>
         				<View style={[styles.content, styles.contentLayout]}>
           					<View style={[styles.header, styles.headerPosition]}>
@@ -46,7 +46,7 @@ const IPhone1415ProMax = () => {
                 								<Text style={[styles.initial, styles.initialTypo]}>A</Text>
               							</View>
               							<View style={styles.text}>
-                								<Text style={styles.header1}>Fragrance4</Text>
+                								<Text style={styles.header1}>Fragrance5</Text>
                 								<Text style={[styles.subhead, styles.subheadTypo]}>fragrance house</Text>
               							</View>
             						</View>
@@ -66,7 +66,7 @@ const IPhone1415ProMax = () => {
                 								<Text style={[styles.initial, styles.initialTypo]}>A</Text>
               							</View>
               							<View style={styles.text}>
-                								<Text style={styles.header1}>Fragrance5</Text>
+                								<Text style={styles.header1}>Fragrance6</Text>
                 								<Text style={[styles.subhead, styles.subheadTypo]}>fragrance house</Text>
               							</View>
             						</View>
@@ -102,7 +102,7 @@ const IPhone1415ProMax = () => {
           					<View style={[styles.header, styles.headerPosition]}>
             						<View style={styles.content1}>
               							<View style={[styles.monogram, styles.monogramLayout]}>
-                								<Image style={[styles.backgroundIcon, styles.backgroundPosition]} resizeMode="cover" source="51dp6BGML8L._AC_UF1000,1000_QL80_.png" />
+                								<Image style={[styles.backgroundIcon, styles.backgroundPosition]} resizeMode="cover" source={require("../res/51dp6BGML8L._AC_UF1000,1000_QL80_.png")} />
                 								<Text style={[styles.initial, styles.initialTypo]}>A</Text>
               							</View>
               							<View style={styles.text}>
@@ -146,7 +146,7 @@ const IPhone1415ProMax = () => {
                 								<Text style={[styles.initial, styles.initialTypo]}>A</Text>
               							</View>
               							<View style={styles.text}>
-                								<Text style={styles.header1}>Fragrance3</Text>
+                								<Text style={styles.header1}>Fragrance4</Text>
                 								<Text style={[styles.subhead, styles.subheadTypo]}>fragrance house</Text>
               							</View>
             						</View>
@@ -181,39 +181,39 @@ const IPhone1415ProMax = () => {
           					</View>
         				</View>
       			</View>
-      			<Image style={[styles.folderIcon, styles.iconLayout]} resizeMode="cover" source="folder.png" />
-      			<Image style={[styles.editIcon, styles.iconLayout]} resizeMode="cover" source="edit.png" />
-      			<Image style={[styles.starIcon, styles.iconLayout]} resizeMode="cover" source="star.png" />
-      			<Image style={[styles.settingsIcon, styles.iconLayout]} resizeMode="cover" source="settings.png" />
-      			<Image style={[styles.b015ebcd2eac9e80515cb602cd611fIcon, styles.iconPosition]} resizeMode="cover" source="b015ebcd2eac9e80515cb602cd611f72.png" />
-      			<Image style={[styles.o198Icon, styles.iconPosition]} resizeMode="cover" source="o.198.png" />
-      			<Image style={[styles.kilianparisLogoIcon, styles.iconPosition]} resizeMode="cover" source="kilianparis_logo.png" />
-      			<Image style={[styles.imagesIcon, styles.iconPosition]} resizeMode="cover" source="images.png" />
-      			<Image style={[styles.pngTransparentGiorgioArmaniIcon, styles.iconPosition]} resizeMode="cover" source="png-transparent-giorgio-armani-italian-fashion-haute-couture-axe-logo-miscellaneous-text-cosmetics-thumbnail.png" />
-      			<Image style={[styles.nauticaLogoGraphics4924134Icon, styles.iconPosition]} resizeMode="cover" source="Nautica-Logo-Graphics-4924134-1.png" />
+      			<Image style={[styles.folderIcon, styles.iconLayout]} resizeMode="cover" source={require("../res/folder.png")} />
+      			<Image style={[styles.editIcon, styles.iconLayout]} resizeMode="cover" source={require("../res/edit.png")} />
+      			<Image style={[styles.starIcon, styles.iconLayout]} resizeMode="cover" source={require("../res/star.png")} />
+      			<Image style={[styles.settingsIcon, styles.iconLayout]} resizeMode="cover" source={require("../res/settings.png")} />
+      			<Image style={[styles.b015ebcd2eac9e80515cb602cd611fIcon, styles.iconPosition]} resizeMode="cover" source={require("../res/b015ebcd2eac9e80515cb602cd611f72.png")} />
+      			<Image style={[styles.o198Icon, styles.iconPosition]} resizeMode="cover" source={require("../res/o.198.png")} />
+      			<Image style={[styles.kilianparisLogoIcon, styles.iconPosition]} resizeMode="cover" source={require("../res/kilianparis_logo.png")} />
+      			<Image style={[styles.imagesIcon, styles.iconPosition]} resizeMode="cover" source={require("../res/images.png")} />
+      			<Image style={[styles.pngTransparentGiorgioArmaniIcon, styles.iconPosition]} resizeMode="cover" source={require("../res/png-transparent-giorgio-armani-italian-fashion-haute-couture-axe-logo-miscellaneous-text-cosmetics-thumbnail.png")} />
+      			<Image style={[styles.nauticaLogoGraphics4924134Icon, styles.iconPosition]} resizeMode="cover" source={require("../res/Nautica-Logo-Graphics-4924134-1.png")} />
       			<View style={[styles.navigationButton, styles.navigationPosition]}>
-        				<Image style={[styles.starIcon1, styles.iconLayout]} resizeMode="cover" source="Star.png" />
+        				<Image style={[styles.starIcon1, styles.iconLayout]} resizeMode="cover" source={require("../res/star.png")} />
         				<Text style={styles.label4} />
       			</View>
       			<View style={[styles.navigationButton1, styles.navigationPosition]}>
-        				<Image style={[styles.starIcon1, styles.iconLayout]} resizeMode="cover" source="Star.png" />
+        				<Image style={[styles.starIcon1, styles.iconLayout]} resizeMode="cover" source={require("../res/star.png")} />
         				<Text style={styles.label4} />
       			</View>
       			<View style={[styles.navigationButton2, styles.navigationPosition]}>
-        				<Image style={[styles.starIcon1, styles.iconLayout]} resizeMode="cover" source="Star.png" />
+        				<Image style={[styles.starIcon1, styles.iconLayout]} resizeMode="cover" source={require("../res/star.png")} />
         				<Text style={styles.label4} />
       			</View>
       			<View style={[styles.navigationButton3, styles.navigationPosition]}>
-        				<Image style={[styles.starIcon1, styles.iconLayout]} resizeMode="cover" source="Star.png" />
+        				<Image style={[styles.starIcon1, styles.iconLayout]} resizeMode="cover" source={require("../res/star.png")} />
         				<Text style={styles.label4} />
       			</View>
       			<View style={[styles.navigationButton4, styles.navigationPosition]}>
-        				<Image style={[styles.starIcon1, styles.iconLayout]} resizeMode="cover" source="Star.png" />
+        				<Image style={[styles.starIcon1, styles.iconLayout]} resizeMode="cover" source={require("../res/star.png")} />
         				<Text style={styles.label4} />
       			</View>
       			<View style={[styles.navigationButton5, styles.navigationPosition]}>
-        				<Image style={[styles.starIcon1, styles.iconLayout]} resizeMode="cover" source="Star.png" />
-        				<Text style={styles.label4} />
+        				<Image style={[styles.starIcon1, styles.iconLayout]} resizeMode="cover" source={require("../res/star.png")} />
+        				<Text style={styles.label4} /> 
       			</View>
       			<View style={[styles.topAppBar, styles.topAppBarFlexBox]}>
         				<View style={[styles.leadingIcon, styles.levelsFlexBox]}>
@@ -232,7 +232,7 @@ const IPhone1415ProMax = () => {
           					</View>
         				</View>
       			</View>
-      			<Image style={[styles.genericAvatarIcon, styles.buttonLayout]} resizeMode="cover" source="Generic avatar.png" />
+      			<Image style={[styles.genericAvatarIcon, styles.buttonLayout]} resizeMode="cover" source={require("../res/Generic avatar.png")} />
       			<View style={[styles.button, styles.buttonLayout]}>
         				<View style={[styles.stateLayer8, styles.timeFlexBox]}>
           					<Text style={[styles.labelText, styles.subheadLayout]}>Give me suggestions</Text>
@@ -244,7 +244,7 @@ const IPhone1415ProMax = () => {
 const styles = StyleSheet.create({
   	barSpaceBlock: {
     		paddingHorizontal: 4,
-    		width: 430,
+    		width: '100%',
     		position: "absolute"
   	},
   	topAppBarFlexBox: {
@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
     		alignItems: "center"
   	},
   	timeFlexBox: {
-    		paddingLeft: 16,
+    		paddingLeft: '1%',
     		justifyContent: "center",
     		flexDirection: "row",
     		alignItems: "center",
@@ -268,9 +268,9 @@ const styles = StyleSheet.create({
     		borderStyle: "solid"
   	},
   	horizontalCardLayout: {
-    		height: 97,
-    		width: 382,
-    		left: 24,
+    		height: '9.7%',
+    		width: '89%',
+    		left: '5%',
     		borderRadius: 12,
     		flexDirection: "row",
     		position: "absolute"
@@ -285,8 +285,8 @@ const styles = StyleSheet.create({
     		position: "absolute"
   	},
   	monogramLayout: {
-    		width: 40,
-    		height: 40
+    		width: '8%',
+    		height: '4%'
   	},
   	backgroundPosition: {
     		left: "0%",
@@ -335,13 +335,13 @@ const styles = StyleSheet.create({
     		shadowColor: "rgba(0, 0, 0, 0.25)"
   	},
   	iconLayout: {
-    		height: 24,
-    		width: 24
+    		height: '2.4%',
+    		width: '5%'
   	},
   	iconPosition: {
     		left: 40,
-    		height: 40,
-    		width: 40,
+    		height: '4%',
+    		width: '5%',
     		position: "absolute"
   	},
   	navigationPosition: {
@@ -361,8 +361,8 @@ const styles = StyleSheet.create({
     		letterSpacing: 0
   	},
   	dotIcon: {
-    		width: 5,
-    		height: 5
+    		width: '1%',
+    		height: '0.5%'
   	},
   	windowGrabber: {
     		padding: 10,
@@ -370,11 +370,11 @@ const styles = StyleSheet.create({
     		gap: 3
   	},
   	titleAndControls: {
-    		height: 44,
+    		height: '4.4%',
     		alignSelf: "stretch"
   	},
   	searchGlyph: {
-    		width: 25,
+    		width: '5%',
     		textAlign: "left",
     		color: "rgba(60, 60, 67, 0.6)",
     		fontFamily: "SF Pro",
@@ -382,7 +382,7 @@ const styles = StyleSheet.create({
     		fontSize: 17
   	},
   	placeholderLabel: {
-    		height: 22,
+    		height: '2.2%',
     		letterSpacing: 0,
     		textAlign: "left",
     		color: "rgba(60, 60, 67, 0.6)",
@@ -401,20 +401,20 @@ const styles = StyleSheet.create({
   	},
   	searchField1: {
     		backgroundColor: "rgba(120, 120, 128, 0.12)",
-    		paddingHorizontal: 8,
-    		paddingVertical: 7,
+    		paddingHorizontal: '1.4%',
+    		paddingVertical: '0.07%',
     		alignSelf: "stretch"
   	},
   	searchField: {
-    		paddingHorizontal: 16,
-    		paddingTop: 1,
+    		paddingHorizontal: '1.3%',
+    		paddingTop: '5%',
     		paddingBottom: 15,
     		alignSelf: "stretch"
   	},
   	navigationBarIpadRegular: {
-    		top: 53,
+    		top: '5.3%',
     		left: 5,
-    		height: 117,
+    		height: '11.7%',
     		paddingVertical: 0,
     		gap: 3,
     		alignItems: "center"
@@ -431,16 +431,16 @@ const styles = StyleSheet.create({
     		paddingRight: 6
   	},
   	dynamicIslandSpacer: {
-    		width: 124,
-    		height: 10
+    		width: '25%',
+    		height: '1%'
   	},
   	cellularConnectionIcon: {
-    		width: 19,
-    		height: 12
+    		width: '4%',
+    		height: '1.2%'
   	},
   	wifiIcon: {
-    		width: 17,
-    		height: 12
+    		width: '4%',
+    		height: '1.2%'
   	},
   	border: {
     		marginLeft: -13.65,
@@ -453,7 +453,7 @@ const styles = StyleSheet.create({
     		bottom: "0%",
     		height: "100%",
     		top: "0%",
-    		width: 25
+    		width: '5%'
   	},
   	capIcon: {
     		height: "31.54%",
@@ -473,13 +473,13 @@ const styles = StyleSheet.create({
     		bottom: "15.38%",
     		borderRadius: 3,
     		backgroundColor: "#000",
-    		width: 21,
+    		width: '4%',
     		left: "50%",
     		position: "absolute"
   	},
   	battery: {
-    		width: 27,
-    		height: 13
+    		width: '5%',
+    		height: '1.3%'
   	},
   	levels: {
     		paddingLeft: 6,
@@ -496,8 +496,8 @@ const styles = StyleSheet.create({
   	},
   	statusBarIphone: {
     		left: 2,
-    		width: 422,
-    		height: 53,
+    		width: '98.13%',
+    		height: '5.3%',
     		paddingTop: 21,
     		top: 0,
     		position: "absolute"
@@ -520,8 +520,8 @@ const styles = StyleSheet.create({
     		fontSize: 16,
     		fontFamily: "Roboto-Medium",
     		fontWeight: "500",
-    		height: 40,
-    		width: 40,
+    		height: '4%',
+    		width: '8%',
     		left: "50%",
     		justifyContent: "center",
     		letterSpacing: 0,
@@ -529,7 +529,7 @@ const styles = StyleSheet.create({
     		position: "absolute"
   	},
   	monogram: {
-    		height: 40,
+    		height: '4%',
     		overflow: "hidden"
   	},
   	header1: {
@@ -562,7 +562,7 @@ const styles = StyleSheet.create({
     		flex: 1
   	},
   	mediaIcon: {
-    		width: 80,
+    		width: '16%',
     		maxHeight: "100%",
     		alignSelf: "stretch"
   	},
@@ -599,22 +599,22 @@ const styles = StyleSheet.create({
     		right: "0%"
   	},
   	horizontalCard: {
-    		top: 563
+    		top: '60%'
   	},
   	horizontalCard1: {
-    		top: 660
+    		top: '70%'
   	},
   	horizontalCard2: {
-    		top: 272
+    		top: '29%'
   	},
   	horizontalCard3: {
-    		top: 175
+    		top: '18.77%'
   	},
   	horizontalCard4: {
-    		top: 369
+    		top: '39%'
   	},
   	horizontalCard5: {
-    		top: 466
+    		top: '50%'
   	},
   	iphone1415ProMax2Child: {
     		height: "11.7%",
@@ -645,9 +645,9 @@ const styles = StyleSheet.create({
   	},
   	label: {
     		fontSize: 10,
-    		left: "-1.04%",
+    		left: "0%",
     		top: "70%",
-    		width: "102.04%"
+    		width: "100%"
   	},
   	symbol: {
     		color: "#007aff",
@@ -657,14 +657,14 @@ const styles = StyleSheet.create({
     		position: "absolute"
   	},
   	tab1: {
-    		height: 40,
+    		height: '4%',
     		flex: 1
   	},
   	label1: {
     		fontSize: 10,
     		left: "-1.04%",
     		top: "70%",
-    		width: "102.04%"
+    		width: "100%"
   	},
   	symbol1: {
     		fontSize: 18,
@@ -673,68 +673,68 @@ const styles = StyleSheet.create({
     		width: "62.43%"
   	},
   	tab3: {
-    		height: 40,
+    		height: '4%',
     		flex: 1
   	},
   	tabBarButtons: {
-    		top: 7,
+    		top: '0%',
     		left: 0,
     		right: 0,
     		justifyContent: "space-between",
     		flexDirection: "row"
   	},
   	tabBarIphone: {
-    		top: 855,
-    		left: -1,
+    		top: '91.7%',
+    		left: 0,
     		borderTopLeftRadius: 50,
     		borderTopRightRadius: 10000,
     		borderBottomRightRadius: 50,
     		borderBottomLeftRadius: 50,
-    		width: 431,
-    		height: 77,
+    		width: '100%',
+    		height: '7.7%',
     		position: "absolute"
   	},
   	folderIcon: {
-    		left: 38,
-    		top: 858,
-    		width: 24,
+    		left: '9%',
+    		top: '94.8%',
+    		width: '5%',
     		position: "absolute"
   	},
   	editIcon: {
-    		left: 146,
-    		top: 858,
-    		width: 24,
+    		left: '35%',
+    		top: '94.8%',
+    		width: '5%',
     		position: "absolute"
   	},
   	starIcon: {
-    		left: 254,
-    		top: 858,
-    		width: 24,
+    		left: '61%',
+    		top: '94.8%',
+    		width: '5%',
     		position: "absolute"
   	},
   	settingsIcon: {
-    		left: 364,
-    		top: 858,
-    		width: 24,
+    		left: '85%',
+    		top: '94.8%',
+    		width: '5%',
     		position: "absolute"
   	},
   	b015ebcd2eac9e80515cb602cd611fIcon: {
-    		top: 203
+    		top: '21.5%'
   	},
   	o198Icon: {
-    		top: 494
+    		top: '53%'
   	},
   	kilianparisLogoIcon: {
-    		top: 591
+    		top: '63%'
   	},
   	imagesIcon: {
-    		top: 688
+    		top: '73%'
   	},
   	pngTransparentGiorgioArmaniIcon: {
-    		top: 300
+    		top: '32%'
   	},
   	nauticaLogoGraphics4924134Icon: {
-    		top: 397
+    		top: '42%'
   	},
   	starIcon1: {
     		overflow: "hidden"
@@ -748,22 +748,22 @@ const styles = StyleSheet.create({
     		textAlign: "center"
   	},
   	navigationButton: {
-    		top: 175
+    		top: '17.5%'
   	},
   	navigationButton1: {
-    		top: 369
+    		top: '36.9%'
   	},
   	navigationButton2: {
-    		top: 467
+    		top: '46.7%'
   	},
   	navigationButton3: {
-    		top: 563
+    		top: '56.3%'
   	},
   	navigationButton4: {
-    		top: 272
+    		top: '27.2%'
   	},
   	navigationButton5: {
-    		top: 661
+    		top: '66.1%'
   	},
   	stateLayer6: {
     		padding: 8,
@@ -777,8 +777,8 @@ const styles = StyleSheet.create({
     		flexDirection: "row"
   	},
   	leadingIcon: {
-    		width: 48,
-    		height: 48
+    		width: '10%',
+    		height: '4.8%'
   	},
   	headline: {
     		fontSize: 22,
@@ -787,21 +787,21 @@ const styles = StyleSheet.create({
     		flex: 1
   	},
   	topAppBar: {
-    		top: 52,
+    		top: '5.2%',
     		left: 1,
     		backgroundColor: "#d0bcff",
-    		height: 64,
+    		height: '6.4%',
     		paddingVertical: 8,
     		gap: 6,
     		paddingHorizontal: 4,
-    		width: 430,
+    		width: '100%',
     		position: "absolute"
   	},
   	genericAvatarIcon: {
-    		top: 64,
-    		left: 383,
-    		height: 40,
-    		width: 40,
+    		top: '6.4%',
+    		left: '90%',
+    		height: '4%',
+    		width: '8%',
     		position: "absolute"
   	},
   	labelText: {
@@ -809,7 +809,7 @@ const styles = StyleSheet.create({
     		textShadowColor: "rgba(0, 0, 0, 0.25)",
     		textShadowOffset: {
       			width: 0,
-      			height: 4
+      			height: '0.4%'
     		},
     		textShadowRadius: 4,
     		fontFamily: "Roboto-Medium",
@@ -817,17 +817,17 @@ const styles = StyleSheet.create({
     		textAlign: "center"
   	},
   	stateLayer8: {
-    		paddingTop: 10,
-    		paddingRight: 24,
-    		paddingBottom: 10,
+    		paddingTop: '1%',
+    		paddingRight: '1%',
+    		paddingBottom: '1%',
     		alignSelf: "stretch"
   	},
   	button: {
-    		top: 777,
+    		top: '77.7%',
     		left: 96,
     		backgroundColor: "#625b71",
-    		width: 231,
-    		height: 49,
+    		width: '46%',
+    		height: '5%',
     		shadowOpacity: 1,
     		elevation: 4,
     		shadowRadius: 4,
@@ -845,11 +845,11 @@ const styles = StyleSheet.create({
   	},
   	iphone1415ProMax2: {
     		backgroundColor: "#eaddff",
-    		height: 932,
+    		height: '100%',
     		overflow: "hidden",
     		width: "100%",
     		flex: 1
   	}
 });
 
-export default IPhone1415ProMax;
+export default BrowseScreen;
