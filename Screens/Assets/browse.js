@@ -37,66 +37,6 @@ const BrowseScreen = () => {
           					</View>
         				</View>
       			</View> */}
-      			<View style={[styles.horizontalCard, styles.horizontalCardLayout]}>
-        				<View style={[styles.content, styles.contentLayout]}>
-          					<View style={[styles.header, styles.headerPosition]}>
-            						<View style={styles.content1}>
-              							<View style={[styles.monogram, styles.monogramLayout]}>
-                								<Image style={[styles.backgroundIcon, styles.backgroundPosition]} resizeMode="cover" source="Background.png" />
-                								<Text style={[styles.initial, styles.initialTypo]}>A</Text>
-              							</View>
-              							<View style={styles.text}>
-                								<Text style={styles.header1}>Fragrance5</Text>
-                								<Text style={[styles.subhead, styles.subheadTypo]}>fragrance house</Text>
-              							</View>
-            						</View>
-            						<Image style={styles.mediaIcon} resizeMode="cover" source="Media.png" />
-          					</View>
-        				</View>
-        				<View style={[styles.background, styles.backgroundPosition]}>
-          					<View style={[styles.stateLayer, styles.backgroundPosition]} />
-        				</View>
-      			</View>
-      			<View style={[styles.horizontalCard1, styles.horizontalCardLayout]}>
-        				<View style={[styles.content, styles.contentLayout]}>
-          					<View style={[styles.header, styles.headerPosition]}>
-            						<View style={styles.content1}>
-              							<View style={[styles.monogram, styles.monogramLayout]}>
-                								<Image style={[styles.backgroundIcon, styles.backgroundPosition]} resizeMode="cover" source="Background.png" />
-                								<Text style={[styles.initial, styles.initialTypo]}>A</Text>
-              							</View>
-              							<View style={styles.text}>
-                								<Text style={styles.header1}>Fragrance6</Text>
-                								<Text style={[styles.subhead, styles.subheadTypo]}>fragrance house</Text>
-              							</View>
-            						</View>
-            						<Image style={styles.mediaIcon} resizeMode="cover" source="Media.png" />
-          					</View>
-        				</View>
-        				<View style={[styles.background, styles.backgroundPosition]}>
-          					<View style={[styles.stateLayer, styles.backgroundPosition]} />
-        				</View>
-      			</View>
-      			<View style={[styles.horizontalCard2, styles.horizontalCardLayout]}>
-        				<View style={[styles.content, styles.contentLayout]}>
-          					<View style={[styles.header, styles.headerPosition]}>
-            						<View style={styles.content1}>
-              							<View style={[styles.monogram, styles.monogramLayout]}>
-                								<Image style={[styles.backgroundIcon, styles.backgroundPosition]} resizeMode="cover" source="Background.png" />
-                								<Text style={[styles.initial, styles.initialTypo]}>A</Text>
-              							</View>
-              							<View style={styles.text}>
-                								<Text style={styles.header1}>Fragrance2</Text>
-                								<Text style={[styles.subhead, styles.subheadTypo]}>fragrance house</Text>
-              							</View>
-            						</View>
-            						<Image style={styles.mediaIcon} resizeMode="cover" source="Media.png" />
-          					</View>
-        				</View>
-        				<View style={[styles.background, styles.backgroundPosition]}>
-          					<View style={[styles.stateLayer, styles.backgroundPosition]} />
-        				</View>
-      			</View>
       			<View style={[styles.horizontalCard3, styles.horizontalCardLayout]}>
         				<View style={[styles.content, styles.contentLayout]}>
           					<View style={[styles.header, styles.headerPosition]}>
@@ -110,14 +50,34 @@ const BrowseScreen = () => {
                 								<Text style={[styles.subhead, styles.subheadTypo]}>fragrance house</Text>
               							</View>
             						</View>
-            						<Image style={styles.mediaIcon} resizeMode="cover" source="Media.png" />
+            						<Image style={styles.mediaIcon} resizeMode="cover" source={require("../res/71yMkOF21ZL._AC_UF1000,1000_QL80_.png")} />
           					</View>
         				</View>
         				<View style={[styles.background, styles.backgroundPosition]}>
           					<View style={[styles.stateLayer, styles.backgroundPosition]} />
         				</View>
       			</View>
-      			<View style={[styles.horizontalCard4, styles.horizontalCardLayout]}>
+				  <View style={[styles.horizontalCard2, styles.horizontalCardLayout]}>
+        				<View style={[styles.content, styles.contentLayout]}>
+          					<View style={[styles.header, styles.headerPosition]}>
+            						<View style={styles.content1}>
+              							<View style={[styles.monogram, styles.monogramLayout]}>
+                								<Image style={[styles.backgroundIcon, styles.backgroundPosition]} resizeMode="cover" source="Background.png" />
+                								<Text style={[styles.initial, styles.initialTypo]}>A</Text>
+              							</View>
+              							<View style={styles.text}>
+                								<Text style={styles.header1}>Fragrance2</Text>
+                								<Text style={[styles.subhead, styles.subheadTypo]}>fragrance house</Text>
+              							</View>
+            						</View>
+            						<Image style={styles.mediaIcon} resizeMode="cover" source={require("../res/you.png")} />
+          					</View>
+        				</View>
+        				<View style={[styles.background, styles.backgroundPosition]}>
+          					<View style={[styles.stateLayer, styles.backgroundPosition]} />
+        				</View>
+      			</View>
+				<View style={[styles.horizontalCard4, styles.horizontalCardLayout]}>
         				<View style={[styles.content, styles.contentLayout]}>
           					<View style={[styles.header, styles.headerPosition]}>
             						<View style={styles.content1}>
@@ -130,7 +90,7 @@ const BrowseScreen = () => {
                 								<Text style={[styles.subhead, styles.subheadTypo]}>fragrance house</Text>
               							</View>
             						</View>
-            						<Image style={styles.mediaIcon} resizeMode="cover" source="Media.png" />
+            						<Image style={styles.mediaIcon} resizeMode="cover" source={require("../res/51dp6BGML8L._AC_UF1000,1000_QL80_.png")} />
           					</View>
         				</View>
         				<View style={[styles.background, styles.backgroundPosition]}>
@@ -150,7 +110,47 @@ const BrowseScreen = () => {
                 								<Text style={[styles.subhead, styles.subheadTypo]}>fragrance house</Text>
               							</View>
             						</View>
-            						<Image style={styles.mediaIcon} resizeMode="cover" source="Media.png" />
+            						<Image style={styles.mediaIcon} resizeMode="cover" source={require("../res/81lP+XGqQOL._AC_UF350,350_QL80_.png")} />
+          					</View>
+        				</View>
+        				<View style={[styles.background, styles.backgroundPosition]}>
+          					<View style={[styles.stateLayer, styles.backgroundPosition]} />
+        				</View>
+      			</View>
+				  <View style={[styles.horizontalCard, styles.horizontalCardLayout]}>
+        				<View style={[styles.content, styles.contentLayout]}>
+          					<View style={[styles.header, styles.headerPosition]}>
+            						<View style={styles.content1}>
+              							<View style={[styles.monogram, styles.monogramLayout]}>
+                								<Image style={[styles.backgroundIcon, styles.backgroundPosition]} resizeMode="cover" source="Background.png" />
+                								<Text style={[styles.initial, styles.initialTypo]}>A</Text>
+              							</View>
+              							<View style={styles.text}>
+                								<Text style={styles.header1}>Fragrance5</Text>
+                								<Text style={[styles.subhead, styles.subheadTypo]}>fragrance house</Text>
+              							</View>
+            						</View>
+            						<Image style={styles.mediaIcon} resizeMode="cover" source={require("../res/s2362838-main-zoom.png")} />
+          					</View>
+        				</View>
+        				<View style={[styles.background, styles.backgroundPosition]}>
+          					<View style={[styles.stateLayer, styles.backgroundPosition]} />
+        				</View>
+      			</View>
+      			<View style={[styles.horizontalCard1, styles.horizontalCardLayout]}>
+        				<View style={[styles.content, styles.contentLayout]}>
+          					<View style={[styles.header, styles.headerPosition]}>
+            						<View style={styles.content1}>
+              							<View style={[styles.monogram, styles.monogramLayout]}>
+                								<Image style={[styles.backgroundIcon, styles.backgroundPosition]} resizeMode="cover" source="Background.png" />
+                								<Text style={[styles.initial, styles.initialTypo]}>A</Text>
+              							</View>
+              							<View style={styles.text}>
+                								<Text style={styles.header1}>Fragrance6</Text>
+                								<Text style={[styles.subhead, styles.subheadTypo]}>fragrance house</Text>
+              							</View>
+            						</View>
+            						<Image style={styles.mediaIcon} resizeMode="cover" source={require("../res/4_Snif_TartDeco_Fragrance_Product_2048x.png")} />
           					</View>
         				</View>
         				<View style={[styles.background, styles.backgroundPosition]}>
@@ -503,11 +503,11 @@ const styles = StyleSheet.create({
     		position: "absolute"
   	},
   	backgroundIcon: {
-    		maxWidth: "100%",
-    		maxHeight: "100%",
-    		bottom: "0%",
-    		height: "100%",
-    		right: "0%",
+    		maxWidth: "10%",
+    		maxHeight: "10%",
+    		bottom: "25%",
+    		height: "10%",
+    		right: "25%",
     		overflow: "hidden"
   	},
   	initial: {
