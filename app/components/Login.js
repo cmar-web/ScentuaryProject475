@@ -2,7 +2,9 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
 //path was giving me a ton of issues for firebase.js so i just threw the whole thing in for now
-import { auth, signInWithEmailAndPassword } from 'C:/Users/cmari/Documents/scentuaryapp475/firebase/firebase.js';
+import { auth, signInWithEmailAndPassword } from '../../firebase/firebase';
+
+import {styles} from '../assets/styles';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -38,19 +40,19 @@ const Login = () => {
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        padding: 16,
-    },
-    input: {
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginBottom: 12,
-        paddingHorizontal: 8,
-    },
-});
+// const styles = StyleSheet.create({
+//     container: {
+//         flex: 1,
+//         justifyContent: 'center',
+//         padding: 16,
+//     },
+//     input: {
+//         height: 40,
+//         borderColor: 'gray',
+//         borderWidth: 1,
+//         marginBottom: 12,
+//         paddingHorizontal: 8,
+//     },
+// });
 
 export default Login;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, SafeAreaView, Image, View, StyleSheet, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import main.css from "./assets"
+import {styles} from '../assets/styles'
 
 function WelcomeScreen() {
     const navigation = useNavigation();
@@ -25,30 +25,30 @@ function WelcomeScreen() {
     );
 }
 
-const styles = StyleSheet.create({
-    background: {
-        flex: 1,
-        backgroundColor: '#e3bccc',
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    logo: {
-        width: 150,
-        height: 150,
-    },
-    logoContainer: {
-        alignItems: 'center',
-        position: 'absolute',
-        top: 90,
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        marginVertical: 20,
-    },
-    buttonContainer: {
-        marginTop: 20,
-    },
-});
+// const styles = StyleSheet.create({
+//     background: {
+//         flex: 1,
+//         backgroundColor: '#e3bccc',
+//         justifyContent: "center",
+//         alignItems: "center",
+//     },
+//     logo: {
+//         width: 150,
+//         height: 150,
+//     },
+//     logoContainer: {
+//         alignItems: 'center',
+//         position: 'absolute',
+//         top: 90,
+//     },
+//     title: {
+//         fontSize: 24,
+//         fontWeight: 'bold',
+//         marginVertical: 20,
+//     },
+//     buttonContainer: {
+//         marginTop: 20,
+//     },
+// });
 
 export default WelcomeScreen;
