@@ -9,15 +9,15 @@ function WelcomeScreen() {
     return (
         <SafeAreaView style={styles.background}>
             <View style={styles.logoContainer}>
-                {/* This is where we see our logo */}
+                {/*This is where we see our logo */}
                 <Image style={styles.logo} source={require("../assets/ScentuaryLogo.png")} />
 
                 <Text style={styles.title}>Scentuary</Text>
 
                 <View style={styles.buttonContainer}>
-                    {/* Takes user to login screen */}
+                    {/*Takes user to the login screen */}
                     <Button title="Login" onPress={() => navigation.navigate('Login')} />
-                    {/* Takes user to register screen */}
+                    {/*Takes user to the register screen */}
                     <Button title="Register" onPress={() => navigation.navigate('Register')} />
                 </View>
             </View>
