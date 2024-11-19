@@ -14,7 +14,7 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            // Check if username exists in the database
+            //we check if username exists in the database
             const q = query(collection(database, "users"), where("username", "==", username));
             const queryCheck = await getDocs(q);
 
@@ -23,11 +23,11 @@ const Login = () => {
                 return;
             }
 
-            // Get corresponding email
+            //get corresponding email
             const loginUser = queryCheck.docs[0];
             const email = loginUser.data().email;
 
-            // Sign in with email and password
+            //sign in with email and password
             await signInWithEmailAndPassword(auth, email, password);
             navigation.replace('browse');
         } catch (error) {
