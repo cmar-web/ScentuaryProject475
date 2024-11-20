@@ -1,6 +1,6 @@
 //Login.js
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Text, SafeAreaView } from 'react-native';
+import { Alert, View, TextInput, Button, StyleSheet, Text, SafeAreaView } from 'react-native';
 //path was giving me a ton of issues for firebase.js so i just threw the whole thing in for now
 import { auth, signInWithEmailAndPassword, db } from '../../firebase/firebase';
 import { useNavigation } from '@react-navigation/native';
