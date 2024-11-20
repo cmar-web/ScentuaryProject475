@@ -34,7 +34,7 @@ const Register = () => {
     };
 
     return (
-        <SafeAreaView style={styles.background}>
+        // <SafeAreaView style={styles.background}>
             <View style={styles.container}>
                 {errorMessage && <Text style={styles.errorText}>{errorMessage}</Text>}
                 <TextInput
@@ -52,7 +52,7 @@ const Register = () => {
                 />
                 <Button title="Register" onPress={handleRegister} />
             </View>
-        </SafeAreaView>
+        // </SafeAreaView>
     );
 };
 

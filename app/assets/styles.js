@@ -1,5 +1,6 @@
 import React from 'react';
 import * as ReactNative from 'react-native';
+import {StyleSheet} from 'react-native';
 
 
 export const styles = ReactNative.StyleSheet.create({
@@ -33,6 +34,7 @@ export const styles = ReactNative.StyleSheet.create({
     },
     input: {
         height: 40,
+        width: 200,
         borderColor: 'gray',
         borderWidth: 1,
         marginBottom: 12,
