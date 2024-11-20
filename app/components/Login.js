@@ -37,12 +37,15 @@ const Login = () => {
     };
 
     return (
+
     <SafeAreaView style={styles.background}>
             <View style={styles.container}>
                 <TextInput
                     placeholder="username"
                     value={username}
                     onChangeText={setUsername}
+
+
                     style={styles.input}
                 />
                 <TextInput
@@ -54,7 +57,11 @@ const Login = () => {
                 />
                 <Button title="Login" onPress={handleLogin} />
             </View>
+
     </SafeAreaView>
+
+
+
     );
 };
 
