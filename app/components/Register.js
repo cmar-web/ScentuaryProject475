@@ -1,34 +1,40 @@
-//Register.js
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Text, SafeAreaView } from 'react-native';
+import { View, TextInput, Button, Text, SafeAreaView } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; // Import navigation hook
 import { auth, db } from '../../firebase/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { collection, addDoc } from 'firebase/firestore';
 
-import {styles} from '../assets/styles';
+import { styles } from '../assets/styles';
 
 const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
     const [errorMessage, setErrorMessage] = useState(null);
 
-    //this is where the task of sending data to db takes place
+    const navigation = useNavigation(); // Initialize navigation
+
     const handleRegister = async () => {
         try {
+            // Create user with email and password
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
-            //Add user info to Firestore db
+            // Add user info to Firestore db, including username
             await addDoc(collection(db, 'users'), {
                 uid: user.uid,
                 email: email,
-                createdAt: new Date().toISOString()
+                username: username,
+                createdAt: new Date().toISOString(),
             });
-            //log success
-            console.log("User registered and added to Firestore:", email);
+
+            console.log('User registered and added to Firestore:', email);
+
+            // Navigate to Browse screen
+            navigation.navigate('browse');
         } catch (error) {
-            //log failure
-            console.error("Error during registration:", error);
+            console.error('Error during registration:', error);
             setErrorMessage(error.message);
         }
     };
@@ -37,6 +43,12 @@ const Register = () => {
         // <SafeAreaView style={styles.background}>
             <View style={styles.container}>
                 {errorMessage && <Text style={styles.errorText}>{errorMessage}</Text>}
+                <TextInput
+                    placeholder="Username"
+                    value={username}
+                    onChangeText={setUsername}
+                    style={styles.input}
+                />
                 <TextInput
                     placeholder="Email"
                     value={email}
@@ -55,25 +67,5 @@ const Register = () => {
         // </SafeAreaView>
     );
 };
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         justifyContent: 'center',
-//         padding: 16,
-//     },
-//     input: {
-//         height: 40,
-//         borderColor: 'gray',
-//         borderWidth: 1,
-//         marginBottom: 12,
-//         paddingHorizontal: 8,
-//     },
-//     errorText: {
-//         color: 'red',
-//         marginBottom: 10,
-//         textAlign: 'center',
-//     },
-// });
 
 export default Register;
