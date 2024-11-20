@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Text, StyleSheet, View, Image} from "react-native";
 
-const IPhone1415ProMax = () => {
+const accountSettingsScreen = () => {
 
   	return (
     		<View style={styles.iphone1415ProMax4}>
@@ -639,4 +639,4 @@ const styles = StyleSheet.create({
   	}
 });
 
-export default IPhone1415ProMax;
+export default accountSettingsScreen;
