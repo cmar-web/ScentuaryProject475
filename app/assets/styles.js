@@ -2,7 +2,7 @@ import React from 'react';
 import * as ReactNative from 'react-native';
 
 
-export const styles = StyleSheet.create({
+export const styles = ReactNative.StyleSheet.create({
     background: {
         flex: 1,
         backgroundColor: '#e3bccc',
