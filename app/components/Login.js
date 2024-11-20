@@ -1,6 +1,6 @@
 //Login.js
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
+import { View, TextInput, Button, StyleSheet, Text, SafeAreaView } from 'react-native';
 //path was giving me a ton of issues for firebase.js so i just threw the whole thing in for now
 import { auth, signInWithEmailAndPassword } from '../../firebase/firebase';
 import { useNavigation } from '@react-navigation/native';
@@ -24,22 +24,24 @@ const Login = () => {
     };
 
     return (
-        <View style={styles.container}>
-            <TextInput
-                placeholder="Email"
-                value={email}
-                onChangeText={setEmail}
-                style={styles.input}
-            />
-            <TextInput
-                placeholder="Password"
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry
-                style={styles.input}
-            />
-            <Button title="Login" onPress={handleLogin} />
-        </View>
+        <SafeAreaView style={styles.background}>
+            <View style={styles.container}>
+                <TextInput
+                    placeholder="Email"
+                    value={email}
+                    onChangeText={setEmail}
+                    style={styles.input}
+                />
+                <TextInput
+                    placeholder="Password"
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry
+                    style={styles.input}
+                />
+                <Button title="Login" onPress={handleLogin} />
+            </View>
+        </SafeAreaView>
     );
 };
 
