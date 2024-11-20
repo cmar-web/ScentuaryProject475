@@ -6,7 +6,7 @@ import WelcomeScreen from './app/screens/WelcomeScreen';
 import Login1 from './app/components/Login';
 import Register from './app/components/Register';
 //import login from './Screens/Assets/login';
-import browse from './app/screens/browse.js';
+import browse from './Screens/Assets/browse.js';
 
 const Stack = createNativeStackNavigator();
 
