@@ -3,20 +3,23 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Text } from 'react-native';
 //path was giving me a ton of issues for firebase.js so i just threw the whole thing in for now
 import { auth, signInWithEmailAndPassword } from '../../firebase/firebase';
-
+import { useNavigation } from '@react-navigation/native';
 import {styles} from '../assets/styles';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const navigation = useNavigation();
+
     const handleLogin = async () => {
         try {
             await signInWithEmailAndPassword(auth, email, password);
+            navigation.replace('browse');
             //Handle successful login
         } catch (error) {
-            console.error(error);
-            //Handle failed login
+            console.error("Login error:", error);
+             Alert.alert("Login Failed", error.message); //Display login failure when needed
         }
     };
 
