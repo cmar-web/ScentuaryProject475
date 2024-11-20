@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.scentuaryapp475"
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
