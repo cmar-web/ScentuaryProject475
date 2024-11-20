@@ -6,6 +6,10 @@ import WelcomeScreen from './app/screens/WelcomeScreen';
 import Login1 from './app/components/Login';
 import Register from './app/components/Register';
 
+//import login from './Screens/Assets/login';
+import BrowseScreen from './Screens/Assets/browse';
+
+
 //import Browse from './Screens/Assets/browse';
 import BrowseScreen from './Screens/Assets/browse';
 
@@ -22,7 +26,10 @@ export default function App() {
                 <Stack.Screen name="Register" component={Register} />
 
                 <Stack.Screen name="Browse" component={BrowseScreen} />
-                
+
+
+                <Stack.Screen name="Browse" component={BrowseScreen} />
+
             </Stack.Navigator>
         </NavigationContainer>
 
