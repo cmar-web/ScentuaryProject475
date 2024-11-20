@@ -6,7 +6,7 @@ import WelcomeScreen from './app/screens/WelcomeScreen';
 import Login1 from './app/components/Login';
 import Register from './app/components/Register';
 //import login from './Screens/Assets/login';
-import browse from './Screens/Assets/browse.js';
+import BrowseScreen from './Screens/Assets/browse.js';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +18,7 @@ export default function App() {
                 <Stack.Screen name="Welcome" component={WelcomeScreen} />
                 <Stack.Screen name="Login" component={Login1} />
                 <Stack.Screen name="Register" component={Register} />
-                <Stack.Screen name="browse" component={browse} />
+                <Stack.Screen name="Browse component={BrowseScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );
