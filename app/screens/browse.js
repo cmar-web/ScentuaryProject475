@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet, TextInput, FlatList, TouchableOpacity, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, TextInput, FlatList, SafeAreaView } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import BottomNavBar from "./BottomNavBar"; // Import the BottomNavBar component
 
 const BrowseScreen = () => {
   const navigation = useNavigation();
@@ -50,32 +51,7 @@ const BrowseScreen = () => {
       </View>
 
       {/* Bottom Navigation Bar */}
-      <View style={styles.navBar}>
-        <TouchableOpacity
-          style={styles.navItem}
-          onPress={() => navigation.navigate('Browse')}
-        >
-          <Text style={styles.navText}>Browse</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.navItem}
-          onPress={() => navigation.navigate('Randomizer')}
-        >
-          <Text style={styles.navText}>Randomizer</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.navItem}
-          onPress={() => navigation.navigate('MyCollection')}
-        >
-          <Text style={styles.navText}>My Collection</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.navItem}
-          onPress={() => navigation.navigate('Settings')}
-        >
-          <Text style={styles.navText}>Settings</Text>
-        </TouchableOpacity>
-      </View>
+      <BottomNavBar />
     </SafeAreaView>
   );
 };
@@ -145,24 +121,6 @@ const styles = StyleSheet.create({
   fragranceHouse: {
     fontSize: 14,
     color: "#777", // Light gray for fragrance house
-  },
-  navBar: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    height: 60,
-    backgroundColor: "#f1f1f1", // Light gray background for the bottom nav bar
-    borderTopWidth: 1,
-    borderColor: "#ccc", // Light gray border
-  },
-  navItem: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  navText: {
-    fontSize: 16,
-    color: "#333", // Dark gray text for nav items
   },
 });
 
