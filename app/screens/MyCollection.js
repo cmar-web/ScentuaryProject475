@@ -135,6 +135,7 @@ const MyCollection = () => {
           )}
         </ScrollView>
 
+
       </View>
 
       {/* Bottom Filters */}
