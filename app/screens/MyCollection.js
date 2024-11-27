@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from "react";
 import {
   View,
@@ -35,6 +36,7 @@ const fragrances = [
 ];
 
 const MyCollection = () => {
+  const navigation = useNavigation(); // Initialize useNavigation
   const [selectedTopFilter, setSelectedTopFilter] = useState("All");
   const [selectedBottomFilter, setSelectedBottomFilter] = useState("All");
   const [searchText, setSearchText] = useState("");
@@ -109,13 +111,18 @@ const MyCollection = () => {
         <ScrollView style={styles.fragranceList}>
           {filteredFragrances.length > 0 ? (
             filteredFragrances.map((fragrance, index) => (
-              <View key={index} style={styles.card}>
-                <Image source={{ uri: fragrance.image }} style={styles.cardImage} />
-                <Text style={styles.cardName}>{fragrance.name}</Text>
-                <Text style={styles.cardBrand}>{fragrance.brand}</Text>
-                <Text style={styles.cardStatus}>Status: {fragrance.status}</Text>
-                <Text style={styles.cardCategory}>Fragrance Family: {fragrance.category}</Text>
-              </View>
+              <TouchableOpacity
+                key={index}
+                onPress={() => navigation.navigate('FragranceView', { fragrance })}
+              >
+                <View style={styles.card}>
+                  <Image source={{ uri: fragrance.image }} style={styles.cardImage} />
+                  <Text style={styles.cardName}>{fragrance.name}</Text>
+                  <Text style={styles.cardBrand}>{fragrance.brand}</Text>
+                  <Text style={styles.cardStatus}>Status: {fragrance.status}</Text>
+                  <Text style={styles.cardCategory}>Fragrance Family: {fragrance.category}</Text>
+                </View>
+              </TouchableOpacity>
             ))
           ) : searchText.length > 0 ? (
             <View style={styles.noFragrancesContainer}>
@@ -127,6 +134,7 @@ const MyCollection = () => {
             </View>
           )}
         </ScrollView>
+
       </View>
 
       {/* Bottom Filters */}

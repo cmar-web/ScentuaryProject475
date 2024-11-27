@@ -85,16 +85,19 @@ const BrowseScreen = () => {
     .sort((a, b) => (sortOrder === "asc" ? a.price - b.price : b.price - a.price));
 
   const renderFragrance = ({ item }) => (
-    <View style={styles.card}>
-      <Image source={{ uri: item.image }} style={styles.cardImage} />
-      <View style={styles.cardText}>
-        <Text style={styles.fragranceName}>{item.name}</Text>
-        <Text style={styles.fragranceHouse}>{item.brand}</Text>
-        <Text style={styles.fragranceCategory}>Category: {item.category}</Text>
-        <Text style={styles.fragrancePrice}>Price: ${item.price}</Text>
+    <TouchableOpacity onPress={() => navigation.navigate('FragranceView', { fragrance: item })}>
+      <View style={styles.card}>
+        <Image source={{ uri: item.image }} style={styles.cardImage} />
+        <View style={styles.cardText}>
+          <Text style={styles.fragranceName}>{item.name}</Text>
+          <Text style={styles.fragranceHouse}>{item.brand}</Text>
+          <Text style={styles.fragranceCategory}>Category: {item.category}</Text>
+          <Text style={styles.fragrancePrice}>Price: ${item.price}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
+
 
   return (
     <SafeAreaView style={styles.background}>

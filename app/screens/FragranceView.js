@@ -2,11 +2,11 @@ import React from "react";
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import BottomNavBar from "./BottomNavBar"; // Import the BottomNavBar component
 
-const PriceComparison = () => {
+const FragranceView = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.header}>Price Comparison</Text>
+        <Text style={styles.header}>Fragrance View</Text>
         {/* Add your price comparison content here */}
       </View>
 
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PriceComparison;
+export default FragranceView;

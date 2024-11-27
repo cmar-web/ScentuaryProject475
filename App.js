@@ -14,7 +14,7 @@ import PrivacyAndSecurity from './app/screens/PrivacyAndSecurity';
 import AccountSettings from './app/screens/AccountSettings';
 import FAQ from './app/screens/FAQ';
 import SubscriptionAndBilling from './app/screens/SubscriptionAndBilling';
-import PriceComparison from './app/screens/PriceComparison';
+import FragranceView from './app/screens/FragranceView';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,7 +36,7 @@ export default function App() {
                 <Stack.Screen name="AccountSettings" component={AccountSettings} />
                 <Stack.Screen name="FAQ" component={FAQ} />
                 <Stack.Screen name="SubscriptionAndBilling" component={SubscriptionAndBilling} />
-                <Stack.Screen name="PriceComparison" component={PriceComparison} />
+                <Stack.Screen name="FragranceView" component={FragranceView} />
 
 
             </Stack.Navigator>
