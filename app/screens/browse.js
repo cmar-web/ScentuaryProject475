@@ -23,6 +23,7 @@ const BrowseScreen = () => {
         brand: "Kayali",
         image: "https://m.media-amazon.com/images/I/51qlLQxhpVL.jpg",
         category: "Gourmand",
+        status: "Owned",
         price: 118,
         favorited: true
       },
@@ -32,6 +33,7 @@ const BrowseScreen = () => {
         brand: "Kayali",
         image: "https://m.media-amazon.com/images/I/61KSXkjsaSL.jpg",
         category: "Fruity",
+        status: "Owned",
         price: 95,
         favorited: false
       },
@@ -42,6 +44,7 @@ const BrowseScreen = () => {
         image: "https://m.media-amazon.com/images/I/6116POMgLPL.jpg",
         category: "Gourmand",
         price: 138,
+        status: "Not Owned",
         favorited: false
       },
       {
@@ -50,6 +53,7 @@ const BrowseScreen = () => {
         brand: "Kilian",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpnWr2cmFLnxEn6DzcNYqZZ7SNfDtV5i5U-w&s",
         category: "Floral",
+        status: "Owned",
         price: 240,
         favorited: false
       },
@@ -59,6 +63,7 @@ const BrowseScreen = () => {
         brand: "Maison Francis Kurkdjian",
         image: "https://labelleperfumes.com/cdn/shop/products/unisex-fragrances-maison-francis-kurkdjian-baccarat-rouge-540-6-8-oz-edp-u-3_800x.jpg?v=1570129374",
         category: "Amber",
+        status: "Not Owned",
         price: 325,
         favorited: false
       },
@@ -68,6 +73,7 @@ const BrowseScreen = () => {
         brand: "Parfums de Marly",
         image: "https://perfumeheadquarters.com/cdn/shop/files/parfums-de-marly-delina-la-rosee-royal-essence-fragrance-3700578500786-294570.jpg?v=1717637561&width=1445",
         category: "Floral",
+        status: "Not Owned",
         price: 330,
         favorited: false
       }
@@ -97,6 +103,7 @@ const BrowseScreen = () => {
           <View style={styles.cardText}>
             <Text style={styles.fragranceName}>{item.name}</Text>
             <Text style={styles.fragranceHouse}>{item.brand}</Text>
+            <Text style={styles.fragranceStatus}>Status: {item.status}</Text>
             <Text style={styles.fragranceCategory}>Category: {item.category}</Text>
             <Text style={styles.fragrancePrice}>Price: ${item.price}</Text>
           </View>
@@ -242,11 +249,20 @@ const styles = StyleSheet.create({
   },
   fragranceCategory: {
     fontSize: 14,
-    color: "#555", // Gray for fragrance category
+    color: "#333",
+    marginBottom: 2,
+    textAlign: "left",
   },
+  fragranceStatus: {
+      fontSize: 14,
+      color: "#333",
+      marginBottom: 2,
+      textAlign: "left",
+    },
   fragrancePrice: {
     fontSize: 14,
-    color: "#111", // Dark color for fragrance price
+    color: "#333",
+    textAlign: "left",
   },
   noFragrancesContainer: {
     flex: 1,
