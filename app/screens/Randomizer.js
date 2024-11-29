@@ -150,7 +150,7 @@ const Randomizer = () => {
 
       {/* Filters Section (Above Bottom Nav Bar) */}
       <View style={styles.tabsContainer}>
-        <Text style={styles.filtersLabel}>Choose your scent profile</Text>
+        <Text style={styles.filtersLabel}>Filter the wheel</Text>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -325,6 +325,7 @@ const styles = StyleSheet.create({
     //fontWeight: "bold", // Added bold text for emphasis
     color: "#333",
     marginBottom: 15, // Space it out slightly more
+    marginHorizontal: 5,
   },
   tabsContentContainer: {
     alignItems: "center",

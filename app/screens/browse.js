@@ -24,7 +24,7 @@ const BrowseScreen = () => {
         image: "https://m.media-amazon.com/images/I/51qlLQxhpVL.jpg",
         category: "Gourmand",
         price: 118,
-        favorited: false
+        favorited: true
       },
       {
         id: "2",
