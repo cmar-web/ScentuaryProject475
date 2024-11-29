@@ -1,11 +1,16 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity, ScrollView, Linking } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, SafeAreaView, Image, TouchableOpacity, ScrollView, StyleSheet, Linking } from "react-native";
 import BottomNavBar from "./BottomNavBar"; // Import the BottomNavBar component
 
-const FragranceView = ({ route }) => {
-  const { fragrance } = route.params;
+const FragranceView = ({ route, navigation }) => {
+  const { fragrance, toggleFavorite } = route.params;
   const [showNotes, setShowNotes] = useState(false);
   const [sortOrder, setSortOrder] = useState("asc");
+  const [isFavorite, setIsFavorite] = useState(fragrance.favorited);
+
+  useEffect(() => {
+    setIsFavorite(fragrance.favorited);
+  }, [fragrance.favorited]);
 
   const toggleNotes = () => {
     setShowNotes(!showNotes);
@@ -17,6 +22,15 @@ const FragranceView = ({ route }) => {
 
   const handleOpenURL = (url) => {
     Linking.openURL(url).catch(err => console.error("Couldn't load page", err));
+  };
+
+  const handleToggleFavorite = () => {
+    toggleFavorite();
+    setIsFavorite(!isFavorite);
+  };
+
+  const handleFindDupe = () => {
+    navigation.navigate('Dupes');
   };
 
   const purchasingOptions = [
@@ -40,7 +54,7 @@ const FragranceView = ({ route }) => {
               </View>
             </View>
           </View>
-          <Text style={styles.headline}>Price Comparison</Text>
+          <Text style={styles.headline}>Fragrance View</Text>
           <View style={styles.leadingIcon}>
             <View style={styles.containerIcon}>
               <View style={styles.stateLayer}>
@@ -56,6 +70,10 @@ const FragranceView = ({ route }) => {
         <View style={styles.brandNameContainer}>
           <Text style={styles.brand}>{fragrance.brand}</Text>
           <Text style={styles.name}>{fragrance.name}</Text>
+          {/* Star Button */}
+          <TouchableOpacity onPress={handleToggleFavorite} style={styles.starButton}>
+            <Text style={styles.starButtonText}>{isFavorite ? "★" : "☆"}</Text>
+          </TouchableOpacity>
         </View>
 
         {/* Fragrance Details */}
@@ -84,6 +102,11 @@ const FragranceView = ({ route }) => {
           <Text style={styles.descriptionHeader}>Description</Text>
           <Text style={styles.description}>This is a placeholder for the fragrance description. Add a detailed description of the fragrance here.</Text>
         </View>
+
+        {/* Find a Dupe Button */}
+        <TouchableOpacity onPress={handleFindDupe} style={styles.findDupeButton}>
+          <Text style={styles.findDupeButtonText}>Find a Dupe</Text>
+        </TouchableOpacity>
 
         {/* Horizontal Divider and Subheader */}
         <View style={styles.horizontaldividerWithSubheader}>
@@ -117,7 +140,6 @@ const FragranceView = ({ route }) => {
     </SafeAreaView>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -170,10 +192,23 @@ const styles = StyleSheet.create({
   brand: {
     fontSize: 18,
     color: "#666",
+    textAlign: 'center',
   },
   name: {
     fontSize: 24,
     fontWeight: "bold",
+    textAlign: 'center',
+  },
+  starButton: {
+    backgroundColor: "transparent", // Transparent background
+    padding: 10,
+    borderRadius: 50,
+    marginTop: 5, // Add some space between the text and the star button
+  },
+  starButtonText: {
+    fontSize: 30, // Larger font size for star
+    color: "#FFD700", // Gold color for the star
+    textAlign: 'center',
   },
   content: {
     flexDirection: 'row',
@@ -229,6 +264,18 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 18,
     color: "#666",
+  },
+  findDupeButton: {
+    backgroundColor: "#32CD32", // LimeGreen color
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 10,
+    alignSelf: 'center',
+  },
+  findDupeButtonText: {
+    color: "#fff",
+    fontSize: 16,
+    textAlign: 'center',
   },
   horizontaldividerWithSubheader: {
     marginVertical: 20,
