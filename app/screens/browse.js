@@ -25,6 +25,9 @@ const BrowseScreen = () => {
         category: "Gourmand",
         status: "Owned",
         price: 118,
+        topNotes: ["Vanilla Orchid", "Tonka Bean"],
+        middleNotes: ["Brown Sugar", "Amber"],
+        bottomNotes: ["Musk", "Patchouli"],
         favorited: true
       },
       {
@@ -35,6 +38,9 @@ const BrowseScreen = () => {
         category: "Fruity",
         status: "Owned",
         price: 95,
+        topNotes: ["Red Apple", "Blackcurrant"],
+        middleNotes: ["Wild Berries", "Jasmine"],
+        bottomNotes: ["Vanilla Flower", "Sugared Musk"],
         favorited: false
       },
       {
@@ -45,6 +51,9 @@ const BrowseScreen = () => {
         category: "Gourmand",
         price: 138,
         status: "Not Owned",
+        topNotes: ["Pistachio", "Hazelnut"],
+        middleNotes: ["Peony", "Jasmine"],
+        bottomNotes: ["Whipped Cream", "Sandalwood"],
         favorited: false
       },
       {
@@ -55,6 +64,9 @@ const BrowseScreen = () => {
         category: "Floral",
         status: "Owned",
         price: 240,
+        topNotes: ["Neroli", "Bergamot"],
+        middleNotes: ["Orange Blossom", "Jasmine"],
+        bottomNotes: ["Marshmallow", "Vanilla"],
         favorited: false
       },
       {
@@ -65,6 +77,9 @@ const BrowseScreen = () => {
         category: "Amber",
         status: "Not Owned",
         price: 325,
+        topNotes: ["Saffron", "Jasmine"],
+        middleNotes: ["Amberwood", "Ambergris"],
+        bottomNotes: ["Fir Resin", "Cedarwood"],
         favorited: false
       },
       {
@@ -75,6 +90,9 @@ const BrowseScreen = () => {
         category: "Floral",
         status: "Not Owned",
         price: 330,
+        topNotes: ["Lychee", "Rhubarb"],
+        middleNotes: ["Turkish Rose", "Peony"],
+        bottomNotes: ["Vanilla", "Cashmere Wood"],
         favorited: false
       }
     ]);

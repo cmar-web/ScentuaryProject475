@@ -49,7 +49,15 @@ const FragranceView = ({ route, navigation }) => {
   };
 
   const handleFindDupe = () => {
-    navigation.navigate('Dupes');
+    navigation.navigate('Dupes', {
+      name: fragrance.name,
+      brand: fragrance.brand,
+      image: fragrance.image,
+      topNotes: fragrance.topNotes,
+      middleNotes: fragrance.middleNotes,
+      bottomNotes: fragrance.bottomNotes,
+      category: fragrance.category,
+    });
   };
 
   const purchasingOptions = [
@@ -110,11 +118,11 @@ const FragranceView = ({ route, navigation }) => {
             {showNotes && (
               <View style={styles.notesContainer}>
                 <Text style={styles.notesHeader}>Top Notes:</Text>
-                <Text style={styles.notes}>Orange Blossom</Text>
+                <Text style={styles.notes}>{fragrance.topNotes.join(", ")}</Text>
                 <Text style={styles.notesHeader}>Middle Notes:</Text>
-                <Text style={styles.notes}>Marshmallow</Text>
+                <Text style={styles.notes}>{fragrance.middleNotes.join(", ")}</Text>
                 <Text style={styles.notesHeader}>Base Notes:</Text>
-                <Text style={styles.notes}>Vanilla</Text>
+                <Text style={styles.notes}>{fragrance.bottomNotes.join(", ")}</Text>
               </View>
             )}
           </View>
@@ -123,7 +131,7 @@ const FragranceView = ({ route, navigation }) => {
         {/* Fragrance Description */}
         <View style={styles.descriptionContainer}>
           <Text style={styles.descriptionHeader}>Description</Text>
-          <Text style={styles.description}>This is a placeholder for the fragrance description. Add a detailed description of the fragrance here.</Text>
+          <Text style={styles.description}>{fragrance.description}</Text>
         </View>
 
         {/* Find a Dupe Button */}
@@ -163,6 +171,7 @@ const FragranceView = ({ route, navigation }) => {
     </SafeAreaView>
   );
 };
+
 
 
 const styles = StyleSheet.create({
