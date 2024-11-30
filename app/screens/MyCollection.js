@@ -74,6 +74,15 @@ const MyCollection = () => {
     );
     setFragrances(updatedFragrances);
   };
+  const toggleStatus = (id) => {
+    const updatedFragrances = fragrances.map((fragrance) =>
+      fragrance.id === id
+        ? { ...fragrance, status: fragrance.status === 'Owned' ? 'Not Owned' : 'Owned' }
+        : fragrance
+    );
+    setFragrances(updatedFragrances);
+  };
+
 
 
   // Function to filter fragrances based on selected filters and search text
@@ -141,22 +150,27 @@ const MyCollection = () => {
             filteredFragrances.map((fragrance, index) => (
               <TouchableOpacity
                 key={index}
-                onPress={() => navigation.navigate('FragranceView', {
-                  fragrance,
-                  toggleFavorite: () => toggleFavorite(fragrance.id)
-                })}
+                onPress={() =>
+                  navigation.navigate('FragranceView', {
+                    fragrance,
+                    toggleFavorite: () => toggleFavorite(fragrance.id),
+                    toggleStatus: () => toggleStatus(fragrance.id),
+                  })
+                }
               >
                 <View style={styles.card}>
                   <Image source={{ uri: fragrance.image }} style={styles.cardImage} />
                   <View style={styles.cardText}>
                     <Text style={styles.cardName}>{fragrance.name}</Text>
                     <Text style={styles.cardBrand}>{fragrance.brand}</Text>
-                    <Text style={styles.cardStatus}>Status: {fragrance.status}</Text>
                     <Text style={styles.cardCategory}>Fragrance Family: {fragrance.category}</Text>
                     <Text style={styles.cardPrice}>Price: $ {fragrance.price}</Text>
                   </View>
                   <TouchableOpacity onPress={() => toggleFavorite(fragrance.id)} style={styles.favoriteButton}>
                     <Text style={styles.favoriteButtonText}>{fragrance.favorited ? "★" : "☆"}</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => toggleStatus(fragrance.id)} style={styles.statusButton}>
+                    <Text style={styles.statusButtonText}>{fragrance.status === 'Owned' ? '✔️Owned' : '❌Not Owned'}</Text>
                   </TouchableOpacity>
                 </View>
               </TouchableOpacity>
@@ -170,6 +184,7 @@ const MyCollection = () => {
               <Text style={styles.noFragrancesText}>No fragrances match the selected filters.</Text>
             </View>
           )}
+
         </ScrollView>
       </View>
 
@@ -338,6 +353,13 @@ const styles = StyleSheet.create({
     color: "#333",
     textAlign: "left",
   },
+  statusButton: {
+    padding: 1,
+  },
+  statusButtonText: {
+    fontSize: 18,
+  },
+
 });
 
 export default MyCollection;

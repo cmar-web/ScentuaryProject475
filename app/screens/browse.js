@@ -97,22 +97,33 @@ const BrowseScreen = () => {
       .sort((a, b) => (sortOrder === "asc" ? a.price - b.price : b.price - a.price));
 
     const renderFragrance = ({ item }) => (
-      <TouchableOpacity onPress={() => navigation.navigate('FragranceView', { fragrance: item, toggleFavorite: () => toggleFavorite(item.id) })}>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate('FragranceView', {
+            fragrance: item,
+            toggleFavorite: () => toggleFavorite(item.id),
+            toggleStatus: () => toggleStatus(item.id),
+          })
+        }
+      >
         <View style={styles.card}>
           <Image source={{ uri: item.image }} style={styles.cardImage} />
           <View style={styles.cardText}>
             <Text style={styles.fragranceName}>{item.name}</Text>
             <Text style={styles.fragranceHouse}>{item.brand}</Text>
-            <Text style={styles.fragranceStatus}>Status: {item.status}</Text>
-            <Text style={styles.fragranceCategory}>Category: {item.category}</Text>
+            <Text style={styles.fragranceCategory}>Fragrance Family: {item.category}</Text>
             <Text style={styles.fragrancePrice}>Price: ${item.price}</Text>
           </View>
           <TouchableOpacity onPress={() => toggleFavorite(item.id)} style={styles.favoriteButton}>
-            <Text style={styles.favoriteButtonText}>{item.favorited ? "★" : "☆"}</Text>
+            <Text style={styles.favoriteButtonText}>{item.favorited ? '★' : '☆'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => toggleStatus(item.id)} style={styles.statusButton}>
+            <Text style={styles.statusButtonText}>{item.status === 'Owned' ? '✔️Owned' : '❌Not Owned'}</Text>
           </TouchableOpacity>
         </View>
       </TouchableOpacity>
     );
+
 
     const toggleFavorite = (id) => {
       const updatedFragrances = fragrances.map((fragrance) =>
@@ -122,6 +133,15 @@ const BrowseScreen = () => {
       );
       setFragrances(updatedFragrances);
     };
+    const toggleStatus = (id) => {
+      const updatedFragrances = fragrances.map((fragrance) =>
+        fragrance.id === id
+          ? { ...fragrance, status: fragrance.status === 'Owned' ? 'Not Owned' : 'Owned' }
+          : fragrance
+      );
+      setFragrances(updatedFragrances);
+    };
+
 
     return (
       <SafeAreaView style={styles.background}>
@@ -283,6 +303,13 @@ const styles = StyleSheet.create({
     color: "#FFD700",
     textAlign: "left",
   },
+  statusButton: {
+    padding: 1,
+  },
+  statusButtonText: {
+    fontSize: 18,
+  },
+
 });
 
 export default BrowseScreen;

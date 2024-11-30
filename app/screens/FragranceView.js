@@ -1,16 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, SafeAreaView, Image, TouchableOpacity, ScrollView, StyleSheet, Linking } from "react-native";
-import BottomNavBar from "./BottomNavBar"; // Import the BottomNavBar component
+import React, { useState, useEffect } from 'react';
+import {
+  SafeAreaView,
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+  Linking,
+  StyleSheet
+} from 'react-native';
+import BottomNavBar from './BottomNavBar';
 
 const FragranceView = ({ route, navigation }) => {
-  const { fragrance, toggleFavorite } = route.params;
+  const { fragrance, toggleFavorite, toggleStatus } = route.params;
   const [showNotes, setShowNotes] = useState(false);
   const [sortOrder, setSortOrder] = useState("asc");
   const [isFavorite, setIsFavorite] = useState(fragrance.favorited);
+  const [isOwned, setIsOwned] = useState(fragrance.status === 'Owned');
 
   useEffect(() => {
     setIsFavorite(fragrance.favorited);
   }, [fragrance.favorited]);
+
+  useEffect(() => {
+    setIsOwned(fragrance.status === 'Owned');
+  }, [fragrance.status]);
 
   const toggleNotes = () => {
     setShowNotes(!showNotes);
@@ -27,6 +41,11 @@ const FragranceView = ({ route, navigation }) => {
   const handleToggleFavorite = () => {
     toggleFavorite();
     setIsFavorite(!isFavorite);
+  };
+
+  const handleToggleStatus = () => {
+    toggleStatus();
+    setIsOwned(!isOwned);
   };
 
   const handleFindDupe = () => {
@@ -73,6 +92,10 @@ const FragranceView = ({ route, navigation }) => {
           {/* Star Button */}
           <TouchableOpacity onPress={handleToggleFavorite} style={styles.starButton}>
             <Text style={styles.starButtonText}>{isFavorite ? "★" : "☆"}</Text>
+          </TouchableOpacity>
+          {/* Status Button */}
+          <TouchableOpacity onPress={handleToggleStatus} style={styles.statusButton}>
+            <Text style={styles.statusButtonText}>{isOwned ? "✔️Owned" : "❌Not Owned"}</Text>
           </TouchableOpacity>
         </View>
 
@@ -140,6 +163,7 @@ const FragranceView = ({ route, navigation }) => {
     </SafeAreaView>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -339,6 +363,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     width: '100%',
+  },
+  statusButton: {
+    padding: 1,
+  },
+  statusButtonText: {
+    fontSize: 18,
   },
 });
 
