@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   View,
   Text,
-  StyleSheet,
   SafeAreaView,
   TouchableOpacity,
   ScrollView,
@@ -10,6 +9,8 @@ import {
   Easing,
   TextInput,
   Modal,
+  StyleSheet,
+  Switch,
 } from "react-native";
 import BottomNavBar from "./BottomNavBar";
 
@@ -28,34 +29,35 @@ const Randomizer = () => {
   ]);
 
   const [newPerfume, setNewPerfume] = useState("");
-  const [newPerfumeCategory, setNewPerfumeCategory] = useState("All"); // Default scent profile
+  const [newPerfumeCategory, setNewPerfumeCategory] = useState("All");
   const [selectedPerfume, setSelectedPerfume] = useState("[Insert Name]");
   const [spinAnimation] = useState(new Animated.Value(0));
   const [selectedFilter, setSelectedFilter] = useState("All");
-
+  const [allowRepeats, setAllowRepeats] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
 
-  // Filter perfumes based on the selected filter
   const filteredPerfumes = perfumes.filter(
     (perfume) =>
       selectedFilter === "All" || perfume.category === selectedFilter
   );
 
-  // Spin the wheel
   const spinWheel = () => {
     const randomIndex = Math.floor(Math.random() * filteredPerfumes.length);
     Animated.timing(spinAnimation, {
-      toValue: 360, // Full rotation
-      duration: 1000, // Spin duration in ms
+      toValue: 360,
+      duration: 1000,
       easing: Easing.inOut(Easing.ease),
       useNativeDriver: true,
     }).start(() => {
-      spinAnimation.setValue(0); // Reset rotation
-      setSelectedPerfume(filteredPerfumes[randomIndex].name);
+      spinAnimation.setValue(0);
+      const selected = filteredPerfumes[randomIndex];
+      setSelectedPerfume(selected.name);
+      if (!allowRepeats) {
+        setPerfumes(perfumes.filter((perfume) => perfume.name !== selected.name));
+      }
     });
   };
 
-  // Add a new perfume
   const addPerfume = () => {
     if (newPerfume.trim()) {
       setPerfumes([
@@ -66,7 +68,6 @@ const Randomizer = () => {
     }
   };
 
-  // Handle selecting scent profile from the modal
   const handleScentProfileSelect = (profile) => {
     setNewPerfumeCategory(profile);
     setModalVisible(false);
@@ -76,7 +77,6 @@ const Randomizer = () => {
     setSelectedFilter(tab);
   };
 
-  // Spin animation style
   const spinStyle = {
     transform: [
       {
@@ -98,87 +98,98 @@ const Randomizer = () => {
       </View>
 
       {/* Content Section */}
-      <View style={styles.content}>
-        <Text style={styles.header}>Fragrance of the Day</Text>
-        <Text style={styles.subHeader}>{selectedPerfume}</Text>
+      <ScrollView>
+        <View style={styles.content}>
+          <Text style={styles.header}>Fragrance of the Day</Text>
+          <Text style={styles.subHeader}>{selectedPerfume}</Text>
 
-        {/* Spin Wheel */}
-        <View style={styles.wheelContainer}>
-          <Animated.View style={[styles.wheel, spinStyle]}>
-            {filteredPerfumes.map((perfume, index) => (
-              <Text key={index} style={styles.wheelText}>
-                {perfume.name}
-              </Text>
-            ))}
-          </Animated.View>
-        </View>
-
-        {/* Spin Button */}
-        <TouchableOpacity style={styles.spinButton} onPress={spinWheel}>
-          <View style={styles.stateLayer}>
-            <Text style={styles.spinButtonText}>Spin</Text>
-          </View>
-        </TouchableOpacity>
-
-        {/* Add Perfume Section */}
-        <View style={styles.addPerfumeContainer}>
-          <Text style={styles.inputLabel}>Add a New Perfume:</Text>
-          <TextInput
-            style={styles.textInput}
-            value={newPerfume}
-            onChangeText={setNewPerfume}
-            placeholder="Enter perfume name"
-          />
-
-          {/* Scent Profile Button */}
-          <Text style={styles.inputLabel}>Select Scent Profile:</Text>
-          <TouchableOpacity
-            style={styles.textInput}
-            onPress={() => setModalVisible(true)} // Open modal when pressed
-          >
-            <Text style={styles.selectedProfileText}>
-              {newPerfumeCategory}
-            </Text>
-          </TouchableOpacity>
-
-          {/* Add button */}
-          <TouchableOpacity style={styles.addButton} onPress={addPerfume}>
-            <Text style={styles.addButtonText}>Add</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-
-      {/* Filters Section (Above Bottom Nav Bar) */}
-      <View style={styles.tabsContainer}>
-        <Text style={styles.filtersLabel}>Filter the wheel</Text>
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.tabsContentContainer}
-        >
-          {["All", "Fruity", "Woody", "Gourmand", "Floral", "Musky"].map(
-            (tab, index) => (
-              <TouchableOpacity
-                key={index}
-                style={[
-                  styles.tab,
-                  selectedFilter === tab && styles.activeTab,
-                ]}
-                onPress={() => handleTabPress(tab)}
-              >
-                <Text
-                  style={[
-                    styles.tabText,
-                    selectedFilter === tab && styles.activeTabText,
-                  ]}
-                >
-                  {tab}
+          {/* Spin Wheel */}
+          <View style={styles.wheelContainer}>
+            <Animated.View style={[styles.wheel, spinStyle]}>
+              {filteredPerfumes.map((perfume, index) => (
+                <Text key={index} style={styles.wheelText}>
+                  {perfume.name}
                 </Text>
-              </TouchableOpacity>
-            )
-          )}
-        </ScrollView>
-      </View>
+              ))}
+            </Animated.View>
+          </View>
+
+          {/* Spin Button and Allow Repeats Switch */}
+          <View style={styles.controlContainer}>
+            <TouchableOpacity style={styles.spinButton} onPress={spinWheel}>
+              <View style={styles.stateLayer}>
+                <Text style={styles.spinButtonText}>Spin</Text>
+              </View>
+            </TouchableOpacity>
+            <View style={styles.switchContainer}>
+              <Text style={styles.switchLabel}>Allow Repeats</Text>
+              <Switch
+                value={allowRepeats}
+                onValueChange={(value) => setAllowRepeats(value)}
+              />
+            </View>
+          </View>
+
+          {/* Add Perfume Section */}
+          <View style={styles.addPerfumeContainer}>
+            <Text style={styles.inputLabel}>Add a New Perfume:</Text>
+            <TextInput
+              style={styles.textInput}
+              value={newPerfume}
+              onChangeText={setNewPerfume}
+              placeholder="Enter perfume name"
+            />
+
+            {/* Scent Profile Button */}
+            <Text style={styles.inputLabel}>Select Scent Profile:</Text>
+            <TouchableOpacity
+              style={styles.textInput}
+              onPress={() => setModalVisible(true)}
+            >
+              <Text style={styles.selectedProfileText}>
+                {newPerfumeCategory}
+              </Text>
+            </TouchableOpacity>
+
+            {/* Add button */}
+            <TouchableOpacity style={styles.addButton} onPress={addPerfume}>
+              <Text style={styles.addButtonText}>Add</Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Filters Section */}
+          <View style={styles.tabsContainer}>
+            <Text style={styles.filtersLabel}>Filter the wheel</Text>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.tabsContentContainer}
+            >
+              {["All", "Fruity", "Woody", "Gourmand", "Floral", "Musky"].map(
+                (tab, index) => (
+                  <TouchableOpacity
+                    key={index}
+                    style={[
+                      styles.tab,
+                      selectedFilter === tab && styles.activeTab,
+                    ]}
+                    onPress={() => handleTabPress(tab)}
+                  >
+                    <Text
+                      style={[
+                        styles.tabText,
+                        selectedFilter === tab && styles.activeTabText,
+                      ]}
+                    >
+                      {tab}
+                    </Text>
+                  </TouchableOpacity>
+                )
+              )}
+            </ScrollView>
+          </View>
+        </View>
+      </ScrollView>
 
       {/* Bottom Navigation Bar */}
       <BottomNavBar />
@@ -192,6 +203,12 @@ const Randomizer = () => {
       >
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
+            <TouchableOpacity
+              style={styles.closeButton}
+              onPress={() => setModalVisible(false)}
+            >
+              <Text style={styles.closeButtonText}>X</Text>
+            </TouchableOpacity>
             <Text style={styles.modalTitle}>Select Scent Profile</Text>
             {["All", "Fruity", "Woody", "Gourmand", "Floral", "Musky"].map(
               (profile, index) => (
@@ -210,6 +227,9 @@ const Randomizer = () => {
     </SafeAreaView>
   );
 };
+
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -376,6 +396,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#fff",
     fontWeight: "bold",
+  },
+  closeButton: {
+    position: "absolute",
+    top: 16,
+    right: 16,
+    padding: 8,
+    borderRadius: 16,
+    //backgroundColor: "#ccc",
+  },
+  closeButtonText: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#f00",
   },
 });
 
