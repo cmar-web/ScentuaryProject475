@@ -45,4 +45,60 @@ export const styles = ReactNative.StyleSheet.create({
         marginBottom: 10,
         textAlign: 'center',
     },
+    content: {
+        flex: 1,
+        padding: 16,
+    },
+
+    settingsBackground: {
+        flex: 1,
+        backgroundColor: '#e3bccc',
+        alignItems: "flex-start",
+
+    },
+
+    profileSection: {
+        alignItems: "flex-start",
+        marginBottom: 20,
+        paddingVertical: 50,
+    },
+
+    profileImage: {
+        width: 150,
+        height: 150,
+        borderRadius: 100,
+        backgroundColor: "#e3bccc", // Placeholder color
+        marginBottom: 25,
+        overflow: "hidden",
+    },
+
+    button: {
+        backgroundColor: "#945493",
+        paddingHorizontal: 12,
+        paddingVertical: 8,
+        borderRadius: 5,
+        marginBottom: 10,
+    },
+
+    settingsNavButtons: {
+        backgroundColor: "#945493",
+        marginBottom: 5,
+        borderRadius: 5,
+        paddingHorizontal: 25,
+        paddingVertical: 10,
+        marginHorizontal: 5,
+
+    },
+
+    buttonText: {
+        color: "#fff", // White text
+        fontSize: 16,
+        fontWeight: "bold",
+    },
+
+    header: {
+        fontSize: 24,
+        fontWeight: "bold",
+        color: "#333", // Dark gray text
+    },
 });
