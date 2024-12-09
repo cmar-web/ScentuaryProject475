@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, SafeAreaView, TouchableOpacity, Modal, TextInput, Switch, StyleSheet } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import BottomNavBar from "./BottomNavBar";
+import {styles} from '../assets/styles';
 
 const PrivacyAndSecurity = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -182,139 +183,139 @@ const PrivacyAndSecurity = () => {
 };
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#f8f4f4",
-  },
-  content: {
-    flex: 1,
-    padding: 16,
-  },
-  header: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#333",
-    marginBottom: 16,
-  },
-  sectionHeader: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#444",
-    marginVertical: 10,
-    alignSelf: "flex-start",
-  },
-  section: {
-    marginBottom: 20,
-    width: "100%",
-  },
-  button: {
-    backgroundColor: "#fff",
-    padding: 16,
-    marginBottom: 10,
-    borderRadius: 8,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  buttonText: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#333",
-  },
-  modalBackground: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0,0,0,0.5)",
-  },
-  modalView: {
-    width: "80%",
-    backgroundColor: "#fff",
-    padding: 20,
-    borderRadius: 10,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-    position: "relative",
-  },
-  closeIcon: {
-    position: "absolute",
-    top: 10,
-    right: 10,
-  },
-  modalText: {
-    fontSize: 20,
-    color: "#333",
-    marginBottom: 20,
-  },
-  inputContainer: {
-    width: "100%",
-  },
-  input: {
-    backgroundColor: "#fff",
-    color: "#000",
-    padding: 10,
-    marginBottom: 10,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    fontSize: 16,
-    width: "100%",
-  },
-  submitButton: {
-    backgroundColor: "#2196F3",
-    padding: 10,
-    borderRadius: 5,
-    alignItems: "center",
-    marginVertical: 5,
-    width: "100%",
-  },
-  submitButtonText: {
-    color: "#fff",
-    fontSize: 18,
-  },
-  switchContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginVertical: 10,
-  },
-  switchText: {
-    fontSize: 18,
-    color: "#333",
-  },
-  optionButton: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: "#fff",
-    padding: 16,
-    marginBottom: 10,
-    borderRadius: 8,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-    width: "100%",
-  },
-  optionButtonText: {
-    fontSize: 18,
-    color: "#333",
-  },
-  selectedOptionButton: {
-    backgroundColor: "#2196F3",
-  },
-  selectedOptionButtonText: {
-    color: "#fff",
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#f8f4f4",
+//   },
+//   content: {
+//     flex: 1,
+//     padding: 16,
+//   },
+//   header: {
+//     fontSize: 24,
+//     fontWeight: "bold",
+//     color: "#333",
+//     marginBottom: 16,
+//   },
+//   sectionHeader: {
+//     fontSize: 20,
+//     fontWeight: "bold",
+//     color: "#444",
+//     marginVertical: 10,
+//     alignSelf: "flex-start",
+//   },
+//   section: {
+//     marginBottom: 20,
+//     width: "100%",
+//   },
+//   button: {
+//     backgroundColor: "#fff",
+//     padding: 16,
+//     marginBottom: 10,
+//     borderRadius: 8,
+//     alignItems: "center",
+//     shadowColor: "#000",
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.1,
+//     shadowRadius: 4,
+//     elevation: 3,
+//   },
+//   buttonText: {
+//     fontSize: 18,
+//     fontWeight: "bold",
+//     color: "#333",
+//   },
+//   modalBackground: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     backgroundColor: "rgba(0,0,0,0.5)",
+//   },
+//   modalView: {
+//     width: "80%",
+//     backgroundColor: "#fff",
+//     padding: 20,
+//     borderRadius: 10,
+//     alignItems: "center",
+//     shadowColor: "#000",
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.25,
+//     shadowRadius: 4,
+//     elevation: 5,
+//     position: "relative",
+//   },
+//   closeIcon: {
+//     position: "absolute",
+//     top: 10,
+//     right: 10,
+//   },
+//   modalText: {
+//     fontSize: 20,
+//     color: "#333",
+//     marginBottom: 20,
+//   },
+//   inputContainer: {
+//     width: "100%",
+//   },
+//   input: {
+//     backgroundColor: "#fff",
+//     color: "#000",
+//     padding: 10,
+//     marginBottom: 10,
+//     borderRadius: 5,
+//     borderWidth: 1,
+//     borderColor: "#ccc",
+//     fontSize: 16,
+//     width: "100%",
+//   },
+//   submitButton: {
+//     backgroundColor: "#2196F3",
+//     padding: 10,
+//     borderRadius: 5,
+//     alignItems: "center",
+//     marginVertical: 5,
+//     width: "100%",
+//   },
+//   submitButtonText: {
+//     color: "#fff",
+//     fontSize: 18,
+//   },
+//   switchContainer: {
+//     flexDirection: "row",
+//     justifyContent: "space-between",
+//     alignItems: "center",
+//     marginVertical: 10,
+//   },
+//   switchText: {
+//     fontSize: 18,
+//     color: "#333",
+//   },
+//   optionButton: {
+//     flexDirection: "row",
+//     justifyContent: "space-between",
+//     alignItems: "center",
+//     backgroundColor: "#fff",
+//     padding: 16,
+//     marginBottom: 10,
+//     borderRadius: 8,
+//     shadowColor: "#000",
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.1,
+//     shadowRadius: 4,
+//     elevation: 3,
+//     width: "100%",
+//   },
+//   optionButtonText: {
+//     fontSize: 18,
+//     color: "#333",
+//   },
+//   selectedOptionButton: {
+//     backgroundColor: "#2196F3",
+//   },
+//   selectedOptionButtonText: {
+//     color: "#fff",
+//   },
+// });
 
 export default PrivacyAndSecurity;

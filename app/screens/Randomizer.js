@@ -16,9 +16,9 @@ import {
 import BottomNavBar from "./BottomNavBar";
 
 //Given that we are using Expo Go, the React Native native sharing library does not work in there
-// import Share from "react-native-share";
-//This is the Expo Go version of the same RN library that shoudl work
-// import * as Share from "expo-sharing";
+//in future releases we would utelize this library to share more than just the text we have and maybe attach an image to it with a link to the app store
+// import Sharing from "react-native-share";
+
 
 import {styles} from '../assets/styles';
 
@@ -100,7 +100,7 @@ const Randomizer = () => {
   const shareDailyScent = async() => {
     //this is where we sent the message and or image to send to the social media platform  
     const options = {
-        message: 'My scent of the day from Scenturary is: ' + selectedPerfume,
+        message: 'My scent of the day from Scentuary is: ' + selectedPerfume,
         //placeholder uri needs adjusted in future
         url: 'https://www.niche-beauty.com/images/generated/det/26/40/tom-ford-oud-wood.jpg'
       };

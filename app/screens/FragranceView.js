@@ -10,6 +10,7 @@ import {
   StyleSheet
 } from 'react-native';
 import BottomNavBar from './BottomNavBar';
+import {styles} from '../assets/styles';
 
 const FragranceView = ({ route, navigation }) => {
   const { fragrance, toggleFavorite, toggleStatus } = route.params;
@@ -174,211 +175,211 @@ const FragranceView = ({ route, navigation }) => {
 
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#f8f4f4",
-  },
-  fixedHeader: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 1,
-    backgroundColor: "#fff",
-  },
-  scrollViewContent: {
-    paddingTop: 60, // Height of the fixed header
-    paddingBottom: 70,
-  },
-  topAppBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 10,
-    backgroundColor: '#fff',
-  },
-  leadingIcon: {
-    flex: 1,
-  },
-  containerIcon: {
-    width: 30,
-    height: 30,
-  },
-  stateLayer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  icon: {
-    width: 24,
-    height: 24,
-  },
-  headline: {
-    flex: 4,
-    fontSize: 24,
-    textAlign: 'center',
-  },
-  brandNameContainer: {
-    alignItems: 'center',
-    marginVertical: 10,
-  },
-  brand: {
-    fontSize: 18,
-    color: "#666",
-    textAlign: 'center',
-  },
-  name: {
-    fontSize: 24,
-    fontWeight: "bold",
-    textAlign: 'center',
-  },
-  starButton: {
-    backgroundColor: "transparent", // Transparent background
-    padding: 10,
-    borderRadius: 50,
-    marginTop: 5, // Add some space between the text and the star button
-  },
-  starButtonText: {
-    fontSize: 30, // Larger font size for star
-    color: "#FFD700", // Gold color for the star
-    textAlign: 'center',
-  },
-  content: {
-    flexDirection: 'row',
-    padding: 16,
-    alignItems: 'center',
-  },
-  fragranceImage: {
-    width: 200,
-    height: 200,
-    borderRadius: 10,
-    marginRight: 16,
-  },
-  details: {
-    flex: 1,
-  },
-  category: {
-    fontSize: 18,
-    color: "#666",
-    marginBottom: 10,
-  },
-  button: {
-    backgroundColor: "#C2A4D9", // Lavender
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 10,
-    alignSelf: 'flex-start',
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
-    textAlign: 'center',
-  },
-  notesContainer: {
-    marginTop: 10,
-  },
-  notesHeader: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginTop: 10,
-  },
-  notes: {
-    fontSize: 18,
-    color: "#666",
-  },
-  descriptionContainer: {
-    padding: 16,
-  },
-  descriptionHeader: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginBottom: 5,
-  },
-  description: {
-    fontSize: 18,
-    color: "#666",
-  },
-  findDupeButton: {
-    backgroundColor: "#32CD32", // LimeGreen color
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 10,
-    alignSelf: 'center',
-  },
-  findDupeButtonText: {
-    color: "#fff",
-    fontSize: 16,
-    textAlign: 'center',
-  },
-  horizontaldividerWithSubheader: {
-    marginVertical: 20,
-    alignItems: 'center',
-  },
-  divider: {
-    width: '100%',
-    height: 1,
-    backgroundColor: '#ccc',
-    marginBottom: 10,
-  },
-  subheader: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  filterButtonContainer: {
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  filterButton: {
-    backgroundColor: "#C2A4D9", // Lavender
-    padding: 10,
-    borderRadius: 5,
-  },
-  filterButtonText: {
-    color: "#fff",
-    fontSize: 16,
-    textAlign: 'center',
-  },
-  purchasingOptionsContainer: {
-    flexDirection: 'row',
-    padding: 16,
-  },
-  purchasingOptionCard: {
-    backgroundColor: "#fff",
-    padding: 10,
-    borderRadius: 5,
-    marginRight: 10,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-    elevation: 2,
-    width: 200,
-  },
-  storeName: {
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  storePrice: {
-    fontSize: 18,
-    color: "#666",
-    marginTop: 5,
-  },
-  storeLink: {
-    fontSize: 16,
-    color: "#007BFF", // Default link color
-    marginTop: 10,
-  },
-  bottomNavBar: {
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
-  },
-  statusButton: {
-    padding: 1,
-  },
-  statusButtonText: {
-    fontSize: 18,
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#f8f4f4",
+//   },
+//   fixedHeader: {
+//     position: 'absolute',
+//     top: 0,
+//     left: 0,
+//     right: 0,
+//     zIndex: 1,
+//     backgroundColor: "#fff",
+//   },
+//   scrollViewContent: {
+//     paddingTop: 60, // Height of the fixed header
+//     paddingBottom: 70,
+//   },
+//   topAppBar: {
+//     flexDirection: 'row',
+//     justifyContent: 'space-between',
+//     alignItems: 'center',
+//     padding: 10,
+//     backgroundColor: '#fff',
+//   },
+//   leadingIcon: {
+//     flex: 1,
+//   },
+//   containerIcon: {
+//     width: 30,
+//     height: 30,
+//   },
+//   stateLayer: {
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//   },
+//   icon: {
+//     width: 24,
+//     height: 24,
+//   },
+//   headline: {
+//     flex: 4,
+//     fontSize: 24,
+//     textAlign: 'center',
+//   },
+//   brandNameContainer: {
+//     alignItems: 'center',
+//     marginVertical: 10,
+//   },
+//   brand: {
+//     fontSize: 18,
+//     color: "#666",
+//     textAlign: 'center',
+//   },
+//   name: {
+//     fontSize: 24,
+//     fontWeight: "bold",
+//     textAlign: 'center',
+//   },
+//   starButton: {
+//     backgroundColor: "transparent", // Transparent background
+//     padding: 10,
+//     borderRadius: 50,
+//     marginTop: 5, // Add some space between the text and the star button
+//   },
+//   starButtonText: {
+//     fontSize: 30, // Larger font size for star
+//     color: "#FFD700", // Gold color for the star
+//     textAlign: 'center',
+//   },
+//   content: {
+//     flexDirection: 'row',
+//     padding: 16,
+//     alignItems: 'center',
+//   },
+//   fragranceImage: {
+//     width: 200,
+//     height: 200,
+//     borderRadius: 10,
+//     marginRight: 16,
+//   },
+//   details: {
+//     flex: 1,
+//   },
+//   category: {
+//     fontSize: 18,
+//     color: "#666",
+//     marginBottom: 10,
+//   },
+//   button: {
+//     backgroundColor: "#C2A4D9", // Lavender
+//     padding: 10,
+//     borderRadius: 5,
+//     marginTop: 10,
+//     alignSelf: 'flex-start',
+//   },
+//   buttonText: {
+//     color: "#fff",
+//     fontSize: 16,
+//     textAlign: 'center',
+//   },
+//   notesContainer: {
+//     marginTop: 10,
+//   },
+//   notesHeader: {
+//     fontSize: 18,
+//     fontWeight: "bold",
+//     marginTop: 10,
+//   },
+//   notes: {
+//     fontSize: 18,
+//     color: "#666",
+//   },
+//   descriptionContainer: {
+//     padding: 16,
+//   },
+//   descriptionHeader: {
+//     fontSize: 20,
+//     fontWeight: "bold",
+//     marginBottom: 5,
+//   },
+//   description: {
+//     fontSize: 18,
+//     color: "#666",
+//   },
+//   findDupeButton: {
+//     backgroundColor: "#32CD32", // LimeGreen color
+//     padding: 10,
+//     borderRadius: 5,
+//     marginTop: 10,
+//     alignSelf: 'center',
+//   },
+//   findDupeButtonText: {
+//     color: "#fff",
+//     fontSize: 16,
+//     textAlign: 'center',
+//   },
+//   horizontaldividerWithSubheader: {
+//     marginVertical: 20,
+//     alignItems: 'center',
+//   },
+//   divider: {
+//     width: '100%',
+//     height: 1,
+//     backgroundColor: '#ccc',
+//     marginBottom: 10,
+//   },
+//   subheader: {
+//     fontSize: 20,
+//     fontWeight: 'bold',
+//   },
+//   filterButtonContainer: {
+//     alignItems: 'center',
+//     marginBottom: 10,
+//   },
+//   filterButton: {
+//     backgroundColor: "#C2A4D9", // Lavender
+//     padding: 10,
+//     borderRadius: 5,
+//   },
+//   filterButtonText: {
+//     color: "#fff",
+//     fontSize: 16,
+//     textAlign: 'center',
+//   },
+//   purchasingOptionsContainer: {
+//     flexDirection: 'row',
+//     padding: 16,
+//   },
+//   purchasingOptionCard: {
+//     backgroundColor: "#fff",
+//     padding: 10,
+//     borderRadius: 5,
+//     marginRight: 10,
+//     shadowColor: "#000",
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.2,
+//     shadowRadius: 2,
+//     elevation: 2,
+//     width: 200,
+//   },
+//   storeName: {
+//     fontSize: 18,
+//     fontWeight: "bold",
+//   },
+//   storePrice: {
+//     fontSize: 18,
+//     color: "#666",
+//     marginTop: 5,
+//   },
+//   storeLink: {
+//     fontSize: 16,
+//     color: "#007BFF", // Default link color
+//     marginTop: 10,
+//   },
+//   bottomNavBar: {
+//     position: 'absolute',
+//     bottom: 0,
+//     width: '100%',
+//   },
+//   statusButton: {
+//     padding: 1,
+//   },
+//   statusButtonText: {
+//     fontSize: 18,
+//   },
+// });
 
 export default FragranceView;

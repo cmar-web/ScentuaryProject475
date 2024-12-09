@@ -46,6 +46,28 @@ export const styles = ReactNative.StyleSheet.create({
         textAlign: 'center',
     },
 
+    //this is the bottom nav bars css //////////////////////////////////////////////////////////////////////////////
+    navBar: {
+      flexDirection: "row",
+      justifyContent: "space-around",
+      alignItems: "center",
+      height: 60,
+      backgroundColor: "rgba(241, 241, 241, 1)", // Explicit light grey
+      borderTopWidth: 1,
+      borderColor: "#ddd", // Light grey border
+    },
+    navItem: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    navText: {
+      fontSize: 16,
+      color: "#333", // Dark grey text
+    },
+
+
+    // this is the css for the randomizer screen///////////////////////////////////////////////////////////////
     randomizerContainer: {
         flex: 1,
         backgroundColor: "#f8f4f4",
@@ -237,4 +259,977 @@ export const styles = ReactNative.StyleSheet.create({
         fontWeight: "bold",
         color: "#f00",
       },
+
+
+
+    //css for the dupes screen///////////////////////////////////////////////////////////////////////////////////
+    dupesContainer: {
+      flex: 1,
+      backgroundColor: "#f8f4f4",
+    },
+    // header: {
+    //   fontSize: 24,
+    //   fontWeight: "bold",
+    //   color: "#333",
+    //   marginBottom: 20,
+    //   textAlign: 'center',
+    // },
+    // subheader: {
+    //   fontSize: 20,
+    //   fontWeight: "bold",
+    //   color: "#333",
+    //   marginBottom: 10,
+    //   textAlign: 'center',
+    // },
+    scentCard: {
+      flexDirection: 'row',
+      marginBottom: 20,
+      backgroundColor: "#fff",
+      borderRadius: 10,
+      padding: 10,
+      shadowColor: "#000",
+      shadowOpacity: 0.1,
+      shadowRadius: 5,
+      elevation: 2,
+    },
+    scentImage: {
+      width: '30%',
+      height: '100%',
+      borderRadius: 10,
+    },
+    scentDetails: {
+      flex: 1,
+      marginLeft: 10,
+      justifyContent: 'center',
+    },
+    listContainer: {
+      paddingTop: 10,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    gridCard: {
+      backgroundColor: "#fff",
+      borderRadius: 10,
+      padding: 10,
+      marginBottom: 10,
+      shadowColor: "#000",
+      shadowOpacity: 0.1,
+      shadowRadius: 5,
+      elevation: 2,
+      marginHorizontal: 10,
+      height: 150,
+      width: 150,
+    },
+    dupeImage: {
+      width: "100%",
+      height: "100%",
+      borderRadius: 10,
+    },
+    brand: {
+      fontSize: 18,
+      fontWeight: "bold",
+      color: "#333",
+    },
+    name: {
+      fontSize: 16,
+      color: "#555",
+    },
+    category: {
+      fontSize: 14,
+      color: "#777",
+    },
+    notesHeader: {
+      fontSize: 16,
+      fontWeight: "bold",
+      color: "#333",
+      marginTop: 8,
+    },
+    notes: {
+      fontSize: 14,
+      color: "#777",
+    },
+
+
+    // browse screen css /////////////////////////////////////////////////////////////////////////////////
+    broswseBackground: {
+      flex: 1,
+      backgroundColor: "#f8f4f4", // Light beige background
+    },
+    
+    searchContainer: {
+      padding: 10,
+      backgroundColor: "#f8f4f4", // Matching the background color to make it blend in
+      borderBottomWidth: 1,
+      borderColor: "#ddd", // Light gray border
+    },
+    searchField: {
+      backgroundColor: "#f0f0f0", // Light gray background for the search field
+      borderRadius: 25, // Rounded corners
+      paddingVertical: 10,
+      paddingHorizontal: 20,
+      fontSize: 16,
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 5,
+      elevation: 3,
+    },
+    filterContainer: {
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      marginVertical: 10,
+    },
+    filterButton: {
+      backgroundColor: "#B497BD", // Lavender color
+      paddingVertical: 10,
+      paddingHorizontal: 20,
+      borderRadius: 25, // Rounded corners
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 5,
+      elevation: 3,
+    },
+    filterButtonText: {
+      color: "#fff", // White text
+      fontSize: 16,
+    },
+    // listContainer: {
+    //   paddingTop: 10,
+    // },
+    card: {
+      backgroundColor: "#fff", // White background for fragrance cards
+      borderRadius: 10,
+      padding: 15,
+      marginBottom: 10,
+      shadowColor: "#000",
+      shadowOpacity: 0.1,
+      shadowRadius: 5,
+      elevation: 2,
+      marginHorizontal: 10, // Ensures card spans the whole screen width with margin
+    },
+    cardImage: {
+      width: "100%",
+      height: 150,
+      borderRadius: 10,
+      marginBottom: 10,
+    },
+    cardText: {
+      flex: 1,
+    },
+    fragranceName: {
+      fontSize: 16,
+      fontWeight: "bold",
+      color: "#333", // Dark gray text for fragrance name
+    },
+    fragranceHouse: {
+      fontSize: 14,
+      color: "#777", // Light gray for fragrance house
+    },
+    fragranceCategory: {
+      fontSize: 14,
+      color: "#333",
+      marginBottom: 2,
+      textAlign: "left",
+    },
+    fragranceStatus: {
+        fontSize: 14,
+        color: "#333",
+        marginBottom: 2,
+        textAlign: "left",
+      },
+    fragrancePrice: {
+      fontSize: 14,
+      color: "#333",
+      textAlign: "left",
+    },
+    noFragrancesContainer: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    noFragrancesText: {
+      fontSize: 18,
+      color: "#333",
+    },
+    favoriteButton: {
+      padding: 10,
+      alignSelf: "flex-start",
+      marginLeft: -10, // Shift the button to the left
+    },
+    favoriteButtonText: {
+      fontSize: 24,
+      color: "#FFD700",
+      textAlign: "left",
+    },
+    statusButton: {
+      padding: 1,
+    },
+    statusButtonText: {
+      fontSize: 18,
+    },
+
+    //FragranceView css ////////////////////////////////////////////////////////////////////////////////////
+    container: {
+      flex: 1,
+      backgroundColor: "#f8f4f4",
+    },
+    fixedHeader: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: 1,
+      backgroundColor: "#fff",
+    },
+    scrollViewContent: {
+      paddingTop: 60, // Height of the fixed header
+      paddingBottom: 70,
+    },
+    topAppBar: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: 10,
+      backgroundColor: '#fff',
+    },
+    leadingIcon: {
+      flex: 1,
+    },
+    containerIcon: {
+      width: 30,
+      height: 30,
+    },
+    stateLayer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    icon: {
+      width: 24,
+      height: 24,
+    },
+    headline: {
+      flex: 4,
+      fontSize: 24,
+      textAlign: 'center',
+    },
+    brandNameContainer: {
+      alignItems: 'center',
+      marginVertical: 10,
+    },
+    brand: {
+      fontSize: 18,
+      color: "#666",
+      textAlign: 'center',
+    },
+    name: {
+      fontSize: 24,
+      fontWeight: "bold",
+      textAlign: 'center',
+    },
+    starButton: {
+      backgroundColor: "transparent", // Transparent background
+      padding: 10,
+      borderRadius: 50,
+      marginTop: 5, // Add some space between the text and the star button
+    },
+    starButtonText: {
+      fontSize: 30, // Larger font size for star
+      color: "#FFD700", // Gold color for the star
+      textAlign: 'center',
+    },
+    content: {
+      flexDirection: 'row',
+      padding: 16,
+      alignItems: 'center',
+    },
+    fragranceImage: {
+      width: 200,
+      height: 200,
+      borderRadius: 10,
+      marginRight: 16,
+    },
+    details: {
+      flex: 1,
+    },
+    category: {
+      fontSize: 18,
+      color: "#666",
+      marginBottom: 10,
+    },
+    button: {
+      backgroundColor: "#C2A4D9", // Lavender
+      padding: 10,
+      borderRadius: 5,
+      marginTop: 10,
+      alignSelf: 'flex-start',
+    },
+    buttonText: {
+      color: "#fff",
+      fontSize: 16,
+      textAlign: 'center',
+    },
+    notesContainer: {
+      marginTop: 10,
+    },
+    notesHeader: {
+      fontSize: 18,
+      fontWeight: "bold",
+      marginTop: 10,
+    },
+    notes: {
+      fontSize: 18,
+      color: "#666",
+    },
+    descriptionContainer: {
+      padding: 16,
+    },
+    descriptionHeader: {
+      fontSize: 20,
+      fontWeight: "bold",
+      marginBottom: 5,
+    },
+    description: {
+      fontSize: 18,
+      color: "#666",
+    },
+    findDupeButton: {
+      backgroundColor: "#32CD32", // LimeGreen color
+      padding: 10,
+      borderRadius: 5,
+      marginTop: 10,
+      alignSelf: 'center',
+    },
+    findDupeButtonText: {
+      color: "#fff",
+      fontSize: 16,
+      textAlign: 'center',
+    },
+    horizontaldividerWithSubheader: {
+      marginVertical: 20,
+      alignItems: 'center',
+    },
+    divider: {
+      width: '100%',
+      height: 1,
+      backgroundColor: '#ccc',
+      marginBottom: 10,
+    },
+    subheader: {
+      fontSize: 20,
+      fontWeight: 'bold',
+    },
+    filterButtonContainer: {
+      alignItems: 'center',
+      marginBottom: 10,
+    },
+    filterButton: {
+      backgroundColor: "#C2A4D9", // Lavender
+      padding: 10,
+      borderRadius: 5,
+    },
+    filterButtonText: {
+      color: "#fff",
+      fontSize: 16,
+      textAlign: 'center',
+    },
+    purchasingOptionsContainer: {
+      flexDirection: 'row',
+      padding: 16,
+    },
+    purchasingOptionCard: {
+      backgroundColor: "#fff",
+      padding: 10,
+      borderRadius: 5,
+      marginRight: 10,
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.2,
+      shadowRadius: 2,
+      elevation: 2,
+      width: 200,
+    },
+    storeName: {
+      fontSize: 18,
+      fontWeight: "bold",
+    },
+    storePrice: {
+      fontSize: 18,
+      color: "#666",
+      marginTop: 5,
+    },
+    storeLink: {
+      fontSize: 16,
+      color: "#007BFF", // Default link color
+      marginTop: 10,
+    },
+    bottomNavBar: {
+      position: 'absolute',
+      bottom: 0,
+      width: '100%',
+    },
+    statusButton: {
+      padding: 1,
+    },
+    statusButtonText: {
+      fontSize: 18,
+    },
+
+    //My collection screen css //////////////////////////////////////////////////////////////////////////////
+    container: {
+      flex: 1,
+      backgroundColor: "#f8f4f4",
+    },
+    content: {
+      flex: 1,
+      padding: 16,
+      alignItems: "center",
+    },
+    header: {
+      fontSize: 24,
+      fontWeight: "bold",
+      color: "#333",
+      marginBottom: 16,
+    },
+    searchContainer: {
+      width: "100%",
+      marginBottom: 16,
+    },
+    searchInput: {
+      height: 40,
+      backgroundColor: "#fff",
+      borderWidth: 1,
+      borderColor: "#ccc",
+      borderRadius: 4,
+      paddingHorizontal: 8,
+    },
+    fragranceList: {
+      width: "100%",
+      marginBottom: 16,
+    },
+    card: {
+      backgroundColor: "#fff",
+      padding: 16,
+      marginBottom: 16,
+      borderRadius: 8,
+      alignItems: "flex-start",
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 4,
+      elevation: 3,
+    },
+    cardImage: {
+      width: "100%", // Image spans the whole width of the card
+      height: 150,
+      borderRadius: 8,
+      marginBottom: 8,
+    },
+    cardName: {
+      fontSize: 18,
+      fontWeight: "bold",
+      color: "#333",
+      marginBottom: 4,
+      textAlign: "left",
+    },
+    cardBrand: {
+      fontSize: 14,
+      color: "#666",
+      marginBottom: 4,
+      textAlign: "left",
+    },
+    cardStatus: {
+      fontSize: 14,
+      color: "#333",
+      marginBottom: 2,
+      textAlign: "left",
+    },
+    cardCategory: {
+      fontSize: 14,
+      color: "#333",
+      marginBottom: 2,
+      textAlign: "left",
+    },
+    favoriteButton: {
+      padding: 10,
+      alignSelf: "flex-start",
+      marginLeft: -10, // Shift the button to the left
+    },
+    favoriteButtonText: {
+      fontSize: 24,
+      color: "#FFD700",
+      textAlign: "left",
+    },
+    tabs: {
+      flexDirection: "row",
+      marginTop: 16,
+      marginBottom: 16,
+    },
+    tab: {
+      paddingVertical: 8,
+      paddingHorizontal: 16,
+      backgroundColor: "#f0f0f0",
+      borderRadius: 8,
+      marginHorizontal: 4,
+    },
+    activeTab: {
+      backgroundColor: "#B497BD", // Lavender
+    },
+    tabText: {
+      fontSize: 16,
+      color: "#333",
+    },
+    activeTabText: {
+      color: "#fff",
+    },
+    bottomFiltersWrapper: {
+      marginTop: 16,
+      marginBottom: 10,
+    },
+    tabsContentContainer: {
+      alignItems: "center",
+    },
+    noFragrancesContainer: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      paddingVertical: 16,
+    },
+    noFragrancesText: {
+      fontSize: 18,
+      color: "#333",
+    },
+    cardPrice: {
+      fontSize: 14,
+      color: "#333",
+      textAlign: "left",
+    },
+    statusButton: {
+      padding: 1,
+    },
+    statusButtonText: {
+      fontSize: 18,
+    },
+
+    //Privacy and Security screen css/////////////////////////////////////////////////////////////////////////////
+    container: {
+      flex: 1,
+      backgroundColor: "#f8f4f4",
+    },
+    content: {
+      flex: 1,
+      padding: 16,
+    },
+    header: {
+      fontSize: 24,
+      fontWeight: "bold",
+      color: "#333",
+      marginBottom: 16,
+    },
+    sectionHeader: {
+      fontSize: 20,
+      fontWeight: "bold",
+      color: "#444",
+      marginVertical: 10,
+      alignSelf: "flex-start",
+    },
+    section: {
+      marginBottom: 20,
+      width: "100%",
+    },
+    button: {
+      backgroundColor: "#fff",
+      padding: 16,
+      marginBottom: 10,
+      borderRadius: 8,
+      alignItems: "center",
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 4,
+      elevation: 3,
+    },
+    buttonText: {
+      fontSize: 18,
+      fontWeight: "bold",
+      color: "#333",
+    },
+    modalBackground: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "rgba(0,0,0,0.5)",
+    },
+    modalView: {
+      width: "80%",
+      backgroundColor: "#fff",
+      padding: 20,
+      borderRadius: 10,
+      alignItems: "center",
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.25,
+      shadowRadius: 4,
+      elevation: 5,
+      position: "relative",
+    },
+    closeIcon: {
+      position: "absolute",
+      top: 10,
+      right: 10,
+    },
+    modalText: {
+      fontSize: 20,
+      color: "#333",
+      marginBottom: 20,
+    },
+    inputContainer: {
+      width: "100%",
+    },
+    input: {
+      backgroundColor: "#fff",
+      color: "#000",
+      padding: 10,
+      marginBottom: 10,
+      borderRadius: 5,
+      borderWidth: 1,
+      borderColor: "#ccc",
+      fontSize: 16,
+      width: "100%",
+    },
+    submitButton: {
+      backgroundColor: "#2196F3",
+      padding: 10,
+      borderRadius: 5,
+      alignItems: "center",
+      marginVertical: 5,
+      width: "100%",
+    },
+    submitButtonText: {
+      color: "#fff",
+      fontSize: 18,
+    },
+    switchContainer: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginVertical: 10,
+    },
+    switchText: {
+      fontSize: 18,
+      color: "#333",
+    },
+    optionButton: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      backgroundColor: "#fff",
+      padding: 16,
+      marginBottom: 10,
+      borderRadius: 8,
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 4,
+      elevation: 3,
+      width: "100%",
+    },
+    optionButtonText: {
+      fontSize: 18,
+      color: "#333",
+    },
+    selectedOptionButton: {
+      backgroundColor: "#2196F3",
+    },
+    selectedOptionButtonText: {
+      color: "#fff",
+    },
+
+    //Account Settings Scren css/////////////////////////////////////////////////////////////////////////////////////
+    container: {
+      flex: 1,
+      backgroundColor: "#f8f4f4", // Light beige background
+    },
+    time: {
+      color: "#fff",
+      fontSize: 16,
+    },
+    topAppBar: {
+      padding: 16,
+      backgroundColor: "#fff",
+      alignItems: "center",
+      borderBottomWidth: 1,
+      borderBottomColor: "#ccc",
+    },
+    headline: {
+      fontSize: 20,
+      fontWeight: "bold",
+    },
+    content: {
+      flex: 1,
+      padding: 16,
+    },
+    header: {
+      fontSize: 24,
+      fontWeight: "bold",
+      color: "#333", // Dark gray text
+      marginBottom: 20,
+      textDecorationLine: 'underline', // This adds the underline
+    },
+    accordion: {
+      flex: 1,
+    },
+    accordionItem: {
+      marginBottom: 10,
+      padding: 10,
+      backgroundColor: "#fff",
+      borderRadius: 5,
+      borderWidth: 1,
+      borderColor: "#ccc",
+    },
+    title: {
+      fontSize: 18,
+      fontWeight: "bold",
+      color: "#333",
+    },
+    body: {
+      marginTop: 5,
+      fontSize: 16,
+      color: "#666",
+    },
+    inputContainer: {
+      padding: 16,
+    },
+    inputField: {
+      marginBottom: 10,
+    },
+    label: {
+      fontSize: 16,
+      marginBottom: 5,
+      color: "#333",
+    },
+    input: {
+      padding: 10,
+      backgroundColor: "#fff",
+      borderRadius: 5,
+      borderWidth: 1,
+      borderColor: "#ccc",
+    },
+    button: {
+      padding: 15,
+      backgroundColor: "#007bff",
+      borderRadius: 5,
+      alignItems: "center",
+    },
+    buttonText: {
+      color: "#fff",
+      fontSize: 16,
+    },
+
+    //Fragrance View Screen css///////////////////////////////////////////////////////////////////////////////////
+    container: {
+      flex: 1,
+      backgroundColor: "#f8f4f4",
+    },
+    fixedHeader: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: 1,
+      backgroundColor: "#fff",
+    },
+    scrollViewContent: {
+      paddingTop: 60, // Height of the fixed header
+      paddingBottom: 70,
+    },
+    topAppBar: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: 10,
+      backgroundColor: '#fff',
+    },
+    leadingIcon: {
+      flex: 1,
+    },
+    containerIcon: {
+      width: 30,
+      height: 30,
+    },
+    stateLayer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    icon: {
+      width: 24,
+      height: 24,
+    },
+    headline: {
+      flex: 4,
+      fontSize: 24,
+      textAlign: 'center',
+    },
+    brandNameContainer: {
+      alignItems: 'center',
+      marginVertical: 10,
+    },
+    brand: {
+      fontSize: 18,
+      color: "#666",
+      textAlign: 'center',
+    },
+    name: {
+      fontSize: 24,
+      fontWeight: "bold",
+      textAlign: 'center',
+    },
+    starButton: {
+      backgroundColor: "transparent", // Transparent background
+      padding: 10,
+      borderRadius: 50,
+      marginTop: 5, // Add some space between the text and the star button
+    },
+    starButtonText: {
+      fontSize: 30, // Larger font size for star
+      color: "#FFD700", // Gold color for the star
+      textAlign: 'center',
+    },
+    content: {
+      flexDirection: 'row',
+      padding: 16,
+      alignItems: 'center',
+    },
+    fragranceImage: {
+      width: 200,
+      height: 200,
+      borderRadius: 10,
+      marginRight: 16,
+    },
+    details: {
+      flex: 1,
+    },
+    category: {
+      fontSize: 18,
+      color: "#666",
+      marginBottom: 10,
+    },
+    button: {
+      backgroundColor: "#C2A4D9", // Lavender
+      padding: 10,
+      borderRadius: 5,
+      marginTop: 10,
+      alignSelf: 'flex-start',
+    },
+    buttonText: {
+      color: "#fff",
+      fontSize: 16,
+      textAlign: 'center',
+    },
+    notesContainer: {
+      marginTop: 10,
+    },
+    notesHeader: {
+      fontSize: 18,
+      fontWeight: "bold",
+      marginTop: 10,
+    },
+    notes: {
+      fontSize: 18,
+      color: "#666",
+    },
+    descriptionContainer: {
+      padding: 16,
+    },
+    descriptionHeader: {
+      fontSize: 20,
+      fontWeight: "bold",
+      marginBottom: 5,
+    },
+    description: {
+      fontSize: 18,
+      color: "#666",
+    },
+    findDupeButton: {
+      backgroundColor: "#32CD32", // LimeGreen color
+      padding: 10,
+      borderRadius: 5,
+      marginTop: 10,
+      alignSelf: 'center',
+    },
+    findDupeButtonText: {
+      color: "#fff",
+      fontSize: 16,
+      textAlign: 'center',
+    },
+    horizontaldividerWithSubheader: {
+      marginVertical: 20,
+      alignItems: 'center',
+    },
+    divider: {
+      width: '100%',
+      height: 1,
+      backgroundColor: '#ccc',
+      marginBottom: 10,
+    },
+    subheader: {
+      fontSize: 20,
+      fontWeight: 'bold',
+    },
+    filterButtonContainer: {
+      alignItems: 'center',
+      marginBottom: 10,
+    },
+    filterButton: {
+      backgroundColor: "#C2A4D9", // Lavender
+      padding: 10,
+      borderRadius: 5,
+    },
+    filterButtonText: {
+      color: "#fff",
+      fontSize: 16,
+      textAlign: 'center',
+    },
+    purchasingOptionsContainer: {
+      flexDirection: 'row',
+      padding: 16,
+    },
+    purchasingOptionCard: {
+      backgroundColor: "#fff",
+      padding: 10,
+      borderRadius: 5,
+      marginRight: 10,
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.2,
+      shadowRadius: 2,
+      elevation: 2,
+      width: 200,
+    },
+    storeName: {
+      fontSize: 18,
+      fontWeight: "bold",
+    },
+    storePrice: {
+      fontSize: 18,
+      color: "#666",
+      marginTop: 5,
+    },
+    storeLink: {
+      fontSize: 16,
+      color: "#007BFF", // Default link color
+      marginTop: 10,
+    },
+    bottomNavBar: {
+      position: 'absolute',
+      bottom: 0,
+      width: '100%',
+    },
+    statusButton: {
+      padding: 1,
+    },
+    statusButtonText: {
+      fontSize: 18,
+    },
 });
