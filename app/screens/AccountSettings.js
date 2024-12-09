@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, SafeAreaView, TouchableOpacity, Modal, TextInput, Switch, StyleSheet } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import BottomNavBar from "./BottomNavBar";
+import * as Notifications from 'expo-notifications';
+import { registerForPushNotificationsAsync } from './notificationHandler'; // Import the updated handler
 
 const AccountSettings = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -10,6 +12,21 @@ const AccountSettings = () => {
   const [newInput, setNewInput] = useState("");
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
   const [theme, setTheme] = useState("Light");
+
+  useEffect(() => {
+    const notificationListener = Notifications.addNotificationReceivedListener(notification => {
+      console.log(notification);
+    });
+
+    const responseListener = Notifications.addNotificationResponseReceivedListener(response => {
+      console.log(response);
+    });
+
+    return () => {
+      Notifications.removeNotificationSubscription(notificationListener);
+      Notifications.removeNotificationSubscription(responseListener);
+    };
+  }, []);
 
   const openModal = (content) => {
     setModalContent(content);
@@ -31,8 +48,19 @@ const AccountSettings = () => {
     setModalVisible(false);
   };
 
-  const toggleNotifications = () => {
-    setNotificationsEnabled(previousState => !previousState);
+  const toggleNotifications = async () => {
+    const newValue = !notificationsEnabled;
+    setNotificationsEnabled(newValue);
+
+    if (newValue) {
+      const token = await registerForPushNotificationsAsync();
+      if (!token) {
+        alert('Since you previously disabled notifications, please enable notifications in your device settings.');
+        setNotificationsEnabled(false); // Reset switch if there was an error
+      }
+    } else {
+      alert('Notifications have been disabled.');
+    }
   };
 
   const changeTheme = (selectedTheme) => {
@@ -177,7 +205,7 @@ const AccountSettings = () => {
             )}
             {modalContent === "Cancel Subscription" && (
               <View style={styles.inputContainer}>
-                <Text style={styles.modalText}>Would you like to cancel your subsription?</Text>
+                <Text style={styles.modalText}>Would you like to cancel your subscription?</Text>
                 <TouchableOpacity style={styles.yesButton} onPress={handleCancelSubscription}>
                   <Text style={styles.submitButtonText}>Yes</Text>
                 </TouchableOpacity>
@@ -203,6 +231,8 @@ const AccountSettings = () => {
     </SafeAreaView>
   );
 };
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -356,6 +386,6 @@ const styles = StyleSheet.create({
   },
 });
 
-
 export default AccountSettings;
+
 
