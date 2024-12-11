@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, SafeAreaView, Image, View, StyleSheet, Button } from 'react-native';
+import { Text, SafeAreaView, Image, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {styles} from '../assets/styles'
 
@@ -7,20 +7,28 @@ function WelcomeScreen() {
     const navigation = useNavigation();
 
     return (
-        <SafeAreaView style={styles.background}>
+        <SafeAreaView style={styles.backgroundWelcome}>
             <View style={styles.logoContainer}>
                 {/* This is where we see our logo */}
                 <Image style={styles.logo} source={require("../assets/ScentuaryLogo.png")} />
-
-                <Text style={styles.title}>Scentuary</Text>
-
-                <View style={styles.buttonContainer}>
-                    {/* Takes user to login screen */}
-                    <Button title="Login" onPress={() => navigation.navigate('Login')} />
-                    {/* Takes user to register screen */}
-                    <Button title="Register" onPress={() => navigation.navigate('Register')} />
-                </View>
             </View>
+
+
+            <View style={styles.buttonContainer}>
+                 <Text style={styles.welcomeText}>Scentuary</Text>
+            </View>
+
+            <TouchableOpacity
+                 style={styles.buttonContainer}
+                 onPress={() => navigation.navigate("Login")}>
+                 <Text style={styles.welcomeText}>Login</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                 style={styles.buttonContainer}
+                 onPress={() => navigation.navigate("Register")}>
+                 <Text style={styles.welcomeText}>Register</Text>
+            </TouchableOpacity>
         </SafeAreaView>
     );
 }
