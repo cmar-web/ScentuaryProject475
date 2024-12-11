@@ -76,29 +76,29 @@ const AccountSettings = () => {
         <Text style={styles.sectionHeader}>Account Information</Text>
         <View style={styles.section}>
           <TouchableOpacity style={styles.buttonAccountSettings} onPress={() => openModal("Change Username")}>
-            <Text style={styles.buttonText}>Change Username</Text>
+            <Text style={styles.lightBackgroundButtonText}>Change Username</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonAccountSettings} onPress={() => openModal("Change Password")}>
-            <Text style={styles.buttonText}>Change Password</Text>
+            <Text style={styles.lightBackgroundButtonText}>Change Password</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonAccountSettings} onPress={() => openModal("Change Email")}>
-            <Text style={styles.buttonText}>Change Email</Text>
+            <Text style={styles.lightBackgroundButtonText}>Change Email</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonAccountSettings} onPress={() => openModal("Cancel Subscription")}>
-            <Text style={styles.buttonText}>Cancel Subscription</Text>
+            <Text style={styles.lightBackgroundButtonText}>Cancel Subscription</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonAccountSettings} onPress={() => openModal("Delete Account")}>
-            <Text style={styles.buttonText}>Delete Account</Text>
+            <Text style={styles.lightBackgroundButtonText}>Delete Account</Text>
           </TouchableOpacity>
         </View>
 
         <Text style={styles.sectionHeader}>App Customization</Text>
         <View style={styles.section}>
           <TouchableOpacity style={styles.buttonAccountSettings} onPress={() => openModal("Notifications")}>
-            <Text style={styles.buttonText}>Notifications</Text>
+            <Text style={styles.lightBackgroundButtonText}>Notifications</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonAccountSettings} onPress={() => openModal("App Theme")}>
-            <Text style={styles.buttonText}>App Theme</Text>
+            <Text style={styles.lightBackgroundButtonText}>App Theme</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -274,7 +274,7 @@ const AccountSettings = () => {
 //     shadowRadius: 4,
 //     elevation: 3,
 //   },
-//   buttonText: {
+//   lightBackgroundButtonText: {
 //     fontSize: 18,
 //     fontWeight: "bold",
 //     color: "#333",

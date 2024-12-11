@@ -49,26 +49,26 @@ const PrivacyAndSecurity = () => {
         <Text style={styles.sectionHeader}>Privacy</Text>
         <View style={styles.section}>
           <TouchableOpacity style={styles.buttonPrivacyAndSecurity} onPress={() => openModal("Profile Visibility")}>
-            <Text style={styles.buttonText}>Profile Visibility</Text>
+            <Text style={styles.lightBackgroundButtonText}>Profile Visibility</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonPrivacyAndSecurity} onPress={() => openModal("Location Preferences")}>
-            <Text style={styles.buttonText}>Location Preferences</Text>
+            <Text style={styles.lightBackgroundButtonText}>Location Preferences</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonPrivacyAndSecurity} onPress={() => openModal("Activity Status")}>
-            <Text style={styles.buttonText}>Activity Status</Text>
+            <Text style={styles.lightBackgroundButtonText}>Activity Status</Text>
           </TouchableOpacity>
         </View>
 
         <Text style={styles.sectionHeader}>Security</Text>
         <View style={styles.section}>
           <TouchableOpacity style={styles.buttonPrivacyAndSecurity} onPress={() => openModal("Two-Factor Authentication")}>
-            <Text style={styles.buttonText}>Two-Factor Authentication</Text>
+            <Text style={styles.lightBackgroundButtonText}>Two-Factor Authentication</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonPrivacyAndSecurity} onPress={() => openModal("Recovery Email")}>
-            <Text style={styles.buttonText}>Recovery Email</Text>
+            <Text style={styles.lightBackgroundButtonText}>Recovery Email</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonPrivacyAndSecurity} onPress={() => openModal("Recovery Phone")}>
-            <Text style={styles.buttonText}>Recovery Phone</Text>
+            <Text style={styles.lightBackgroundButtonText}>Recovery Phone</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -222,7 +222,7 @@ const PrivacyAndSecurity = () => {
 //     shadowRadius: 4,
 //     elevation: 3,
 //   },
-//   buttonText: {
+//   lightBackgroundButtonText: {
 //     fontSize: 18,
 //     fontWeight: "bold",
 //     color: "#333",
