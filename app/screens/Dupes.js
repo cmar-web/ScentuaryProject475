@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, SafeAreaView, Image, FlatList } from "react-native";
 import BottomNavBar from "./BottomNavBar";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import {styles} from '../assets/styles';
 
 const Dupes = () => {
   const navigation = useNavigation();
@@ -64,96 +65,96 @@ const Dupes = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#f8f4f4",
-  },
-  content: {
-    flex: 1,
-    padding: 16,
-  },
-  header: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#333",
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  subheader: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#333",
-    marginBottom: 10,
-    textAlign: 'center',
-  },
-  scentCard: {
-    flexDirection: 'row',
-    marginBottom: 20,
-    backgroundColor: "#fff",
-    borderRadius: 10,
-    padding: 10,
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 2,
-  },
-  scentImage: {
-    width: '30%',
-    height: '100%',
-    borderRadius: 10,
-  },
-  scentDetails: {
-    flex: 1,
-    marginLeft: 10,
-    justifyContent: 'center',
-  },
-  listContainer: {
-    paddingTop: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  gridCard: {
-    backgroundColor: "#fff",
-    borderRadius: 10,
-    padding: 10,
-    marginBottom: 10,
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 2,
-    marginHorizontal: 10,
-    height: 150,
-    width: 150,
-  },
-  dupeImage: {
-    width: "100%",
-    height: "100%",
-    borderRadius: 10,
-  },
-  brand: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#333",
-  },
-  name: {
-    fontSize: 16,
-    color: "#555",
-  },
-  category: {
-    fontSize: 14,
-    color: "#777",
-  },
-  notesHeader: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#333",
-    marginTop: 8,
-  },
-  notes: {
-    fontSize: 14,
-    color: "#777",
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#f8f4f4",
+//   },
+//   content: {
+//     flex: 1,
+//     padding: 16,
+//   },
+//   header: {
+//     fontSize: 24,
+//     fontWeight: "bold",
+//     color: "#333",
+//     marginBottom: 20,
+//     textAlign: 'center',
+//   },
+//   subheader: {
+//     fontSize: 20,
+//     fontWeight: "bold",
+//     color: "#333",
+//     marginBottom: 10,
+//     textAlign: 'center',
+//   },
+//   scentCard: {
+//     flexDirection: 'row',
+//     marginBottom: 20,
+//     backgroundColor: "#fff",
+//     borderRadius: 10,
+//     padding: 10,
+//     shadowColor: "#000",
+//     shadowOpacity: 0.1,
+//     shadowRadius: 5,
+//     elevation: 2,
+//   },
+//   scentImage: {
+//     width: '30%',
+//     height: '100%',
+//     borderRadius: 10,
+//   },
+//   scentDetails: {
+//     flex: 1,
+//     marginLeft: 10,
+//     justifyContent: 'center',
+//   },
+//   listContainer: {
+//     paddingTop: 10,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//   },
+//   gridCard: {
+//     backgroundColor: "#fff",
+//     borderRadius: 10,
+//     padding: 10,
+//     marginBottom: 10,
+//     shadowColor: "#000",
+//     shadowOpacity: 0.1,
+//     shadowRadius: 5,
+//     elevation: 2,
+//     marginHorizontal: 10,
+//     height: 150,
+//     width: 150,
+//   },
+//   dupeImage: {
+//     width: "100%",
+//     height: "100%",
+//     borderRadius: 10,
+//   },
+//   brand: {
+//     fontSize: 18,
+//     fontWeight: "bold",
+//     color: "#333",
+//   },
+//   name: {
+//     fontSize: 16,
+//     color: "#555",
+//   },
+//   category: {
+//     fontSize: 14,
+//     color: "#777",
+//   },
+//   notesHeader: {
+//     fontSize: 16,
+//     fontWeight: "bold",
+//     color: "#333",
+//     marginTop: 8,
+//   },
+//   notes: {
+//     fontSize: 14,
+//     color: "#777",
+//   },
+// });
 
 export default Dupes;

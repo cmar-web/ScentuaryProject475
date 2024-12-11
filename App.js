@@ -22,7 +22,7 @@ export default function App() {
     console.log("App executed");
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Welcome">
+            <Stack.Navigator initialRouteName="Browse">
                 
                 <Stack.Screen name="Welcome" component={WelcomeScreen} />
                 <Stack.Screen name="Login" component={Login1} />

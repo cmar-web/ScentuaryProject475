@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, TextInput, ScrollView, KeyboardAvoidingView, Platform } from "react-native";
 import BottomNavBar from "./BottomNavBar"; // Import the BottomNavBar component
+import {styles} from '../assets/styles';
 
 const FAQ = () => {
   // State to manage which accordion item is expanded
@@ -35,8 +36,8 @@ const FAQ = () => {
         </View>
 
         {/* Main Content */}
-        <View style={styles.content}>
-          <Text style={styles.header}>Commonly Asked Questions:</Text>
+        <View style={styles.contentFAQ}>
+          <Text style={styles.headerFAQ}>Commonly Asked Questions:</Text>
           <ScrollView style={styles.accordion}>
             {questions.map((item, index) => (
               <View key={index} style={styles.accordionItem}>
@@ -61,7 +62,7 @@ const FAQ = () => {
             />
           </View>
 
-          <TouchableOpacity style={styles.button} onPress={handleQuestionSubmit}>
+          <TouchableOpacity style={styles.buttonFAQ} onPress={handleQuestionSubmit}>
             <Text style={styles.buttonText}>Submit</Text>
           </TouchableOpacity>
         </View>
@@ -96,87 +97,87 @@ const faqData = [
   },
 ];
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#f8f4f4", // Light beige background
-  },
-  time: {
-    color: "#fff",
-    fontSize: 16,
-  },
-  topAppBar: {
-    padding: 16,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-  },
-  headline: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  content: {
-    flex: 1,
-    padding: 16,
-  },
-  header: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#333", // Dark gray text
-    marginBottom: 20,
-    textDecorationLine: 'underline', // This adds the underline
-  },
-  accordion: {
-    flex: 1,
-  },
-  accordionItem: {
-    marginBottom: 10,
-    padding: 10,
-    backgroundColor: "#fff",
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: "#ccc",
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#333",
-  },
-  body: {
-    marginTop: 5,
-    fontSize: 16,
-    color: "#666",
-  },
-  inputContainer: {
-    padding: 16,
-  },
-  inputField: {
-    marginBottom: 10,
-  },
-  label: {
-    fontSize: 16,
-    marginBottom: 5,
-    color: "#333",
-  },
-  input: {
-    padding: 10,
-    backgroundColor: "#fff",
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: "#ccc",
-  },
-  button: {
-    padding: 15,
-    backgroundColor: "#007bff",
-    borderRadius: 5,
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#f8f4f4", // Light beige background
+//   },
+//   time: {
+//     color: "#fff",
+//     fontSize: 16,
+//   },
+//   topAppBar: {
+//     padding: 16,
+//     backgroundColor: "#fff",
+//     alignItems: "center",
+//     borderBottomWidth: 1,
+//     borderBottomColor: "#ccc",
+//   },
+//   headline: {
+//     fontSize: 20,
+//     fontWeight: "bold",
+//   },
+//   content: {
+//     flex: 1,
+//     padding: 16,
+//   },
+//   header: {
+//     fontSize: 24,
+//     fontWeight: "bold",
+//     color: "#333", // Dark gray text
+//     marginBottom: 20,
+//     textDecorationLine: 'underline', // This adds the underline
+//   },
+//   accordion: {
+//     flex: 1,
+//   },
+//   accordionItem: {
+//     marginBottom: 10,
+//     padding: 10,
+//     backgroundColor: "#fff",
+//     borderRadius: 5,
+//     borderWidth: 1,
+//     borderColor: "#ccc",
+//   },
+//   title: {
+//     fontSize: 18,
+//     fontWeight: "bold",
+//     color: "#333",
+//   },
+//   body: {
+//     marginTop: 5,
+//     fontSize: 16,
+//     color: "#666",
+//   },
+//   inputContainer: {
+//     padding: 16,
+//   },
+//   inputField: {
+//     marginBottom: 10,
+//   },
+//   label: {
+//     fontSize: 16,
+//     marginBottom: 5,
+//     color: "#333",
+//   },
+//   input: {
+//     padding: 10,
+//     backgroundColor: "#fff",
+//     borderRadius: 5,
+//     borderWidth: 1,
+//     borderColor: "#ccc",
+//   },
+//   button: {
+//     padding: 15,
+//     backgroundColor: "#007bff",
+//     borderRadius: 5,
+//     alignItems: "center",
+//   },
+//   buttonText: {
+//     color: "#fff",
+//     fontSize: 16,
+//   },
+// });
 
 export default FAQ;
 

@@ -120,7 +120,7 @@ const Randomizer = () => {
   return (
     <SafeAreaView style={styles.randomizerContainer}>
       {/* Top App Bar */}
-      <View style={styles.topAppBar}>
+      <View style={styles.topAppBarRandomizer}>
         <View style={styles.leadingIcon} />
         <Text style={styles.headline}>Randomizer</Text>
         <View style={styles.leadingIcon} />

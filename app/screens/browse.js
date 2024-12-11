@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import BottomNavBar from "./BottomNavBar"; // Import the BottomNavBar component
+import {styles} from '../assets/styles';
 
 const BrowseScreen = () => {
   const navigation = useNavigation();
@@ -165,7 +166,7 @@ const BrowseScreen = () => {
       <SafeAreaView style={styles.background}>
         <View style={styles.container}>
           {/* Search Bar */}
-          <View style={styles.searchContainer}>
+          <View style={styles.searchContainerBrowse}>
             <TextInput
               style={styles.searchField}
               placeholder="Search"
@@ -205,129 +206,129 @@ const BrowseScreen = () => {
     );
   };
 
-const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    backgroundColor: "#f8f4f4", // Light beige background
-  },
-  container: {
-    flex: 1,
-    padding: 16,
-  },
-  searchContainer: {
-    padding: 10,
-    backgroundColor: "#f8f4f4", // Matching the background color to make it blend in
-    borderBottomWidth: 1,
-    borderColor: "#ddd", // Light gray border
-  },
-  searchField: {
-    backgroundColor: "#f0f0f0", // Light gray background for the search field
-    borderRadius: 25, // Rounded corners
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    fontSize: 16,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 3,
-  },
-  filterContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    marginVertical: 10,
-  },
-  filterButton: {
-    backgroundColor: "#B497BD", // Lavender color
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 25, // Rounded corners
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 3,
-  },
-  filterButtonText: {
-    color: "#fff", // White text
-    fontSize: 16,
-  },
-  listContainer: {
-    paddingTop: 10,
-  },
-  card: {
-    backgroundColor: "#fff", // White background for fragrance cards
-    borderRadius: 10,
-    padding: 15,
-    marginBottom: 10,
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 2,
-    marginHorizontal: 10, // Ensures card spans the whole screen width with margin
-  },
-  cardImage: {
-    width: "100%",
-    height: 150,
-    borderRadius: 10,
-    marginBottom: 10,
-  },
-  cardText: {
-    flex: 1,
-  },
-  fragranceName: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "#333", // Dark gray text for fragrance name
-  },
-  fragranceHouse: {
-    fontSize: 14,
-    color: "#777", // Light gray for fragrance house
-  },
-  fragranceCategory: {
-    fontSize: 14,
-    color: "#333",
-    marginBottom: 2,
-    textAlign: "left",
-  },
-  fragranceStatus: {
-      fontSize: 14,
-      color: "#333",
-      marginBottom: 2,
-      textAlign: "left",
-    },
-  fragrancePrice: {
-    fontSize: 14,
-    color: "#333",
-    textAlign: "left",
-  },
-  noFragrancesContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  noFragrancesText: {
-    fontSize: 18,
-    color: "#333",
-  },
-  favoriteButton: {
-    padding: 10,
-    alignSelf: "flex-start",
-    marginLeft: -10, // Shift the button to the left
-  },
-  favoriteButtonText: {
-    fontSize: 24,
-    color: "#FFD700",
-    textAlign: "left",
-  },
-  statusButton: {
-    padding: 1,
-  },
-  statusButtonText: {
-    fontSize: 18,
-  },
+// const styles = StyleSheet.create({
+//   background: {
+//     flex: 1,
+//     backgroundColor: "#f8f4f4", // Light beige background
+//   },
+//   container: {
+//     flex: 1,
+//     padding: 16,
+//   },
+//   searchContainer: {
+//     padding: 10,
+//     backgroundColor: "#f8f4f4", // Matching the background color to make it blend in
+//     borderBottomWidth: 1,
+//     borderColor: "#ddd", // Light gray border
+//   },
+//   searchField: {
+//     backgroundColor: "#f0f0f0", // Light gray background for the search field
+//     borderRadius: 25, // Rounded corners
+//     paddingVertical: 10,
+//     paddingHorizontal: 20,
+//     fontSize: 16,
+//     shadowColor: "#000",
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.1,
+//     shadowRadius: 5,
+//     elevation: 3,
+//   },
+//   filterContainer: {
+//     flexDirection: "row",
+//     justifyContent: "center",
+//     alignItems: "center",
+//     marginVertical: 10,
+//   },
+//   filterButton: {
+//     backgroundColor: "#B497BD", // Lavender color
+//     paddingVertical: 10,
+//     paddingHorizontal: 20,
+//     borderRadius: 25, // Rounded corners
+//     shadowColor: "#000",
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.1,
+//     shadowRadius: 5,
+//     elevation: 3,
+//   },
+//   filterButtonText: {
+//     color: "#fff", // White text
+//     fontSize: 16,
+//   },
+//   listContainer: {
+//     paddingTop: 10,
+//   },
+//   card: {
+//     backgroundColor: "#fff", // White background for fragrance cards
+//     borderRadius: 10,
+//     padding: 15,
+//     marginBottom: 10,
+//     shadowColor: "#000",
+//     shadowOpacity: 0.1,
+//     shadowRadius: 5,
+//     elevation: 2,
+//     marginHorizontal: 10, // Ensures card spans the whole screen width with margin
+//   },
+//   cardImage: {
+//     width: "100%",
+//     height: 150,
+//     borderRadius: 10,
+//     marginBottom: 10,
+//   },
+//   cardText: {
+//     flex: 1,
+//   },
+//   fragranceName: {
+//     fontSize: 16,
+//     fontWeight: "bold",
+//     color: "#333", // Dark gray text for fragrance name
+//   },
+//   fragranceHouse: {
+//     fontSize: 14,
+//     color: "#777", // Light gray for fragrance house
+//   },
+//   fragranceCategory: {
+//     fontSize: 14,
+//     color: "#333",
+//     marginBottom: 2,
+//     textAlign: "left",
+//   },
+//   fragranceStatus: {
+//       fontSize: 14,
+//       color: "#333",
+//       marginBottom: 2,
+//       textAlign: "left",
+//     },
+//   fragrancePrice: {
+//     fontSize: 14,
+//     color: "#333",
+//     textAlign: "left",
+//   },
+//   noFragrancesContainer: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//   },
+//   noFragrancesText: {
+//     fontSize: 18,
+//     color: "#333",
+//   },
+//   favoriteButton: {
+//     padding: 10,
+//     alignSelf: "flex-start",
+//     marginLeft: -10, // Shift the button to the left
+//   },
+//   favoriteButtonText: {
+//     fontSize: 24,
+//     color: "#FFD700",
+//     textAlign: "left",
+//   },
+//   statusButton: {
+//     padding: 1,
+//   },
+//   statusButtonText: {
+//     fontSize: 18,
+//   },
 
-});
+// });
 
 export default BrowseScreen;

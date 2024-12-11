@@ -11,6 +11,7 @@ import {
   Image,
 } from "react-native";
 import BottomNavBar from "./BottomNavBar"; // Import the BottomNavBar component
+import {styles} from '../assets/styles';
 
 const initialFragrances = [
   { id: 1,
@@ -237,142 +238,142 @@ const MyCollection = () => {
     </SafeAreaView>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#f8f4f4",
-  },
-  content: {
-    flex: 1,
-    padding: 16,
-    alignItems: "center",
-  },
-  header: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#333",
-    marginBottom: 16,
-  },
-  searchContainer: {
-    width: "100%",
-    marginBottom: 16,
-  },
-  searchInput: {
-    height: 40,
-    backgroundColor: "#fff",
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 4,
-    paddingHorizontal: 8,
-  },
-  fragranceList: {
-    width: "100%",
-    marginBottom: 16,
-  },
-  card: {
-    backgroundColor: "#fff",
-    padding: 16,
-    marginBottom: 16,
-    borderRadius: 8,
-    alignItems: "flex-start",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  cardImage: {
-    width: "100%", // Image spans the whole width of the card
-    height: 150,
-    borderRadius: 8,
-    marginBottom: 8,
-  },
-  cardName: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#333",
-    marginBottom: 4,
-    textAlign: "left",
-  },
-  cardBrand: {
-    fontSize: 14,
-    color: "#666",
-    marginBottom: 4,
-    textAlign: "left",
-  },
-  cardStatus: {
-    fontSize: 14,
-    color: "#333",
-    marginBottom: 2,
-    textAlign: "left",
-  },
-  cardCategory: {
-    fontSize: 14,
-    color: "#333",
-    marginBottom: 2,
-    textAlign: "left",
-  },
-  favoriteButton: {
-    padding: 10,
-    alignSelf: "flex-start",
-    marginLeft: -10, // Shift the button to the left
-  },
-  favoriteButtonText: {
-    fontSize: 24,
-    color: "#FFD700",
-    textAlign: "left",
-  },
-  tabs: {
-    flexDirection: "row",
-    marginTop: 16,
-    marginBottom: 16,
-  },
-  tab: {
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    backgroundColor: "#f0f0f0",
-    borderRadius: 8,
-    marginHorizontal: 4,
-  },
-  activeTab: {
-    backgroundColor: "#B497BD", // Lavender
-  },
-  tabText: {
-    fontSize: 16,
-    color: "#333",
-  },
-  activeTabText: {
-    color: "#fff",
-  },
-  bottomFiltersWrapper: {
-    marginTop: 16,
-    marginBottom: 10,
-  },
-  tabsContentContainer: {
-    alignItems: "center",
-  },
-  noFragrancesContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    paddingVertical: 16,
-  },
-  noFragrancesText: {
-    fontSize: 18,
-    color: "#333",
-  },
-  cardPrice: {
-    fontSize: 14,
-    color: "#333",
-    textAlign: "left",
-  },
-  statusButton: {
-    padding: 1,
-  },
-  statusButtonText: {
-    fontSize: 18,
-  },
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#f8f4f4",
+//   },
+//   contentMyCollection: {
+//     flex: 1,
+//     padding: 16,
+//     alignItems: "center",
+//   },
+//   header: {
+//     fontSize: 24,
+//     fontWeight: "bold",
+//     color: "#333",
+//     marginBottom: 16,
+//   },
+//   searchContainer: {
+//     width: "100%",
+//     marginBottom: 16,
+//   },
+//   searchInput: {
+//     height: 40,
+//     backgroundColor: "#fff",
+//     borderWidth: 1,
+//     borderColor: "#ccc",
+//     borderRadius: 4,
+//     paddingHorizontal: 8,
+//   },
+//   fragranceList: {
+//     width: "100%",
+//     marginBottom: 16,
+//   },
+//   card: {
+//     backgroundColor: "#fff",
+//     padding: 16,
+//     marginBottom: 16,
+//     borderRadius: 8,
+//     alignItems: "flex-start",
+//     shadowColor: "#000",
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.1,
+//     shadowRadius: 4,
+//     elevation: 3,
+//   },
+//   cardImage: {
+//     width: "100%", // Image spans the whole width of the card
+//     height: 150,
+//     borderRadius: 8,
+//     marginBottom: 8,
+//   },
+//   cardName: {
+//     fontSize: 18,
+//     fontWeight: "bold",
+//     color: "#333",
+//     marginBottom: 4,
+//     textAlign: "left",
+//   },
+//   cardBrand: {
+//     fontSize: 14,
+//     color: "#666",
+//     marginBottom: 4,
+//     textAlign: "left",
+//   },
+//   cardStatus: {
+//     fontSize: 14,
+//     color: "#333",
+//     marginBottom: 2,
+//     textAlign: "left",
+//   },
+//   cardCategory: {
+//     fontSize: 14,
+//     color: "#333",
+//     marginBottom: 2,
+//     textAlign: "left",
+//   },
+//   favoriteButton: {
+//     padding: 10,
+//     alignSelf: "flex-start",
+//     marginLeft: -10, // Shift the button to the left
+//   },
+//   favoriteButtonText: {
+//     fontSize: 24,
+//     color: "#FFD700",
+//     textAlign: "left",
+//   },
+//   tabs: {
+//     flexDirection: "row",
+//     marginTop: 16,
+//     marginBottom: 16,
+//   },
+//   tab: {
+//     paddingVertical: 8,
+//     paddingHorizontal: 16,
+//     backgroundColor: "#f0f0f0",
+//     borderRadius: 8,
+//     marginHorizontal: 4,
+//   },
+//   activeTab: {
+//     backgroundColor: "#B497BD", // Lavender
+//   },
+//   tabText: {
+//     fontSize: 16,
+//     color: "#333",
+//   },
+//   activeTabText: {
+//     color: "#fff",
+//   },
+//   bottomFiltersWrapper: {
+//     marginTop: 16,
+//     marginBottom: 10,
+//   },
+//   tabsContentContainer: {
+//     alignItems: "center",
+//   },
+//   noFragrancesContainer: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     paddingVertical: 16,
+//   },
+//   noFragrancesText: {
+//     fontSize: 18,
+//     color: "#333",
+//   },
+//   cardPrice: {
+//     fontSize: 14,
+//     color: "#333",
+//     textAlign: "left",
+//   },
+//   statusButton: {
+//     padding: 1,
+//   },
+//   statusButtonText: {
+//     fontSize: 18,
+//   },
 
-});
+// });
 
 export default MyCollection;

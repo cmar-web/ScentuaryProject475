@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import {styles} from '../assets/styles';
 
 const BottomNavBar = () => {
   const navigation = useNavigation();
@@ -35,25 +36,25 @@ const BottomNavBar = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  navBar: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-    height: 60,
-    backgroundColor: "rgba(241, 241, 241, 1)", // Explicit light grey
-    borderTopWidth: 1,
-    borderColor: "#ddd", // Light grey border
-  },
-  navItem: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  navText: {
-    fontSize: 16,
-    color: "#333", // Dark grey text
-  },
-});
+// const styles = StyleSheet.create({
+//   navBar: {
+//     flexDirection: "row",
+//     justifyContent: "space-around",
+//     alignItems: "center",
+//     height: 60,
+//     backgroundColor: "rgba(241, 241, 241, 1)", // Explicit light grey
+//     borderTopWidth: 1,
+//     borderColor: "#ddd", // Light grey border
+//   },
+//   navItem: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//   },
+//   navText: {
+//     fontSize: 16,
+//     color: "#333", // Dark grey text
+//   },
+// });
 
 export default BottomNavBar;
