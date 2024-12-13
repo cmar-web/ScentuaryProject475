@@ -1,24 +1,36 @@
-import React from "react";
-import { View, Text, StyleSheet, SafeAreaView, Image, FlatList } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, StyleSheet, SafeAreaView, Image, FlatList, ActivityIndicator } from "react-native";
 import BottomNavBar from "./BottomNavBar";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import {styles} from '../assets/styles';
+import { styles } from '../assets/styles';
+import { getDupesById } from '../../FragranceFinderAPI.js'; // Add this import for the API function
 
 const Dupes = () => {
   const navigation = useNavigation();
   const route = useRoute();
-  const { name, brand, image, topNotes = [], middleNotes = [], bottomNotes = [], category } = route.params;
+  const { name, brand, image, topNotes = [], middleNotes = [], bottomNotes = [], category, objectID } = route.params;
 
-  // The scent you are trying to duplicate
-  const scent = { id: "0", imageURI: image };
+  const [dupesList, setDupesList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  // The list of similar scents that come back, will be modified when we connect API/DB to it
-  const dupesList = [
-    { id: "1", imageURI: "https://www.sephora.com/productimages/sku/s513168-main-zoom.jpg"},
-    { id: "2", imageURI: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6O7wFscCNH5k9cg52cfyjOFBMnPbUm9JpSQ&s" },
-    { id: "3", imageURI: "https://i5.walmartimages.com/seo/Ariana-Grande-Sweet-Like-Candy-Eau-de-Parfum-Perfume-for-Women-1-Oz_6e8a4fdb-601f-42e5-86b0-0ed64fb1412a.28b228882edbbd27cf7d851dad8ec0df.jpeg"},
-    { id: "4", imageURI: "https://theperfumeworld.co.uk/cdn/shop/files/sauvage_homepage_tile_684x684_b8c47959-3a78-4638-98e8-06fc2f4fbaf3.webp?v=1679670504&width=1500" },
-  ];
+  useEffect(() => {
+    if (objectID) {
+      fetchDupes(objectID); // Fetch duplicates when objectID is available
+    }
+  }, [objectID]);
+
+  const fetchDupes = async (id) => {
+    setLoading(true);
+    try {
+      // Assuming `getDupesById` makes the API call for duplicate fragrances
+      const response = await handleFindDupe(id);
+      setDupesList(response || []); // If no duplicates are found, set an empty array
+    } catch (error) {
+      console.error("Error fetching duplicates:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -27,7 +39,7 @@ const Dupes = () => {
 
         {/* Card for the Scent to dupe */}
         <View style={styles.scentCard}>
-          <Image style={styles.scentImage} source={{uri: scent.imageURI}} />
+          <Image style={styles.scentImage} source={{ uri: image }} />
           <View style={styles.scentDetails}>
             <Text style={styles.brand}>{brand}</Text>
             <Text style={styles.name}>{name}</Text>
@@ -43,19 +55,23 @@ const Dupes = () => {
         <View>
           <Text style={styles.subheader}>Dupes Found</Text>
 
-          {/* Generate all the related scents that come back */}
-          <FlatList
-            data={dupesList}
-            renderItem={({item}) => (
-              <View style={styles.gridCard}>
-                <Image style={styles.dupeImage} source={{uri: item.imageURI}} />
-              </View>
-            )}
-            keyExtractor={(item) => item.id}
-            numColumns={2}
-            key={2} // Force fresh render by changing key prop
-            contentContainerStyle={styles.listContainer}
-          />
+          {/* If loading, show a spinner */}
+          {loading ? (
+            <ActivityIndicator size="large" color="#0000ff" style={styles.loader} />
+          ) : (
+            <FlatList
+              data={dupesList}
+              renderItem={({ item }) => (
+                <View style={styles.gridCard}>
+                  <Image style={styles.dupeImage} source={{ uri: item.imageURI }} />
+                </View>
+              )}
+              keyExtractor={(item) => item.id.toString()}
+              numColumns={2}
+              key={2} // Force fresh render by changing key prop
+              contentContainerStyle={styles.listContainer}
+            />
+          )}
         </View>
       </View>
 
@@ -64,6 +80,7 @@ const Dupes = () => {
     </SafeAreaView>
   );
 };
+
 
 // const styles = StyleSheet.create({
 //   container: {
