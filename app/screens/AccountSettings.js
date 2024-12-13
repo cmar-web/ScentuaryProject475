@@ -346,13 +346,13 @@ const AccountSettings = () => {
                   Are you sure you want to cancel your {currentSubscription} subscription?
                 </Text>
                 <TouchableOpacity
-                  style={styles.submitButton}
+                  style={[styles.submitButton, { backgroundColor: "#B497BD" }]} // Updated background color
                   onPress={handleCancelSubscription}
                 >
                   <Text style={styles.submitButtonText}>Yes, Cancel Subscription</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                  style={styles.submitButton}
+                  style={[styles.submitButton, { backgroundColor: "#B497BD" }]} // Updated background color
                   onPress={() => setModalVisible(false)}
                 >
                   <Text style={styles.submitButtonText}>No, Keep Subscription</Text>
