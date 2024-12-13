@@ -234,7 +234,7 @@ export const styles = ReactNative.StyleSheet.create({
     //     marginVertical: 20,
     // },
     buttonContainer: {
-        backgroundColor: "#945493",
+        backgroundColor: "#B497BD",
         justifyContent: 'center',
         marginBottom: 5,
         marginTop: 45,
