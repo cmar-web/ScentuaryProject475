@@ -36,7 +36,7 @@ const FAQ = () => {
         </View>
 
         {/* Main Content */}
-        <View style={styles.contentFAQ}>
+        <View style={styles.content}>
           <Text style={styles.headerFAQ}>Commonly Asked Questions:</Text>
           <ScrollView style={styles.accordion}>
             {questions.map((item, index) => (

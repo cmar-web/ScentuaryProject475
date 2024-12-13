@@ -195,29 +195,29 @@ const AccountSettings = () => {
         <Text style={styles.sectionHeader}>Account Information</Text>
         <View style={styles.section}>
           <TouchableOpacity style={styles.buttonAccountSettings} onPress={() => openModal("Change Username")}>
-            <Text style={styles.buttonText}>Change Username</Text>
+            <Text style={styles.lightBackgroundButtonText}>Change Username</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonAccountSettings} onPress={() => openModal("Change Password")}>
-            <Text style={styles.buttonText}>Change Password</Text>
+            <Text style={styles.lightBackgroundButtonText}>Change Password</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonAccountSettings} onPress={() => openModal("Change Email")}>
-            <Text style={styles.buttonText}>Change Email</Text>
+            <Text style={styles.lightBackgroundButtonText}>Change Email</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonAccountSettings} onPress={() => openModal("Cancel Subscription")}>
-            <Text style={styles.buttonText}>Cancel Subscription</Text>
+            <Text style={styles.lightBackgroundButtonText}>Cancel Subscription</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonAccountSettings} onPress={() => openModal("Delete Account")}>
-            <Text style={styles.buttonText}>Delete Account</Text>
+            <Text style={styles.lightBackgroundButtonText}>Delete Account</Text>
           </TouchableOpacity>
         </View>
 
         <Text style={styles.sectionHeader}>App Customization</Text>
         <View style={styles.section}>
           <TouchableOpacity style={styles.buttonAccountSettings} onPress={() => openModal("Notifications")}>
-            <Text style={styles.buttonText}>Notifications</Text>
+            <Text style={styles.lightBackgroundButtonText}>Notifications</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonAccountSettings} onPress={() => openModal("App Theme")}>
-            <Text style={styles.buttonText}>App Theme</Text>
+            <Text style={styles.lightBackgroundButtonText}>App Theme</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -314,5 +314,160 @@ const AccountSettings = () => {
     </SafeAreaView>
   );
 };
+
+
+
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#f8f4f4",
+//   },
+//   content: {
+//     flex: 1,
+//     padding: 16,
+//     alignItems: "center",
+//   },
+//   header: {
+//     fontSize: 24,
+//     fontWeight: "bold",
+//     color: "#333",
+//     marginBottom: 16,
+//   },
+//   sectionHeader: {
+//     fontSize: 20,
+//     fontWeight: "bold",
+//     color: "#444",
+//     marginVertical: 10,
+//     alignSelf: "flex-start",
+//   },
+//   section: {
+//     marginBottom: 20,
+//     width: "100%",
+//   },
+//   buttonAccountSettings: {
+//     backgroundColor: "#fff",
+//     padding: 16,
+//     marginBottom: 10,
+//     borderRadius: 8,
+//     alignItems: "center",
+//     shadowColor: "#000",
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.1,
+//     shadowRadius: 4,
+//     elevation: 3,
+//   },
+//   lightBackgroundButtonText: {
+//     fontSize: 18,
+//     fontWeight: "bold",
+//     color: "#333",
+//   },
+//   modalBackground: {
+//     flex: 1,
+//     justifyContent: "center",
+//     alignItems: "center",
+//     backgroundColor: "rgba(0,0,0,0.5)",
+//   },
+//   modalView: {
+//     width: "80%",
+//     backgroundColor: "#fff",
+//     padding: 20,
+//     borderRadius: 10,
+//     alignItems: "center",
+//     shadowColor: "#000",
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.25,
+//     shadowRadius: 4,
+//     elevation: 5,
+//     position: "relative", // To position the close icon
+//   },
+//   closeIcon: {
+//     position: "absolute",
+//     top: 10,
+//     right: 10,
+//   },
+//   modalText: {
+//     fontSize: 20,
+//     color: "#333",
+//     marginBottom: 20,
+//   },
+//   inputContainer: {
+//     width: "100%",
+//   },
+//   input: {
+//     backgroundColor: "#fff",
+//     color: "#000",
+//     padding: 10,
+//     marginBottom: 10,
+//     borderRadius: 5,
+//     borderWidth: 1,
+//     borderColor: "#ccc",
+//     fontSize: 16,
+//     width: "100%",  // Span the width of the container
+//   },
+//   submitButton: {
+//     backgroundColor: "#2196F3",
+//     padding: 10,
+//     borderRadius: 5,
+//     alignItems: "center",
+//     marginVertical: 5,
+//     width: "100%",  // Span the width of the container
+//   },
+//   yesButton: {
+//     backgroundColor: "#ff4f4f",
+//     padding: 10,
+//     borderRadius: 5,
+//     alignItems: "center",
+//     marginVertical: 5,
+//     width: "100%",
+//   },
+//   noButton: {
+//     backgroundColor: "#2196F3",
+//     padding: 10,
+//     borderRadius: 5,
+//     alignItems: "center",
+//     marginVertical: 5,
+//     width: "100%",
+//   },
+//   submitButtonText: {
+//     color: "#fff",
+//     fontSize: 18,
+//   },
+//   switchContainer: {
+//     flexDirection: "row",
+//     justifyContent: "space-between",
+//     alignItems: "center",
+//     marginVertical: 10,
+//   },
+//   switchText: {
+//     fontSize: 18,
+//     color: "#333",
+//   },
+//   optionButton: {
+//     flexDirection: "row",
+//     justifyContent: "space-between",
+//     alignItems: "center",
+//     backgroundColor: "#fff",
+//     padding: 16,
+//     marginBottom: 10,
+//     borderRadius: 8,
+//     shadowColor: "#000",
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.1,
+//     shadowRadius: 4,
+//     elevation: 3,
+//     width: "100%",  // Span the width of the container
+//   },
+//   optionButtonText: {
+//     fontSize: 18,
+//     color: "#333",
+//   },
+//   selectedOptionButton: {
+//     backgroundColor: "#2196F3",
+//   },
+//   selectedOptionButtonText: {
+//     color: "#fff",
+//   },
+// });
 
 export default AccountSettings;

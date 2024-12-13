@@ -56,6 +56,140 @@ export const styles = ReactNative.StyleSheet.create({
     activeTabText: {
       color: "#fff",
     },
+    card: {
+      backgroundColor: "#fff",
+      padding: 16,
+      marginBottom: 16,
+      borderRadius: 8,
+      alignItems: "flex-start",
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 4,
+      elevation: 3,
+    },
+    cardImage: {
+      width: "100%",
+      height: 150,
+      borderRadius: 10,
+      marginBottom: 10,
+    },
+    noFragrancesContainer: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      paddingVertical: 16,
+    },
+    noFragrancesText: {
+      fontSize: 18,
+      color: "#333",
+    },
+    favoriteButton: {
+      padding: 10,
+      alignSelf: "flex-start",
+      marginLeft: -10, // Shift the button to the left
+    },
+    favoriteButtonText: {
+      fontSize: 24,
+      color: "#FFD700",
+      textAlign: "left",
+    },
+    sectionHeader: {
+      fontSize: 20,
+      fontWeight: "bold",
+      color: "#444",
+      marginVertical: 10,
+      alignSelf: "flex-start",
+    },
+    section: {
+      marginBottom: 20,
+      width: "100%",
+    },
+    buttonText: {
+      fontSize: 18,
+      fontWeight: "bold",
+      color: "#fff",
+    },
+    modalBackground: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "rgba(0,0,0,0.5)",
+    },
+    modalView: {
+      width: "80%",
+      backgroundColor: "#fff",
+      padding: 20,
+      borderRadius: 10,
+      alignItems: "center",
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.25,
+      shadowRadius: 4,
+      elevation: 5,
+      position: "relative", // To position the close icon
+    },
+    closeIcon: {
+      position: "absolute",
+      top: 10,
+      right: 10,
+    },
+    modalText: {
+      fontSize: 20,
+      color: "#333",
+      marginBottom: 20,
+    },
+    inputContainer: {
+      width: "100%",
+    },
+    submitButton: {
+      backgroundColor: "#2196F3",
+      padding: 10,
+      borderRadius: 5,
+      alignItems: "center",
+      marginVertical: 5,
+      width: "100%",  // Span the width of the container
+    },
+    submitButtonText: {
+      color: "#fff",
+      fontSize: 18,
+    },
+    switchContainer: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginVertical: 10,
+    },
+    switchText: {
+      fontSize: 18,
+      color: "#333",
+    },
+    optionButton: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      backgroundColor: "#fff",
+      padding: 16,
+      marginBottom: 10,
+      borderRadius: 8,
+      shadowColor: "#000",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 4,
+      elevation: 3,
+      width: "100%",  // Span the width of the container
+    },
+    optionButtonText: {
+      fontSize: 18,
+      color: "#333",
+    },
+    selectedOptionButton: {
+      backgroundColor: "#2196F3",
+    },
+    selectedOptionButtonText: {
+      color: "#fff",
+    },
+
   
     //Welcome and login/resigster screens css/////////////////////////////////////////////////////////////////
   
@@ -325,13 +459,9 @@ export const styles = ReactNative.StyleSheet.create({
 
     },
 
-    buttonText: {
-        color: "#fff", // White text
-        fontSize: 16,
-        fontWeight: "bold",
-    },
+    
 
-    //Stopped combining css here for now, need a break and to talk this over with group
+    
 
     //commented out to not override above css, may be needed for fixing UI if somehting found to be broken
     // header: {
@@ -404,23 +534,19 @@ export const styles = ReactNative.StyleSheet.create({
     listContainer: {
       paddingTop: 10,
     },
-    card: {
-      backgroundColor: "#fff", // White background for fragrance cards
-      borderRadius: 10,
-      padding: 15,
-      marginBottom: 10,
-      shadowColor: "#000",
-      shadowOpacity: 0.1,
-      shadowRadius: 5,
-      elevation: 2,
-      marginHorizontal: 10, // Ensures card spans the whole screen width with margin
-    },
-    cardImage: {
-      width: "100%",
-      height: 150,
-      borderRadius: 10,
-      marginBottom: 10,
-    },
+    //commented out in case there are errors
+    // card: {
+    //   backgroundColor: "#fff", // White background for fragrance cards
+    //   borderRadius: 10,
+    //   padding: 15,
+    //   marginBottom: 10,
+    //   shadowColor: "#000",
+    //   shadowOpacity: 0.1,
+    //   shadowRadius: 5,
+    //   elevation: 2,
+    //   marginHorizontal: 10, // Ensures card spans the whole screen width with margin
+    // },
+    
     cardText: {
       flex: 1,
     },
@@ -450,25 +576,8 @@ export const styles = ReactNative.StyleSheet.create({
       color: "#333",
       textAlign: "left",
     },
-    noFragrancesContainer: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    noFragrancesText: {
-      fontSize: 18,
-      color: "#333",
-    },
-    favoriteButton: {
-      padding: 10,
-      alignSelf: "flex-start",
-      marginLeft: -10, // Shift the button to the left
-    },
-    favoriteButtonText: {
-      fontSize: 24,
-      color: "#FFD700",
-      textAlign: "left",
-    },
+    
+    
     
     
     // css for the dupes page/////////////////////////////////////////////////////////////////////////////////////////////////
@@ -545,17 +654,7 @@ export const styles = ReactNative.StyleSheet.create({
     },
     // AccountSettings screen css/////////////////////////////////////////////////////////////////////////////
     
-    sectionHeader: {
-      fontSize: 20,
-      fontWeight: "bold",
-      color: "#444",
-      marginVertical: 10,
-      alignSelf: "flex-start",
-    },
-    section: {
-      marginBottom: 20,
-      width: "100%",
-    },
+    
     buttonAccountSettings: {
       backgroundColor: "#fff",
       padding: 16,
@@ -568,43 +667,11 @@ export const styles = ReactNative.StyleSheet.create({
       shadowRadius: 4,
       elevation: 3,
     },
-    buttonText: {
-      fontSize: 18,
-      fontWeight: "bold",
-      color: "#333",
-    },
-    modalBackground: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "rgba(0,0,0,0.5)",
-    },
-    modalView: {
-      width: "80%",
-      backgroundColor: "#fff",
-      padding: 20,
-      borderRadius: 10,
-      alignItems: "center",
-      shadowColor: "#000",
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.25,
-      shadowRadius: 4,
-      elevation: 5,
-      position: "relative", // To position the close icon
-    },
-    closeIcon: {
-      position: "absolute",
-      top: 10,
-      right: 10,
-    },
-    modalText: {
-      fontSize: 20,
-      color: "#333",
-      marginBottom: 20,
-    },
-    inputContainer: {
-      width: "100%",
-    },
+    
+    
+    
+    
+    
     input: {
       backgroundColor: "#fff",
       color: "#000",
@@ -616,14 +683,7 @@ export const styles = ReactNative.StyleSheet.create({
       fontSize: 16,
       width: "100%",  // Span the width of the container
     },
-    submitButton: {
-      backgroundColor: "#2196F3",
-      padding: 10,
-      borderRadius: 5,
-      alignItems: "center",
-      marginVertical: 5,
-      width: "100%",  // Span the width of the container
-    },
+    
     yesButton: {
       backgroundColor: "#ff4f4f",
       padding: 10,
@@ -640,45 +700,9 @@ export const styles = ReactNative.StyleSheet.create({
       marginVertical: 5,
       width: "100%",
     },
-    submitButtonText: {
-      color: "#fff",
-      fontSize: 18,
-    },
-    switchContainer: {
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems: "center",
-      marginVertical: 10,
-    },
-    switchText: {
-      fontSize: 18,
-      color: "#333",
-    },
-    optionButton: {
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems: "center",
-      backgroundColor: "#fff",
-      padding: 16,
-      marginBottom: 10,
-      borderRadius: 8,
-      shadowColor: "#000",
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.1,
-      shadowRadius: 4,
-      elevation: 3,
-      width: "100%",  // Span the width of the container
-    },
-    optionButtonText: {
-      fontSize: 18,
-      color: "#333",
-    },
-    selectedOptionButton: {
-      backgroundColor: "#2196F3",
-    },
-    selectedOptionButtonText: {
-      color: "#fff",
-    },
+    
+    
+    
     
     // App Settings Screen css/////////////////////////////////////////////////////////////////////////////////
     appSettingsContainer: {
@@ -705,11 +729,12 @@ export const styles = ReactNative.StyleSheet.create({
     timeWrapper: {
       paddingLeft: 16,
     },
-    time: {
-      fontSize: 17,
-      fontWeight: '600',
-      color: "#000",
-    },
+    //is overriden in other css need to see if there is an error but I am not familiar with the screen. for bug fixes
+    // time: {
+    //   fontSize: 17,
+    //   fontWeight: '600',
+    //   color: "#000",
+    // },
     dynamicIslandSpacer: {
       width: 124,
       height: 10,
@@ -754,31 +779,32 @@ export const styles = ReactNative.StyleSheet.create({
       left: '50%',
       top: '15%',
     },
-    topAppBar: {
-      backgroundColor: '#d0bcff',
-      height: 69,
-      borderRadius: 10,
-      paddingHorizontal: 8,
-      paddingVertical: 6,
-      alignItems: 'center',
-      marginTop: 53,
-    },
-    leadingIcon: {
-      width: 48,
-      height: 48,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
+    //currently overriden, need to see if it affects screen
+    // topAppBar: {
+    //   backgroundColor: '#d0bcff',
+    //   height: 69,
+    //   borderRadius: 10,
+    //   paddingHorizontal: 8,
+    //   paddingVertical: 6,
+    //   alignItems: 'center',
+    //   marginTop: 53,
+    // },
+    // leadingIcon: {
+    //   width: 48,
+    //   height: 48,
+    //   justifyContent: 'center',
+    //   alignItems: 'center',
+    // },
     icon: {
       width: 24,
       height: 24,
     },
-    headline: {
-      fontSize: 22,
-      color: "#676767",
-      textAlign: "center",
-      flex: 1,
-    },
+    // headline: {
+    //   fontSize: 22,
+    //   color: "#676767",
+    //   textAlign: "center",
+    //   flex: 1,
+    // },
     genericAvatar: {
       width: 40,
       height: 40,
@@ -803,10 +829,11 @@ export const styles = ReactNative.StyleSheet.create({
       flex: 1,
       alignItems: 'center',
     },
-    label: {
-      fontSize: 12,
-      color: "#999",
-    },
+    //is overriden elsewhere
+    // label: {
+    //   fontSize: 12,
+    //   color: "#999",
+    // },
     iconRow: {
       flexDirection: 'row',
       justifyContent: 'space-around',
@@ -863,10 +890,11 @@ export const styles = ReactNative.StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
   },
-  contentFAQ: {
-    flex: 1,
-    padding: 16,
-  },
+  // contentFAQ: {
+  //   flex: 1,
+  //   padding: 16,
+  // },
+  //unique bc it has the underline
   headerFAQ: {
     fontSize: 24,
     fontWeight: "bold",
@@ -895,9 +923,9 @@ export const styles = ReactNative.StyleSheet.create({
     fontSize: 16,
     color: "#666",
   },
-  inputContainer: {
-    padding: 16,
-  },
+  // inputContainer: {
+  //   padding: 16,
+  // },
   inputField: {
     marginBottom: 10,
   },
@@ -919,10 +947,7 @@ export const styles = ReactNative.StyleSheet.create({
     borderRadius: 5,
     alignItems: "center",
   },
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
-  },
+  
 
   //fragrance view screen css ////////////////////////////////////////////////////////////////////////////////////////////
   //Coming back to this one, the css is a little weird with this one
@@ -930,17 +955,6 @@ export const styles = ReactNative.StyleSheet.create({
 
   //Privacy and security///////////////////////////////////////////////////////////////////////////////////////////////////
   
-  sectionHeader: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#444",
-    marginVertical: 10,
-    alignSelf: "flex-start",
-  },
-  section: {
-    marginBottom: 20,
-    width: "100%",
-  },
   buttonPrivacyAndSecurity: {
     backgroundColor: "#fff",
     padding: 16,
@@ -953,43 +967,14 @@ export const styles = ReactNative.StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
-  buttonText: {
+  lightBackgroundButtonText: {
     fontSize: 18,
     fontWeight: "bold",
     color: "#333",
   },
-  modalBackground: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "rgba(0,0,0,0.5)",
-  },
-  modalView: {
-    width: "80%",
-    backgroundColor: "#fff",
-    padding: 20,
-    borderRadius: 10,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-    position: "relative",
-  },
-  closeIcon: {
-    position: "absolute",
-    top: 10,
-    right: 10,
-  },
-  modalText: {
-    fontSize: 20,
-    color: "#333",
-    marginBottom: 20,
-  },
-  inputContainer: {
-    width: "100%",
-  },
+
+  
+  
   input: {
     backgroundColor: "#fff",
     color: "#000",
@@ -1001,53 +986,10 @@ export const styles = ReactNative.StyleSheet.create({
     fontSize: 16,
     width: "100%",
   },
-  submitButton: {
-    backgroundColor: "#2196F3",
-    padding: 10,
-    borderRadius: 5,
-    alignItems: "center",
-    marginVertical: 5,
-    width: "100%",
-  },
-  submitButtonText: {
-    color: "#fff",
-    fontSize: 18,
-  },
-  switchContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginVertical: 10,
-  },
-  switchText: {
-    fontSize: 18,
-    color: "#333",
-  },
-  optionButton: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: "#fff",
-    padding: 16,
-    marginBottom: 10,
-    borderRadius: 8,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-    width: "100%",
-  },
-  optionButtonText: {
-    fontSize: 18,
-    color: "#333",
-  },
-  selectedOptionButton: {
-    backgroundColor: "#2196F3",
-  },
-  selectedOptionButtonText: {
-    color: "#fff",
-  },
+  
+  
+  
+  
 
   //Mycollection screen css /////////////////////////////////////////////////////////////////////////////////////
   
@@ -1067,24 +1009,8 @@ export const styles = ReactNative.StyleSheet.create({
     width: "100%",
     marginBottom: 16,
   },
-  card: {
-    backgroundColor: "#fff",
-    padding: 16,
-    marginBottom: 16,
-    borderRadius: 8,
-    alignItems: "flex-start",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  cardImage: {
-    width: "100%", // Image spans the whole width of the card
-    height: 150,
-    borderRadius: 8,
-    marginBottom: 8,
-  },
+  
+  
   cardName: {
     fontSize: 18,
     fontWeight: "bold",
@@ -1110,16 +1036,7 @@ export const styles = ReactNative.StyleSheet.create({
     marginBottom: 2,
     textAlign: "left",
   },
-  favoriteButton: {
-    padding: 10,
-    alignSelf: "flex-start",
-    marginLeft: -10, // Shift the button to the left
-  },
-  favoriteButtonText: {
-    fontSize: 24,
-    color: "#FFD700",
-    textAlign: "left",
-  },
+  
   tabs: {
     flexDirection: "row",
     marginTop: 16,
@@ -1132,16 +1049,7 @@ export const styles = ReactNative.StyleSheet.create({
     marginTop: 16,
     marginBottom: 10,
   },
-  noFragrancesContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    paddingVertical: 16,
-  },
-  noFragrancesText: {
-    fontSize: 18,
-    color: "#333",
-  },
+  
   cardPrice: {
     fontSize: 14,
     color: "#333",

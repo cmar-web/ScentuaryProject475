@@ -225,7 +225,7 @@ const Settings = () => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.settingsNavButtons}
-            onPress={() => navigation.navigate("SubscriptionAndBilling")}
+            onPress={() => navigation.navigate("Subscriptions")}
           >
             <Text style={styles.buttonText}>Subscription and Billing</Text>
           </TouchableOpacity>
