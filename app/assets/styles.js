@@ -195,7 +195,7 @@ export const styles = ReactNative.StyleSheet.create({
   
     backgroundWelcome: {
         flex: 1,
-        backgroundColor: '#e3bccc',
+        backgroundColor: "#f8f4f4",
         justifyContent: "center",
         alignItems: "center",
         paddingTop: 90,
@@ -207,9 +207,16 @@ export const styles = ReactNative.StyleSheet.create({
     },
 
     welcomeText: {
-        fontSize: 20,
-        fontWeight: 10,
+        fontSize: 40,
+        fontWeight: 15,
         color: 'white',
+    },
+
+    welcomeButtonText: {
+        fontSize: 20,
+        fontWeight: 15,
+        color: 'white',
+        textAlign: 'center',
     },
 
     logoContainer: {
@@ -421,7 +428,7 @@ export const styles = ReactNative.StyleSheet.create({
     // Settings screen css //////////////////////////////////////////////////////////////////////////////////////////////
     settingsBackground: {
         flex: 1,
-        backgroundColor: '#e3bccc',
+        backgroundColor: "#f8f4f4",
         alignItems: "flex-start",
 
     },
@@ -442,15 +449,16 @@ export const styles = ReactNative.StyleSheet.create({
     },
 
     button: {
-        backgroundColor: "#945493",
-        paddingHorizontal: 12,
+        backgroundColor: "#B497BD",
+        paddingHorizontal: 25,
         paddingVertical: 8,
         borderRadius: 5,
         marginBottom: 10,
+        marginHorizontal: 5,
     },
 
     settingsNavButtons: {
-        backgroundColor: "#945493",
+        backgroundColor: "#B497BD",
         marginBottom: 5,
         borderRadius: 5,
         paddingHorizontal: 25,

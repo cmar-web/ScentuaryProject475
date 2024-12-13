@@ -190,7 +190,7 @@ const Settings = () => {
             source={
               profileImage
                 ? { uri: profileImage }
-                : defaultImage // Use default image if no profile image
+                : defaultImage //Use the default image if no profile image
             }
             style={styles.profileImage}
             resizeMode="cover"
