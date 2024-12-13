@@ -1,66 +1,185 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, SafeAreaView, TouchableOpacity, Modal, TextInput, Switch, StyleSheet } from "react-native";
+import { View, Text, SafeAreaView, TouchableOpacity, Modal, TextInput, Switch } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import BottomNavBar from "./BottomNavBar";
-import * as Notifications from 'expo-notifications';
-import { registerForPushNotificationsAsync } from './notificationHandler'; // Import the updated handler
-import {styles} from '../assets/styles';
+import { styles } from '../assets/styles';
+import { auth, db } from '../../firebase/firebase';
+import { query, where, collection, getDocs, doc, updateDoc, deleteDoc } from "firebase/firestore";
+import { sendEmailVerification, deleteUser, updateEmail, reauthenticateWithCredential, EmailAuthProvider, updatePassword } from "firebase/auth";
 
 const AccountSettings = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalContent, setModalContent] = useState("");
   const [currentInput, setCurrentInput] = useState("");
   const [newInput, setNewInput] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newEmail, setNewEmail] = useState("")
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
   const [theme, setTheme] = useState("Light");
+  const [docId, setDocId] = useState(null);
 
   useEffect(() => {
-    const notificationListener = Notifications.addNotificationReceivedListener(notification => {
-      console.log(notification);
-    });
+    const currentUser = auth.currentUser;
 
-    const responseListener = Notifications.addNotificationResponseReceivedListener(response => {
-      console.log(response);
-    });
-
-    return () => {
-      Notifications.removeNotificationSubscription(notificationListener);
-      Notifications.removeNotificationSubscription(responseListener);
-    };
+    if (currentUser) {
+      fetchUserDocId(currentUser.uid);
+    }
   }, []);
+
+  const fetchUserDocId = async (uid) => {
+    try {
+      const q = query(collection(db, "users"), where("uid", "==", uid));
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        const docRef = querySnapshot.docs[0];
+        setDocId(docRef.id); //set doc id
+      } else {
+        alert("User document not found.");
+      }
+    } catch (error) {
+      console.error("Error fetching user document:", error);
+      alert("An error occurred while fetching user information.");
+    }
+  };
 
   const openModal = (content) => {
     setModalContent(content);
     setModalVisible(true);
   };
 
-  const handleSubmit = () => {
-    alert(`${modalContent} has been updated!`);
-    setModalVisible(false);
+  const handleChangeUsername = async () => {
+    if (!docId) {
+      alert("User document not found.");
+      return;
+    }
+
+    if (!newInput.trim()) {
+      alert("New username cannot be empty.");
+      return;
+    }
+
+    try {
+      const userDocRef = doc(db, "users", docId);
+
+      //update the username field in firebase
+      await updateDoc(userDocRef, {
+        username: newInput.trim(),
+      });
+
+      alert("Username updated successfully!");
+      setModalVisible(false);
+    } catch (error) {
+      console.error("Error changing username:", error);
+      alert("An error occurred while changing the username.");
+    }
   };
 
-  const handleDeleteAccount = () => {
-    alert("Your account has been deleted.");
-    setModalVisible(false);
+  const handleChangePassword = async () => {
+    if (!oldPassword.trim() || !newPassword.trim()) {
+      alert("Both previous and new password are needed.");
+      return;
+    }
+
+    try {
+      const user = auth.currentUser;
+      if (!user) {
+        alert("No user is logged in.");
+        return;
+      }
+
+      //reauthenticate with old
+      const credential = EmailAuthProvider.credential(user.email, oldPassword);
+      await reauthenticateWithCredential(user, credential);
+
+      //update the password
+      await updatePassword(user, newPassword);
+      alert("Password updated successfully!");
+      setModalVisible(false);
+    } catch (error) {
+      console.error("Error changing password:", error);
+      alert("Failed to change password: " + error.message);
+    }
   };
 
-  const handleCancelSubscription = () => {
-    alert("Your subscription has been canceled.");
-    setModalVisible(false);
-  };
+  const handleChangeEmail = async() => {
+    if (!currentPassword.trim() || !newEmail.trim()) {
+          alert("Both current password and new email are required.");
+          return;
+        }
+
+    try {
+          const user = auth.currentUser;
+          if (!user) {
+            alert("No user is logged in.");
+            return;
+          }
+
+          //check for if the email is verified
+          if (!user.emailVerified) {
+            alert("Please verify your email before changing it.");
+            await sendEmailVerification(user);
+            alert("A verification email has been sent to your current email address.");
+            return;
+          }
+
+          //reauthenticate with the user's current password
+          const credential = EmailAuthProvider.credential(user.email, currentPassword);
+          await reauthenticateWithCredential(user, credential);
+
+          //update the email
+          await updateEmail(user, newEmail.trim());
+          alert("Email updated successfully!");
+          setModalVisible(false);
+        } catch (error) {
+          console.error("Error changing email:", error);
+          alert("Failed to change email: " + error.message);
+        }
+      };
+
+  const handleDeleteAccount = async () => {
+      if (!currentPassword.trim()) {
+        alert("Password is required to delete the account.");
+        return;
+      }
+
+      try {
+        const user = auth.currentUser;
+        if (!user) {
+          alert("No user is logged in.");
+          return;
+        }
+
+        //reauthenticate the user with their current password
+        const credential = EmailAuthProvider.credential(user.email, currentPassword);
+        await reauthenticateWithCredential(user, credential);
+
+        //if doc exists, delete it
+        if (docId) {
+          await deleteDoc(doc(db, "users", docId));
+        }
+
+        //delete the user in the authentification
+        await deleteUser(user);
+
+        alert("Your account has been successfully deleted.");
+        setModalVisible(false);
+      } catch (error) {
+        console.error("Error deleting account:", error);
+        alert("Failed to delete account: " + error.message);
+      }
+    };
 
   const toggleNotifications = async () => {
     const newValue = !notificationsEnabled;
     setNotificationsEnabled(newValue);
 
     if (newValue) {
-      const token = await registerForPushNotificationsAsync();
-      if (!token) {
-        alert('Since you previously disabled notifications, please enable notifications in your device settings.');
-        setNotificationsEnabled(false); // Reset switch if there was an error
-      }
+      alert("Notifications have been enabled.");
     } else {
-      alert('Notifications have been disabled.');
+      alert("Notifications have been disabled.");
     }
   };
 
@@ -112,15 +231,9 @@ const AccountSettings = () => {
               <Ionicons name="close" size={24} color="#333" />
             </TouchableOpacity>
             <Text style={styles.modalText}>{modalContent}</Text>
+
             {modalContent === "Change Username" && (
               <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.input}
-                  placeholder="Current Username"
-                  placeholderTextColor="#888"
-                  value={currentInput}
-                  onChangeText={setCurrentInput}
-                />
                 <TextInput
                   style={styles.input}
                   placeholder="New Username"
@@ -128,103 +241,72 @@ const AccountSettings = () => {
                   value={newInput}
                   onChangeText={setNewInput}
                 />
-                <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
+                <TouchableOpacity style={styles.submitButton} onPress={handleChangeUsername}>
                   <Text style={styles.submitButtonText}>Submit</Text>
                 </TouchableOpacity>
               </View>
             )}
+
             {modalContent === "Change Password" && (
               <View style={styles.inputContainer}>
                 <TextInput
                   style={styles.input}
-                  placeholder="Current Password"
+                  placeholder="Old Password"
                   placeholderTextColor="#888"
-                  value={currentInput}
-                  onChangeText={setCurrentInput}
+                  value={oldPassword}
+                  onChangeText={setOldPassword}
                   secureTextEntry
                 />
                 <TextInput
                   style={styles.input}
                   placeholder="New Password"
                   placeholderTextColor="#888"
-                  value={newInput}
-                  onChangeText={setNewInput}
+                  value={newPassword}
+                  onChangeText={setNewPassword}
                   secureTextEntry
                 />
-                <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
+                <TouchableOpacity style={styles.submitButton} onPress={handleChangePassword}>
                   <Text style={styles.submitButtonText}>Submit</Text>
                 </TouchableOpacity>
               </View>
             )}
             {modalContent === "Change Email" && (
-              <View style={styles.inputContainer}>
+            <View style={styles.inputContainer}>
                 <TextInput
-                  style={styles.input}
-                  placeholder="Current Email"
-                  placeholderTextColor="#888"
-                  value={currentInput}
-                  onChangeText={setCurrentInput}
+                    style={styles.input}
+                    placeholder="Enter Password"
+                    placeholderTextColor="#888"
+                    value={currentPassword}
+                    onChangeText={setCurrentPassword}
+                    secureTextEntry
                 />
                 <TextInput
-                  style={styles.input}
-                  placeholder="New Email"
-                  placeholderTextColor="#888"
-                  value={newInput}
-                  onChangeText={setNewInput}
+                     style={styles.input}
+                     placeholder="New Email"
+                     placeholderTextColor="#888"
+                     value={newEmail}
+                     onChangeText={setNewEmail}
+                     secureTextEntry
                 />
-                <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
-                  <Text style={styles.submitButtonText}>Submit</Text>
+                <TouchableOpacity style={styles.submitButton} onPress={handleChangeEmail}>
+                    <Text style={styles.submitButtonText}>Submit</Text>
                 </TouchableOpacity>
-              </View>
-            )}
-            {modalContent === "Notifications" && (
-              <View style={styles.inputContainer}>
-                <View style={styles.switchContainer}>
-                  <Text style={styles.switchText}>Enable Notifications</Text>
-                  <Switch
-                    onValueChange={toggleNotifications}
-                    value={notificationsEnabled}
-                  />
-                </View>
-              </View>
-            )}
-            {modalContent === "App Theme" && (
-              <View style={styles.inputContainer}>
-                <TouchableOpacity
-                  style={[styles.optionButton, theme === "Light" && styles.selectedOptionButton]}
-                  onPress={() => changeTheme("Light")}
-                >
-                  <Text style={styles.optionButtonText}>Light Mode {theme === "Light" && "✓"}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={[styles.optionButton, theme === "Dark" && styles.selectedOptionButton]}
-                  onPress={() => changeTheme("Dark")}
-                >
-                  <Text style={styles.optionButtonText}>Dark Mode {theme === "Dark" && "✓"}</Text>
-                </TouchableOpacity>
-              </View>
-            )}
-            {modalContent === "Cancel Subscription" && (
-              <View style={styles.inputContainer}>
-                <Text style={styles.modalText}>Would you like to cancel your subscription?</Text>
-                <TouchableOpacity style={styles.yesButton} onPress={handleCancelSubscription}>
-                  <Text style={styles.submitButtonText}>Yes</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.noButton} onPress={() => setModalVisible(false)}>
-                  <Text style={styles.submitButtonText}>No</Text>
-                </TouchableOpacity>
-              </View>
+            </View>
             )}
             {modalContent === "Delete Account" && (
-              <View style={styles.inputContainer}>
-                <Text style={styles.modalText}>Are you sure you want to delete your account?</Text>
-                <TouchableOpacity style={styles.yesButton} onPress={handleDeleteAccount}>
-                  <Text style={styles.submitButtonText}>Yes</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.noButton} onPress={() => setModalVisible(false)}>
-                  <Text style={styles.submitButtonText}>No</Text>
-                </TouchableOpacity>
-              </View>
+            <View style={styles.inputContainer}>
+                 <TextInput
+                        style={styles.input}
+                        placeholder="Enter password to delete account"
+                        placeholderTextColor="#888"
+                        value={currentPassword}
+                        onChangeText={setCurrentPassword}
+                        secureTextEntry
+                 />
+                  <TouchableOpacity style={styles.submitButton} onPress={handleDeleteAccount}>
+                     <Text style={styles.submitButtonText}>Delete Account</Text>
+                  </TouchableOpacity>
+            </View>
             )}
           </View>
         </View>
@@ -232,6 +314,7 @@ const AccountSettings = () => {
     </SafeAreaView>
   );
 };
+
 
 
 
@@ -388,5 +471,3 @@ const AccountSettings = () => {
 // });
 
 export default AccountSettings;
-
-

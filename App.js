@@ -23,9 +23,8 @@ export default function App() {
     console.log("App executed");
     return (
         <NavigationContainer>
-            
-            <Stack.Navigator initialRouteName="Subscriptions">
-            
+
+            <Stack.Navigator initialRouteName="Welcome">
                 <Stack.Screen name="Welcome" component={WelcomeScreen} />
                 <Stack.Screen name="Login" component={Login1} />
                 <Stack.Screen name="Register" component={Register} />

@@ -198,15 +198,28 @@ export const styles = ReactNative.StyleSheet.create({
         backgroundColor: '#e3bccc',
         justifyContent: "center",
         alignItems: "center",
+        paddingTop: 90,
+        paddingBottom: 20,
     },
     logo: {
         width: 150,
         height: 150,
     },
+
+    welcomeText: {
+        fontSize: 20,
+        fontWeight: 10,
+        color: 'white',
+    },
+
     logoContainer: {
+        width: 200,
+        height: 200,
         alignItems: 'center',
-        position: 'absolute',
-        top: 90,
+        justifyContent: 'center',
+        borderRadius: 100,
+        backgroundColor: '#8d5da8',
+        marginBottom: 40,
     },
     // title: {
     //     fontSize: 24,
@@ -214,7 +227,14 @@ export const styles = ReactNative.StyleSheet.create({
     //     marginVertical: 20,
     // },
     buttonContainer: {
-        marginTop: 20,
+        backgroundColor: "#945493",
+        justifyContent: 'center',
+        marginBottom: 5,
+        marginTop: 45,
+        borderRadius: 30,
+        paddingHorizontal: 25,
+        paddingVertical: 10,
+        marginHorizontal: 15,
     },
     // container: {
     //     flex: 1,
