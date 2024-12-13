@@ -6,6 +6,8 @@ import { styles } from "../assets/styles";
 import { auth, db } from "../../firebase/firebase";
 import { query, where, collection, getDocs, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { sendEmailVerification, deleteUser, updateEmail, reauthenticateWithCredential, EmailAuthProvider, updatePassword } from "firebase/auth";
+import * as Notifications from 'expo-notifications';
+import { registerForPushNotificationsAsync } from './notificationHandler'; // Import the updated handler
 
 const AccountSettings = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -53,7 +55,18 @@ const AccountSettings = () => {
       alert("An error occurred while fetching user information.");
     }
   };
-
+  useEffect(() => {
+    const notificationListener = Notifications.addNotificationReceivedListener(notification => {
+      console.log(notification);
+    });
+    const responseListener = Notifications.addNotificationResponseReceivedListener(response => {
+      console.log(response);
+    });
+    return () => {
+      Notifications.removeNotificationSubscription(notificationListener);
+      Notifications.removeNotificationSubscription(responseListener);
+    };
+  }, []);
   const openModal = (content) => {
     setModalContent(content);
     setModalVisible(true);
@@ -208,11 +221,14 @@ const AccountSettings = () => {
   const toggleNotifications = async () => {
     const newValue = !notificationsEnabled;
     setNotificationsEnabled(newValue);
-
     if (newValue) {
-      alert("Notifications have been enabled.");
+      const token = await registerForPushNotificationsAsync();
+      if (!token) {
+        alert('Since you previously disabled notifications, please enable notifications in your device settings.');
+        setNotificationsEnabled(false); // Reset switch if there was an error
+      }
     } else {
-      alert("Notifications have been disabled.");
+      alert('Notifications have been disabled.');
     }
   };
 
