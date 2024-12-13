@@ -42,7 +42,7 @@ const Register = () => {
             <View style={styles.container}>
                 <TextInput
                     placeholder="Username"
-                    value={Username}
+                    value={username}
                     onChangeText={setUsername}
                     style={styles.input}
                 />
