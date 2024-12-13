@@ -13,8 +13,9 @@ import Dupes from './app/screens/Dupes';
 import PrivacyAndSecurity from './app/screens/PrivacyAndSecurity';
 import AccountSettings from './app/screens/AccountSettings';
 import FAQ from './app/screens/FAQ';
-import SubscriptionAndBilling from './app/screens/SubscriptionAndBilling';
 import FragranceView from './app/screens/FragranceView';
+import Subscriptions from './app/screens/Subscriptions';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -22,8 +23,9 @@ export default function App() {
     console.log("App executed");
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Welcome">
-                
+            
+            <Stack.Navigator initialRouteName="Subscriptions">
+            
                 <Stack.Screen name="Welcome" component={WelcomeScreen} />
                 <Stack.Screen name="Login" component={Login1} />
                 <Stack.Screen name="Register" component={Register} />
@@ -35,8 +37,8 @@ export default function App() {
                 <Stack.Screen name="PrivacyAndSecurity" component={PrivacyAndSecurity} />
                 <Stack.Screen name="AccountSettings" component={AccountSettings} />
                 <Stack.Screen name="FAQ" component={FAQ} />
-                <Stack.Screen name="SubscriptionAndBilling" component={SubscriptionAndBilling} />
                 <Stack.Screen name="FragranceView" component={FragranceView} />
+                <Stack.Screen name="Subscriptions" component={Subscriptions} />
 
 
             </Stack.Navigator>
