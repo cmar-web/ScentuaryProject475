@@ -1,40 +1,80 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, Modal, Pressable } from "react-native";
-import BottomNavBar from "./BottomNavBar"; // Import the BottomNavBar component
+import { auth, db } from '../../firebase/firebase'; // Import Firebase config
+import { query, where, collection, getDocs, doc, updateDoc } from "firebase/firestore"; // Import Firestore functions
+import BottomNavBar from "./BottomNavBar";
 
 const Subscriptions = () => {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const [docId, setDocId] = useState(null);
+
+  useEffect(() => {
+    const currentUser = auth.currentUser;
+
+    if (currentUser) {
+      fetchUserDocId(currentUser.uid); //fetch the user doc id
+    }
+  }, []);
+
+  const fetchUserDocId = async (uid) => {
+    try {
+      const q = query(collection(db, "users"), where("uid", "==", uid));//query for user doc in db
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        const docRef = querySnapshot.docs[0];
+        setDocId(docRef.id);//save doc id
+      } else {
+        alert("User document not found.");
+      }
+    } catch (error) {
+      console.error("Error fetching user document:", error);
+      alert("An error occurred while fetching user information.");
+    }
+  };
 
   const handleSubscription = (plan) => {
     setSelectedPlan(plan);
-    setModalVisible(true); // Show confirmation modal
+    setModalVisible(true); //confirmation
   };
 
-  const confirmSubscription = () => {
-    // Logic for confirming the subscription goes here
-    setModalVisible(false);
-    alert(`You have successfully subscribed to the ${selectedPlan} plan.`);
+  const confirmSubscription = async () => {
+    if (!docId) {
+      alert("User document not found.");
+      return;
+    }
+
+    try {
+      const userDocRef = doc(db, "users", docId);
+      const updateData = selectedPlan === "Yearly"
+        ? { yearlyMembership: true, monthlyMembership: false }
+        : { monthlyMembership: true, yearlyMembership: false };
+
+      //update db
+      await updateDoc(userDocRef, updateData);
+      alert(`You have successfully subscribed to the ${selectedPlan} plan.`);
+    } catch (error) {
+      console.error("Error updating subscription:", error);
+      alert("An error occurred while processing your subscription.");
+    } finally {
+      setModalVisible(false);
+    }
   };
 
   const cancelSubscription = () => {
-    // Close the modal without any action
     setModalVisible(false);
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        {/* Subscriptions Section */}
-
-        {/* Plan Options */}
         <View style={styles.planOption}>
           <Text style={styles.planTitle}>Pro Plan</Text>
           <Text style={styles.planDescription}>
             Get full access to all features with our Pro plan.
           </Text>
 
-          {/* Yearly Plan Option */}
           <View style={styles.optionContainer}>
             <Text style={styles.planPrice}>$10/year</Text>
             <TouchableOpacity
@@ -46,7 +86,6 @@ const Subscriptions = () => {
             </TouchableOpacity>
           </View>
 
-          {/* Monthly Plan Option */}
           <View style={styles.optionContainer}>
             <Text style={styles.planPrice}>$2.50/month</Text>
             <TouchableOpacity
@@ -59,7 +98,6 @@ const Subscriptions = () => {
           </View>
         </View>
 
-        {/* Display Selected Plan */}
         {selectedPlan && (
           <Text style={styles.selectedPlan}>
             You have selected the {selectedPlan} plan.
@@ -67,15 +105,13 @@ const Subscriptions = () => {
         )}
       </View>
 
-      {/* Bottom Navigation Bar */}
       <BottomNavBar />
 
-      {/* Confirmation Modal */}
       <Modal
         animationType="slide"
         transparent={true}
         visible={modalVisible}
-        onRequestClose={cancelSubscription} // Close on back press or swipe
+        onRequestClose={cancelSubscription}
       >
         <View style={styles.modalOverlay}>
           <View style={styles.modalContainer}>
@@ -83,7 +119,7 @@ const Subscriptions = () => {
             <Text style={styles.modalMessage}>
               Are you sure you want to subscribe to the {selectedPlan} plan?
             </Text>
-            
+
             <View style={styles.modalButtons}>
               <Pressable style={[styles.modalButton, styles.confirmButton]} onPress={confirmSubscription}>
                 <Text style={styles.buttonText}>Confirm</Text>
@@ -155,14 +191,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   yearlyButton: {
-    backgroundColor: "#B497BD", // Light purple 
+    backgroundColor: "#B497BD", // Light purple
   },
   monthlyButton: {
-    backgroundColor: "#B497BD", // Light purple 
+    backgroundColor: "#B497BD", // Light purple
   },
   buttonText: {
     fontSize: 16,
-    color: "#fff", // White text 
+    color: "#fff", // White text
     fontWeight: "bold",
   },
   selectedPlan: {
