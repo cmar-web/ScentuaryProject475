@@ -21,13 +21,13 @@ function WelcomeScreen() {
             <TouchableOpacity
                  style={styles.buttonContainer}
                  onPress={() => navigation.navigate("Login")}>
-                 <Text style={styles.welcomeText}>Login</Text>
+                 <Text style={styles.welcomeButtonText}>Login</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
                  style={styles.buttonContainer}
                  onPress={() => navigation.navigate("Register")}>
-                 <Text style={styles.welcomeText}>Register</Text>
+                 <Text style={styles.welcomeButtonText}>Register</Text>
             </TouchableOpacity>
         </SafeAreaView>
     );

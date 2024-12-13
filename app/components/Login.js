@@ -1,7 +1,6 @@
 //Login.js
 import React, { useState } from 'react';
-import { Alert, View, TextInput, Button, StyleSheet, Text, SafeAreaView } from 'react-native';
-//path was giving me a ton of issues for firebase.js so i just threw the whole thing in for now
+import { Alert, View, TextInput, Button, StyleSheet, Text, SafeAreaView, TouchableOpacity } from 'react-native';
 import { auth, signInWithEmailAndPassword, db } from '../../firebase/firebase';
 import { useNavigation } from '@react-navigation/native';
 import {styles} from '../assets/styles';
@@ -39,6 +38,9 @@ const Login = () => {
     return (
 
     <SafeAreaView style={styles.background}>
+            <View>
+                <Text style={styles.header}>Welcome Back!</Text>
+            </View>
             <View style={styles.container}>
                 <TextInput
                     placeholder="username"
@@ -55,13 +57,15 @@ const Login = () => {
                     secureTextEntry
                     style={styles.input}
                 />
-                <Button title="Login" onPress={handleLogin} />
+
+                <TouchableOpacity
+                    style={styles.buttonContainer}
+                    onPress={handleLogin}
+                >
+                    <Text style={styles.welcomeButtonText}>Login</Text>
+                </TouchableOpacity>
             </View>
-
     </SafeAreaView>
-
-
-
     );
 };
 
