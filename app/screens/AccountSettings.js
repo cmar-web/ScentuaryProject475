@@ -239,7 +239,6 @@ const AccountSettings = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.header}>Account Settings</Text>
 
         <Text style={styles.sectionHeader}>Account Information</Text>
         <View style={styles.section}>

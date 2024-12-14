@@ -123,7 +123,7 @@ const MyCollection = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.header}>My Collection</Text>
+
 
         {/* Search Bar */}
         <View style={styles.searchContainer}>

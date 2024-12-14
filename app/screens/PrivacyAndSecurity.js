@@ -44,7 +44,6 @@ const PrivacyAndSecurity = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.header}>Privacy and Security</Text>
 
         <Text style={styles.sectionHeader}>Privacy</Text>
         <View style={styles.section}>

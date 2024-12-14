@@ -184,7 +184,6 @@ const Settings = () => {
   return (
     <SafeAreaView style={styles.settingsBackground}>
       <View style={styles.content}>
-        <Text style={styles.header}>Settings</Text>
         <View style={styles.profileSection}>
           <Image
             source={
@@ -227,7 +226,7 @@ const Settings = () => {
             style={styles.settingsNavButtons}
             onPress={() => navigation.navigate("Subscriptions")}
           >
-            <Text style={styles.buttonText}>Subscription and Billing</Text>
+            <Text style={styles.buttonText}>Subscription Management</Text>
           </TouchableOpacity>
         </View>
       </View>
