@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Text, SafeAreaView, Alert } from 'react-native';
+import { View, TextInput, Button, StyleSheet, Text, SafeAreaView, Alert, TouchableOpacity } from 'react-native';
 import { auth, db } from '../../firebase/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { collection, addDoc } from 'firebase/firestore';
@@ -38,7 +38,10 @@ const Register = () => {
     };
 
     return (
-        <SafeAreaView style={styles.background}>
+        <SafeAreaView style={styles.backgroundRegAndLog}>
+            <View>
+                <Text style={styles.header}>Welcome!</Text>
+            </View>
             <View style={styles.container}>
                 <TextInput
                     placeholder="Username"
@@ -59,7 +62,12 @@ const Register = () => {
                     secureTextEntry
                     style={styles.input}
                 />
-                <Button title="Register" onPress={handleRegister} />
+                <TouchableOpacity
+                    style={styles.buttonContainer}
+                    onPress={handleRegister}
+                >
+                  <Text style={styles.welcomeButtonText}>Register</Text>
+                </TouchableOpacity>
             </View>
         </SafeAreaView>
     );

@@ -30,10 +30,6 @@ const FAQ = () => {
     >
       <SafeAreaView style={styles.container}>
 
-        {/* Top App Bar */}
-        <View style={styles.topAppBar}>
-          <Text style={styles.headline}>FAQS</Text>
-        </View>
 
         {/* Main Content */}
         <View style={styles.content}>

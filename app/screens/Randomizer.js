@@ -9,18 +9,12 @@ import {
   Easing,
   TextInput,
   Modal,
-  StyleSheet,
   Switch,
-  Share
+  Share,
+  StyleSheet,
 } from "react-native";
 import BottomNavBar from "./BottomNavBar";
-
-//Given that we are using Expo Go, the React Native native sharing library does not work in there
-// import Share from "react-native-share";
-//This is the Expo Go version of the same RN library that shoudl work
-// import * as Share from "expo-sharing";
-
-import {styles} from '../assets/styles';
+import { styles } from "../assets/styles";
 
 const Randomizer = () => {
   const [perfumes, setPerfumes] = useState([
@@ -96,38 +90,26 @@ const Randomizer = () => {
     ],
   };
 
-  //Set up the the Share daily scent function that shares the users result to 
-  const shareDailyScent = async() => {
-    //this is where we sent the message and or image to send to the social media platform  
+  const shareDailyScent = async () => {
     const options = {
-        message: 'My scent of the day from Scenturary is: ' + selectedPerfume,
-        //placeholder uri needs adjusted in future
-        url: 'https://www.niche-beauty.com/images/generated/det/26/40/tom-ford-oud-wood.jpg'
-      };
+      message: 'My scent of the day from Scenturary is: ' + selectedPerfume,
+      url: 'https://www.niche-beauty.com/images/generated/det/26/40/tom-ford-oud-wood.jpg',
+    };
 
-      //attempt to pop up the share bar at the bottom of the screen
-      try{
-
-        if(selectedPerfume != '[Insert Name]')
-          await Share.share(options);
-      } catch(error){
-        console.log('Error:', error);
-      }
-
+    try {
+      if (selectedPerfume !== '[Insert Name]') await Share.share(options);
+    } catch (error) {
+      console.log('Error:', error);
+    }
   };
-
 
   return (
     <SafeAreaView style={styles.randomizerContainer}>
       {/* Top App Bar */}
-      <View style={styles.topAppBarRandomizer}>
-        <View style={styles.leadingIcon} />
-        <Text style={styles.headline}>Randomizer</Text>
-        <View style={styles.leadingIcon} />
-      </View>
+
 
       {/* Content Section */}
-      <ScrollView>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={styles.content}>
           <Text style={styles.header}>Fragrance of the Day</Text>
           <Text style={styles.subHeader}>{selectedPerfume}</Text>
@@ -141,7 +123,6 @@ const Randomizer = () => {
                 </Text>
               ))}
             </Animated.View>
-
           </View>
 
           {/* Spin Button and Allow Repeats Switch */}
@@ -151,7 +132,6 @@ const Randomizer = () => {
                 <Text style={styles.spinButtonText}>Spin</Text>
               </View>
             </TouchableOpacity>
-            {/* make a new button to share the results */}
             <TouchableOpacity style={styles.shareResultButton} onPress={shareDailyScent}>
               <Text style={styles.shareResultText}>Share Result</Text>
             </TouchableOpacity>
@@ -173,19 +153,10 @@ const Randomizer = () => {
               onChangeText={setNewPerfume}
               placeholder="Enter perfume name"
             />
-
-            {/* Scent Profile Button */}
             <Text style={styles.inputLabel}>Select Scent Profile:</Text>
-            <TouchableOpacity
-              style={styles.textInput}
-              onPress={() => setModalVisible(true)}
-            >
-              <Text style={styles.selectedProfileText}>
-                {newPerfumeCategory}
-              </Text>
+            <TouchableOpacity style={styles.textInput} onPress={() => setModalVisible(true)}>
+              <Text style={styles.selectedProfileText}>{newPerfumeCategory}</Text>
             </TouchableOpacity>
-
-            {/* Add button */}
             <TouchableOpacity style={styles.addButton} onPress={addPerfume}>
               <Text style={styles.addButtonText}>Add</Text>
             </TouchableOpacity>
@@ -194,11 +165,7 @@ const Randomizer = () => {
           {/* Filters Section */}
           <View style={styles.tabsContainer}>
             <Text style={styles.filtersLabel}>Filter the wheel</Text>
-            <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={styles.tabsContentContainer}
-            >
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginTop: 8 }}>
               {["All", "Fruity", "Woody", "Gourmand", "Floral", "Musky"].map(
                 (tab, index) => (
                   <TouchableOpacity
@@ -220,7 +187,7 @@ const Randomizer = () => {
                   </TouchableOpacity>
                 )
               )}
-            </ScrollView>
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -261,8 +228,6 @@ const Randomizer = () => {
     </SafeAreaView>
   );
 };
-
-
 
 
 // const styles = StyleSheet.create({

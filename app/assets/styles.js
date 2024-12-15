@@ -201,6 +201,17 @@ export const styles = ReactNative.StyleSheet.create({
         paddingTop: 90,
         paddingBottom: 20,
     },
+    backgroundRegAndLog: {
+        flex: 1,
+        backgroundColor: "#f8f4f4",
+        justifyContent: "center",
+        alignItems: "center",
+        paddingTop: 90,
+        paddingBottom: 20,
+        marginTop: 155,
+        marginBottom: 50,
+
+    },
     logo: {
         width: 150,
         height: 150,
@@ -234,7 +245,7 @@ export const styles = ReactNative.StyleSheet.create({
     //     marginVertical: 20,
     // },
     buttonContainer: {
-        backgroundColor: "#945493",
+        backgroundColor: "#B497BD",
         justifyContent: 'center',
         marginBottom: 5,
         marginTop: 45,

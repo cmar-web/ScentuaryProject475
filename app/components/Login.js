@@ -37,7 +37,7 @@ const Login = () => {
 
     return (
 
-    <SafeAreaView style={styles.background}>
+    <SafeAreaView style={styles.backgroundRegAndLog}>
             <View>
                 <Text style={styles.header}>Welcome Back!</Text>
             </View>
