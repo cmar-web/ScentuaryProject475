@@ -9,47 +9,82 @@ import {
   Linking,
   StyleSheet
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import BottomNavBar from './BottomNavBar';
 
 const FragranceView = ({ route, navigation }) => {
-  const { fragrance, toggleFavorite, toggleStatus } = route.params;
+  const { fragrance } = route.params;  // Extract fragrance object passed from Dupes.js
+  console.log(fragrance.image);
   const [showNotes, setShowNotes] = useState(false);
   const [sortOrder, setSortOrder] = useState("asc");
-  const [isFavorite, setIsFavorite] = useState(fragrance.favorited);
-  const [isOwned, setIsOwned] = useState(fragrance.status === 'Owned');
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [isOwned, setIsOwned] = useState(false);
 
   useEffect(() => {
-    setIsFavorite(fragrance.favorited);
-  }, [fragrance.favorited]);
+    // Load initial states from AsyncStorage
+    loadState();
+  }, []);
 
-  useEffect(() => {
-    setIsOwned(fragrance.status === 'Owned');
-  }, [fragrance.status]);
+  const loadState = async () => { // Saving for fav and owned
+    try {
+      const storedFragrance = await AsyncStorage.getItem(`fragrance-${fragrance.id}`);
+      if (storedFragrance) {
+        const fragranceData = JSON.parse(storedFragrance);
+        setIsFavorite(fragranceData.favorited);
+        setIsOwned(fragranceData.status === "Owned");
+      }
+    } catch (error) {
+      console.error("Error loading state from AsyncStorage:", error);
+    }
+  };
 
-  const toggleNotes = () => {
-    setShowNotes(!showNotes);
+  const saveState = async (updatedFragrance) => {
+    try {
+      await AsyncStorage.setItem(`fragrance-${updatedFragrance.id}`, JSON.stringify(updatedFragrance));
+    } catch (error) {
+      console.error("Error saving state to AsyncStorage:", error);
+    }
+  };
+
+  const handleToggleFavorite = () => {
+    const newFavoriteStatus = !isFavorite;
+    setIsFavorite(newFavoriteStatus);
+
+    const updatedFragrance = {
+      ...fragrance,
+      favorited: newFavoriteStatus,
+    };
+
+    saveState(updatedFragrance); // Save the entire fragrance object (not working properly for Collection caching)
+  };
+
+  const handleToggleStatus = () => {
+    const newOwnedStatus = !isOwned ? "Owned" : "Not Owned";
+    setIsOwned(newOwnedStatus === "Owned");
+
+    const updatedFragrance = {
+      ...fragrance,
+      status: newOwnedStatus,
+    };
+
+    saveState(updatedFragrance); // Save the entire fragrance object (not working properly for Collection caching)
   };
 
   const handleSortOrderChange = () => {
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
 
+  const toggleNotes = () => {
+    setShowNotes(!showNotes);
+  };
+
   const handleOpenURL = (url) => {
     Linking.openURL(url).catch(err => console.error("Couldn't load page", err));
   };
 
-  const handleToggleFavorite = () => {
-    toggleFavorite();
-    setIsFavorite(!isFavorite);
-  };
-
-  const handleToggleStatus = () => {
-    toggleStatus();
-    setIsOwned(!isOwned);
-  };
-
   const handleFindDupe = () => {
     navigation.navigate('Dupes', {
+      id: fragrance.id,
       name: fragrance.name,
       brand: fragrance.brand,
       image: fragrance.image,
@@ -66,50 +101,38 @@ const FragranceView = ({ route, navigation }) => {
     { store: "FragranceBuy", price: 218.98, url: "https://www.fragrancebuy.ca" },
   ];
 
-  const sortedPurchasingOptions = purchasingOptions.sort((a, b) => (sortOrder === "asc" ? a.price - b.price : b.price - a.price));
+  const sortedPurchasingOptions = purchasingOptions.sort((a, b) =>
+    sortOrder === "asc" ? a.price - b.price : b.price - a.price
+  );
+
+  // Function to format the notes, returning N/A if no notes are available
+  const formatNotes = (notes) => {
+    if (!notes || notes.length === 0) return "N/A";
+    return notes.join(", ");
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Fixed Header */}
-      <View style={styles.fixedHeader}>
-        {/* Top App Bar */}
-        <View style={styles.topAppBar}>
-          <View style={styles.leadingIcon}>
-            <View style={styles.containerIcon}>
-              <View style={styles.stateLayer}>
-                <Image style={styles.icon} resizeMode="cover" source="Icon.png" />
-              </View>
-            </View>
-          </View>
-          <Text style={styles.headline}>Fragrance View</Text>
-          <View style={styles.leadingIcon}>
-            <View style={styles.containerIcon}>
-              <View style={styles.stateLayer}>
-                <Image style={styles.icon} resizeMode="cover" source="Icon.png" />
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
-        {/* Brand and Fragrance Name */}
         <View style={styles.brandNameContainer}>
           <Text style={styles.brand}>{fragrance.brand}</Text>
           <Text style={styles.name}>{fragrance.name}</Text>
-          {/* Star Button */}
+          {/* Favorite Button */}
           <TouchableOpacity onPress={handleToggleFavorite} style={styles.starButton}>
             <Text style={styles.starButtonText}>{isFavorite ? "★" : "☆"}</Text>
           </TouchableOpacity>
-          {/* Status Button */}
+          {/* Owned Status Button */}
           <TouchableOpacity onPress={handleToggleStatus} style={styles.statusButton}>
-            <Text style={styles.statusButtonText}>{isOwned ? "✔️Owned" : "❌Not Owned"}</Text>
+            <Text style={styles.statusButtonText}>{isOwned ? "✔️ Owned" : "❌ Not Owned"}</Text>
           </TouchableOpacity>
         </View>
 
-        {/* Fragrance Details */}
         <View style={styles.content}>
-          <Image style={styles.fragranceImage} resizeMode="cover" source={{ uri: fragrance.image }} />
+          <Image
+            style={styles.fragranceImage}
+            resizeMode="cover"
+            source={{ uri: fragrance.image }}
+          />
           <View style={styles.details}>
             <Text style={styles.category}>Fragrance Family: {fragrance.category}</Text>
             <TouchableOpacity onPress={toggleNotes} style={styles.button}>
@@ -118,41 +141,38 @@ const FragranceView = ({ route, navigation }) => {
             {showNotes && (
               <View style={styles.notesContainer}>
                 <Text style={styles.notesHeader}>Top Notes:</Text>
-                <Text style={styles.notes}>{fragrance.topNotes.join(", ")}</Text>
+                <Text style={styles.notes}>{formatNotes(fragrance.topNotes)}</Text>
                 <Text style={styles.notesHeader}>Middle Notes:</Text>
-                <Text style={styles.notes}>{fragrance.middleNotes.join(", ")}</Text>
+                <Text style={styles.notes}>{formatNotes(fragrance.middleNotes)}</Text>
                 <Text style={styles.notesHeader}>Base Notes:</Text>
-                <Text style={styles.notes}>{fragrance.bottomNotes.join(", ")}</Text>
+                <Text style={styles.notes}>{formatNotes(fragrance.bottomNotes)}</Text>
               </View>
             )}
           </View>
         </View>
 
-        {/* Fragrance Description */}
         <View style={styles.descriptionContainer}>
           <Text style={styles.descriptionHeader}>Description</Text>
           <Text style={styles.description}>{fragrance.description}</Text>
         </View>
 
-        {/* Find a Dupe Button */}
         <TouchableOpacity onPress={handleFindDupe} style={styles.findDupeButton}>
           <Text style={styles.findDupeButtonText}>Find a Dupe</Text>
         </TouchableOpacity>
 
-        {/* Horizontal Divider and Subheader */}
         <View style={styles.horizontaldividerWithSubheader}>
           <View style={styles.divider} />
           <Text style={styles.subheader}>Purchasing Options</Text>
         </View>
 
-        {/* Price Filter Button */}
         <View style={styles.filterButtonContainer}>
           <TouchableOpacity onPress={handleSortOrderChange} style={styles.filterButton}>
-            <Text style={styles.filterButtonText}>Sort by Price: {sortOrder === "asc" ? "Low to High" : "High to Low"}</Text>
+            <Text style={styles.filterButtonText}>
+              Sort by Price: {sortOrder === "asc" ? "Low to High" : "High to Low"}
+            </Text>
           </TouchableOpacity>
         </View>
 
-        {/* Purchasing Options */}
         <ScrollView horizontal style={styles.purchasingOptionsContainer}>
           {sortedPurchasingOptions.map((option, index) => (
             <View key={index} style={styles.purchasingOptionCard}>
@@ -165,58 +185,19 @@ const FragranceView = ({ route, navigation }) => {
           ))}
         </ScrollView>
       </ScrollView>
-
-      {/* Bottom Navigation Bar */}
       <BottomNavBar style={styles.bottomNavBar} />
     </SafeAreaView>
   );
 };
-
-
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#f8f4f4",
   },
-  fixedHeader: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 1,
-    backgroundColor: "#fff",
-  },
   scrollViewContent: {
     paddingTop: 60, // Height of the fixed header
     paddingBottom: 70,
-  },
-  topAppBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 10,
-    backgroundColor: '#fff',
-  },
-  leadingIcon: {
-    flex: 1,
-  },
-  containerIcon: {
-    width: 30,
-    height: 30,
-  },
-  stateLayer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  icon: {
-    width: 24,
-    height: 24,
-  },
-  headline: {
-    flex: 4,
-    fontSize: 24,
-    textAlign: 'center',
   },
   brandNameContainer: {
     alignItems: 'center',
@@ -233,14 +214,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   starButton: {
-    backgroundColor: "transparent", // Transparent background
+    backgroundColor: "transparent",
     padding: 10,
     borderRadius: 50,
-    marginTop: 5, // Add some space between the text and the star button
+    marginTop: 5,
   },
   starButtonText: {
-    fontSize: 30, // Larger font size for star
-    color: "#FFD700", // Gold color for the star
+    fontSize: 30,
+    color: "#FFD700",
     textAlign: 'center',
   },
   content: {
@@ -263,7 +244,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   button: {
-    backgroundColor: "#C2A4D9", // Lavender
+    backgroundColor: "#C2A4D9",
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
@@ -299,7 +280,7 @@ const styles = StyleSheet.create({
     color: "#666",
   },
   findDupeButton: {
-    backgroundColor: "#32CD32", // LimeGreen color
+    backgroundColor: "#32CD32",
     padding: 10,
     borderRadius: 5,
     marginTop: 10,
@@ -311,73 +292,68 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   horizontaldividerWithSubheader: {
-    marginVertical: 20,
-    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 10,
+    justifyContent: "center",
+    alignItems: "center",
   },
   divider: {
-    width: '100%',
+    width: "90%",
     height: 1,
-    backgroundColor: '#ccc',
-    marginBottom: 10,
+    backgroundColor: "#ddd",
   },
   subheader: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: "bold",
+    marginVertical: 10,
+  },
+  purchasingOptionsContainer: {
+    flexDirection: "row",
+  },
+  purchasingOptionCard: {
+    width: 200,
+    marginRight: 20,
+    padding: 10,
+    backgroundColor: "#fff",
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 2.5,
+    alignItems: "center",
+  },
+  storeName: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#333",
+  },
+  storePrice: {
+    fontSize: 16,
+    color: "#333",
+    marginVertical: 10,
+  },
+  storeLink: {
+    fontSize: 16,
+    color: "#0066cc",
+    textDecorationLine: "underline",
   },
   filterButtonContainer: {
-    alignItems: 'center',
-    marginBottom: 10,
+    marginVertical: 10,
+    alignItems: "center",
   },
   filterButton: {
-    backgroundColor: "#C2A4D9", // Lavender
+    backgroundColor: "#8A2BE2",
     padding: 10,
     borderRadius: 5,
   },
   filterButtonText: {
     color: "#fff",
     fontSize: 16,
-    textAlign: 'center',
-  },
-  purchasingOptionsContainer: {
-    flexDirection: 'row',
-    padding: 16,
-  },
-  purchasingOptionCard: {
-    backgroundColor: "#fff",
-    padding: 10,
-    borderRadius: 5,
-    marginRight: 10,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-    elevation: 2,
-    width: 200,
-  },
-  storeName: {
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  storePrice: {
-    fontSize: 18,
-    color: "#666",
-    marginTop: 5,
-  },
-  storeLink: {
-    fontSize: 16,
-    color: "#007BFF", // Default link color
-    marginTop: 10,
   },
   bottomNavBar: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
-    width: '100%',
-  },
-  statusButton: {
-    padding: 1,
-  },
-  statusButtonText: {
-    fontSize: 18,
+    width: "100%",
   },
 });
 
